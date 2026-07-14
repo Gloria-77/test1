@@ -950,53 +950,337 @@ const weeklyPlans = [
   "最终回归：轻量模拟，调整作息和考试策略。"
 ];
 
-const plans = Array.from({ length: 112 }, (_, index) => {
-  if (index === 0) return dayOne;
+const dailyFocus = [
+  "工作介绍", "数字日期", "定位阅读", "日常生活", "学习计划", "城市交通", "科技工具",
+  "健康作息", "教育选择", "环境话题", "团队沟通", "问题解决", "数据图表", "观点表达"
+];
+
+const wordBank = [
+  ["analyse", "分析", "I analyse the test result carefully."],
+  ["application", "应用程序", "This application is easy to use."],
+  ["approach", "方法", "A clear approach can save time."],
+  ["available", "可获得的", "The report is available online."],
+  ["benefit", "好处", "Regular practice has many benefits."],
+  ["challenge", "挑战", "Speaking is a real challenge for me."],
+  ["compare", "比较", "We need to compare two solutions."],
+  ["confirm", "确认", "Please confirm the requirement."],
+  ["consistent", "一致的", "The result should be consistent."],
+  ["context", "背景", "Context helps me understand the sentence."],
+  ["deadline", "截止日期", "The deadline is next Friday."],
+  ["describe", "描述", "I can describe my daily work."],
+  ["detail", "细节", "Small details may cause bugs."],
+  ["develop", "发展/开发", "Developers develop new features."],
+  ["device", "设备", "I test the app on different devices."],
+  ["efficiently", "高效地", "I want to study more efficiently."],
+  ["environment", "环境", "The test environment is ready."],
+  ["evidence", "证据", "Screenshots are useful evidence."],
+  ["feature", "功能", "This feature is important for users."],
+  ["feedback", "反馈", "User feedback helps improve products."],
+  ["function", "功能", "This function works well."],
+  ["identify", "识别", "I identify problems in the system."],
+  ["impact", "影响", "This bug has a serious impact."],
+  ["include", "包括", "The plan includes listening practice."],
+  ["increase", "增加", "Practice can increase confidence."],
+  ["issue", "问题", "I found an issue during testing."],
+  ["maintain", "保持/维护", "We maintain product quality."],
+  ["method", "方法", "This method is simple and useful."],
+  ["notice", "注意到", "I noticed a spelling mistake."],
+  ["option", "选项", "There are several options."],
+  ["perform", "执行/表现", "I perform manual testing every week."],
+  ["priority", "优先级", "This task is a high priority."],
+  ["process", "过程", "Testing is part of the development process."],
+  ["quality", "质量", "Quality is important in software testing."],
+  ["reduce", "减少", "Automation can reduce repeated work."],
+  ["release", "发布", "The team will release a new version."],
+  ["reliable", "可靠的", "A reliable system is important."],
+  ["review", "复查", "I review the bug report before sending it."],
+  ["risk", "风险", "We should reduce the risk."],
+  ["scenario", "场景", "This scenario is common in testing."],
+  ["schedule", "时间表", "My study schedule is two hours a day."],
+  ["section", "部分", "Listening section one is usually easier."],
+  ["select", "选择", "I select the best answer."],
+  ["specific", "具体的", "Please give me a specific example."],
+  ["strategy", "策略", "My strategy is to practise every day."],
+  ["summarise", "总结", "I can summarise the passage."],
+  ["support", "支持", "The system can support many users."],
+  ["target", "目标", "My target score is 6.5."],
+  ["technical", "技术的", "I can explain a technical problem."],
+  ["typical", "典型的", "This is a typical user problem."],
+  ["valuable", "有价值的", "English is a valuable skill."],
+  ["variety", "多样性", "I need a variety of practice."],
+  ["accurately", "准确地", "I want to answer accurately."],
+  ["advantage", "优势", "Online learning has one advantage."],
+  ["alternative", "替代选择", "We need an alternative plan."],
+  ["arrange", "安排", "I arrange my study time after work."],
+  ["assumption", "假设", "This assumption may be wrong."],
+  ["automatic", "自动的", "Automatic tests run quickly."],
+  ["capacity", "能力/容量", "The system has limited capacity."],
+  ["category", "类别", "Put each mistake into a category."],
+  ["complex", "复杂的", "The problem is complex but common."],
+  ["condition", "条件", "The result depends on the condition."],
+  ["consider", "考虑", "I need to consider the user's needs."],
+  ["contain", "包含", "The email contains important details."],
+  ["conversation", "对话", "I listened to a short conversation."],
+  ["culture", "文化", "Different cities have different cultures."],
+  ["customer", "顾客/客户", "Customer experience matters."],
+  ["decision", "决定", "This decision saved time."],
+  ["delivery", "交付", "Fast delivery is not always better."],
+  ["department", "部门", "I work with the product department."],
+  ["describe", "描述", "Describe a useful app you use."],
+  ["design", "设计", "Good design improves user experience."],
+  ["detect", "检测", "Tests can detect hidden problems."],
+  ["difference", "差异", "There is a clear difference."],
+  ["discussion", "讨论", "The discussion lasted ten minutes."],
+  ["education", "教育", "Education can change a person's future."],
+  ["effective", "有效的", "This is an effective study habit."],
+  ["employee", "员工", "Employees need clear communication."],
+  ["encourage", "鼓励", "A teacher can encourage students."],
+  ["essential", "必要的", "Sleep is essential for learning."],
+  ["estimate", "估计", "I estimate the testing time."],
+  ["evaluate", "评估", "We evaluate the final result."],
+  ["experience", "经历", "This experience helped me grow."],
+  ["factor", "因素", "Time is an important factor."],
+  ["flexible", "灵活的", "A flexible plan is easier to follow."],
+  ["generate", "生成", "The tool can generate a report."],
+  ["habit", "习惯", "A small habit can make progress."],
+  ["immediate", "立即的", "Immediate feedback is useful."],
+  ["individual", "个人", "Each individual has different needs."],
+  ["instruction", "说明", "Read the instruction carefully."],
+  ["interaction", "互动", "Good interaction makes learning easier."],
+  ["knowledge", "知识", "I want to build basic knowledge."],
+  ["location", "地点", "The location is near the station."],
+  ["logical", "有逻辑的", "A logical answer is easier to follow."],
+  ["measure", "衡量", "We measure progress every week."],
+  ["necessary", "必要的", "Daily review is necessary."],
+  ["objective", "目标", "My objective is to pass IELTS."],
+  ["opinion", "观点", "In my opinion, practice is key."],
+  ["organise", "组织", "I organise my notes by topic."],
+  ["pattern", "模式", "I noticed a common pattern."],
+  ["performance", "表现", "My performance is improving."],
+  ["permission", "权限", "The app needs microphone permission."],
+  ["practical", "实用的", "This is a practical solution."],
+  ["predict", "预测", "I predict the answer before listening."],
+  ["prefer", "更喜欢", "I prefer short daily practice."],
+  ["previous", "之前的", "Review the previous lesson first."],
+  ["professional", "专业的", "I want to sound more professional."],
+  ["progress", "进步", "Small progress is still progress."],
+  ["purpose", "目的", "The purpose is to improve fluency."],
+  ["recommend", "推荐", "I recommend using a checklist."],
+  ["record", "记录", "I record my speaking every day."],
+  ["relationship", "关系", "Good relationships help teamwork."],
+  ["require", "需要", "This task requires attention."],
+  ["resource", "资源", "Free resources can be useful."],
+  ["respond", "回应", "I respond to messages quickly."],
+  ["responsible", "负责的", "I am responsible for software quality."],
+  ["routine", "常规", "A routine makes study easier."],
+  ["significant", "显著的", "There is a significant improvement."],
+  ["similar", "相似的", "These two words are similar."],
+  ["stable", "稳定的", "A stable system is easier to test."],
+  ["standard", "标准", "Follow the standard process."],
+  ["structure", "结构", "A clear structure improves writing."],
+  ["suitable", "合适的", "This topic is suitable for Part 2."],
+  ["survey", "调查", "The survey shows a clear trend."],
+  ["technology", "技术", "Technology changes the way we work."],
+  ["transfer", "转移", "I transfer notes to my phone."],
+  ["trend", "趋势", "The chart shows an upward trend."],
+  ["update", "更新", "Please update the test case."],
+  ["user", "用户", "The user found a problem."],
+  ["verify", "验证", "I verify the result after testing."]
+];
+
+const sentenceBank = [
+  "I work as a software testing engineer.",
+  "My main responsibility is to find problems before users do.",
+  "I usually communicate with developers and product managers.",
+  "I want to improve my English step by step.",
+  "Daily practice helps me become more confident.",
+  "The most difficult part for me is speaking fluently.",
+  "I prefer learning with clear examples.",
+  "A useful app can save a lot of time.",
+  "In my opinion, quality is more important than speed.",
+  "I need to review my mistakes every day.",
+  "This problem can be solved with a better process.",
+  "I often write bug reports after testing.",
+  "Automation testing can reduce repeated work.",
+  "A clear checklist helps me avoid mistakes.",
+  "I would like to study or work in Hong Kong in the future.",
+  "Technology has changed the way people communicate.",
+  "Good time management is essential for exam preparation.",
+  "I try to speak slowly and clearly.",
+  "Reading keywords first helps me find answers faster.",
+  "Listening for numbers and names is very important."
+];
+
+const listeningBank = [
+  "twenty-three", "sixty-four", "one hundred and fifteen", "three thousand two hundred",
+  "March the eighteenth", "November the twenty-second", "half past seven", "a quarter past four",
+  "a quarter to nine", "eight forty-five p.m.", "Room B seventeen", "Platform number six",
+  "The meeting starts at nine thirty.", "The price is fifteen pounds fifty.",
+  "The phone number is zero seven nine two three five six eight one four.",
+  "The email address is testing dot study at example dot com.",
+  "The appointment is on Wednesday morning.", "The course lasts for twelve weeks.",
+  "The library closes at six fifteen.", "The bus leaves from Gate C."
+];
+
+const readingTopics = [
+  {
+    title: "Automation and manual testing",
+    body: "Automation testing is useful when a team needs to repeat the same checks many times. It can save time and make results more consistent. However, manual testing is still necessary because real users may behave in unexpected ways. A balanced testing team usually combines scripts, checklists and human judgement."
+  },
+  {
+    title: "Learning after work",
+    body: "Many adults study a second language after work. The biggest difficulty is not intelligence but energy. Short daily sessions are often more effective than long sessions once a week. When learners record mistakes and review them regularly, they can see steady progress."
+  },
+  {
+    title: "Public transport in cities",
+    body: "Efficient public transport can reduce traffic and help people arrive on time. In large cities, passengers often compare buses, trains and taxis before choosing a route. Clear signs and reliable schedules are important because they reduce stress for visitors."
+  },
+  {
+    title: "Technology in education",
+    body: "Digital tools can make education more flexible. Students can review lessons, listen to examples and practise at their own speed. Still, technology is only helpful when learners use it actively. A simple plan and regular feedback are more important than using many apps."
+  },
+  {
+    title: "Healthy routines",
+    body: "A healthy routine supports better learning. People who sleep well usually remember information more clearly. Exercise can also reduce stress before exams. For language learners, a stable routine makes it easier to continue even when motivation is low."
+  },
+  {
+    title: "Workplace communication",
+    body: "Clear communication is essential in a workplace. When requirements are unclear, teams may waste time building the wrong feature. Good communication includes asking specific questions, confirming details and writing short summaries after discussions."
+  },
+  {
+    title: "Customer feedback",
+    body: "Customer feedback gives companies direct evidence about product quality. Some comments describe small design problems, while others show serious technical issues. Teams should organise feedback by priority so that important problems can be solved first."
+  },
+  {
+    title: "City life and green spaces",
+    body: "Green spaces can improve city life by giving people places to relax. Parks are also useful for exercise and social activities. Although land in cities is expensive, many planners believe that public green spaces are necessary for long-term health."
+  },
+  {
+    title: "Online meetings",
+    body: "Online meetings are convenient because people can join from different locations. They also save travel time. However, they can become inefficient if there is no clear agenda. A short meeting with a written summary is usually more useful than a long discussion."
+  },
+  {
+    title: "Exam preparation",
+    body: "Successful exam preparation requires both practice and review. Practice helps learners become familiar with question types, while review shows why mistakes happen. Learners who only do new exercises may repeat the same errors again and again."
+  }
+];
+
+function createDetailedPlan(index) {
+  const dayNumber = index + 1;
   const week = Math.floor(index / 7);
   const dayInWeek = (index % 7) + 1;
-  const modules = dayInWeek % 2 === 0
-    ? ["单词复习", "听力精听", "阅读限时", "口语录音"]
-    : ["单词新学", "听力练习", "阅读定位", "写作句子"];
+  const weekTheme = weeklyPlans[week].split("：")[0];
+  const focus = dailyFocus[index % dailyFocus.length];
+  const outputModule = dayInWeek % 2 === 0 ? "口语录音" : "写作句子";
 
   return {
-    title: `第 ${index + 1} 天：${weeklyPlans[week].split("：")[0]}`,
+    title: `第 ${dayNumber} 天：${weekTheme} · ${focus}`,
     phase: `第 ${week + 1} 周`,
     band: week < 4 ? "基础期" : week < 8 ? "题型期" : week < 12 ? "强化期" : "冲刺期",
     goals: [
       weeklyPlans[week],
-      "保持每天 2 小时，不跳过复盘。",
+      `完成今天的 ${focus} 主题词、句子、听力和阅读。`,
+      dayInWeek % 2 === 0 ? "录一段口语并听回放，找出一个发音问题。" : "写 5 个完整句子，注意主谓宾完整。",
       "记录今天最明显的一个错误。"
     ],
-    tasks: modules.map((module, taskIndex) => ({
-      title: module,
-      time: ["20 分钟", "35 分钟", "35 分钟", "30 分钟"][taskIndex],
-      desc: [
-        "复习昨天内容，并新增少量高频词。",
-        "听一段材料，完成题目后复听错题。",
-        "练关键词定位和同义替换。",
-        dayInWeek % 2 === 0 ? "录 1 段口语，听自己卡在哪里。" : "写 5 个完整英文句子。"
-      ][taskIndex]
-    })),
+    tasks: [
+      { title: "单词 + 句子", time: "20 分钟", desc: `学习 ${focus} 主题 10 个词，跟读 5 个核心句子。` },
+      { title: "听力小练习", time: "35 分钟", desc: "听数字、日期、时间和地点表达，写下你听到的内容。" },
+      { title: "阅读定位", time: "35 分钟", desc: "读短文，先圈关键词，再回答定位问题。" },
+      { title: outputModule, time: "30 分钟", desc: dayInWeek % 2 === 0 ? "按口语提示录音 45 秒，听自己是否停顿太多。" : "按句子框架写 5 句，并大声读出来。" }
+    ],
     content: [
       {
-        type: "text",
-        title: "今日学习提示",
-        body: "这是后续每日模板。你可以按当天情况把笔记写在右侧，后面我也可以继续帮你把每天的具体内容补全到软件里。"
+        type: "words",
+        title: `10 个 ${focus} 高频词`,
+        words: makeWordSet(index)
       },
       {
         type: "list",
-        title: "今日固定步骤",
-        items: [
-          "先复习昨天的 5 个核心句子。",
-          "完成 35 分钟听力或阅读训练。",
-          "把错题原因写进“错题 / 卡点”。",
-          "点击完成今日打卡。"
-        ]
+        title: "今天必须跟读的 5 个句子",
+        items: makeSentenceSet(index)
+      },
+      {
+        type: "list",
+        title: "听力小练习",
+        intro: "先点“听”，不要看中文解释；把你听到的英文写进笔记或纸上：",
+        items: makeListeningSet(index)
+      },
+      {
+        type: "text",
+        title: "阅读短文",
+        body: makeReading(index).body
+      },
+      {
+        type: "list",
+        title: "阅读定位问题",
+        intro: `短文主题：${makeReading(index).title}。请用关键词定位答案：`,
+        items: makeReadingQuestions(index)
+      },
+      {
+        type: "list",
+        title: dayInWeek % 2 === 0 ? "口语任务" : "写作句子任务",
+        intro: dayInWeek % 2 === 0 ? "录音 45 秒；如果卡住，就先读下面的句子：" : "把下面句子抄写一遍，再替换 1 个词改成自己的版本：",
+        items: makeOutputSet(index)
       }
     ],
-    reminder: `<strong>${weeklyPlans[week].split("：")[0]}</strong>。今天只抓一个主要问题，别一次改太多。`
+    reminder: `<strong>${weekTheme}</strong>。今天主题是 ${focus}，只抓一个主要问题，完成比完美更重要。`
   };
-});
+}
+
+function makeWordSet(index) {
+  return Array.from({ length: 10 }, (_, offset) => {
+    const [word, meaning, sentence] = wordBank[(index * 7 + offset) % wordBank.length];
+    return [word, `${meaning} | ${sentence}`];
+  });
+}
+
+function makeSentenceSet(index) {
+  return Array.from({ length: 5 }, (_, offset) => sentenceBank[(index * 3 + offset) % sentenceBank.length]);
+}
+
+function makeListeningSet(index) {
+  return Array.from({ length: 10 }, (_, offset) => listeningBank[(index * 5 + offset) % listeningBank.length]);
+}
+
+function makeReading(index) {
+  return readingTopics[index % readingTopics.length];
+}
+
+function makeReadingQuestions(index) {
+  const topic = makeReading(index);
+  return [
+    `What is the main idea of "${topic.title}"?`,
+    "Find one sentence that gives a reason.",
+    "Find one word that means important or useful.",
+    "What problem or limitation is mentioned in the passage?",
+    "Write one short summary sentence in your own words."
+  ];
+}
+
+function makeOutputSet(index) {
+  const dayInWeek = (index % 7) + 1;
+  const focus = dailyFocus[index % dailyFocus.length].toLowerCase();
+  if (dayInWeek % 2 === 0) {
+    return [
+      `Today I want to talk about ${focus}.`,
+      "In my daily work, this topic is quite common.",
+      "One example is that I need to communicate clearly with my team.",
+      "I think regular practice can help me speak more naturally.",
+      "Next time, I will try to give more specific examples."
+    ];
+  }
+
+  return [
+    `The topic of today's practice is ${focus}.`,
+    "There are several reasons why this topic is important.",
+    "For example, clear communication can reduce mistakes.",
+    "However, it also requires time and patience.",
+    "Overall, I believe small daily practice can lead to real progress."
+  ];
+}
+
+const plans = Array.from({ length: 112 }, (_, index) => index === 0 ? dayOne : createDetailedPlan(index));
 
 const state = loadState();
 let currentDay = Number(state.currentDay || 0);
