@@ -197,6 +197,138 @@ const wordBank = [
   ["workaround", "临时解决方案", "There is a workaround, but it is not user-friendly."]
 ];
 
+const translationBank = {
+  a: "一个；一项",
+  about: "关于",
+  action: "操作；行动",
+  actions: "操作；行动",
+  add: "添加",
+  after: "在……之后",
+  also: "也；同样",
+  and: "和；并且",
+  app: "应用程序",
+  ask: "询问；提出问题",
+  based: "基于",
+  before: "在……之前",
+  behavior: "行为；表现",
+  better: "更好的",
+  body: "响应体；正文",
+  build: "构建；版本包",
+  business: "业务",
+  can: "能够；可以",
+  case: "用例；情况",
+  cases: "用例；情况",
+  changes: "变更；修改",
+  check: "检查",
+  checks: "检查项",
+  clear: "清楚的；明确的",
+  code: "代码；状态码",
+  comments: "评论；备注",
+  communication: "沟通",
+  completed: "已完成的",
+  correct: "正确的",
+  create: "创建",
+  data: "数据",
+  defined: "已定义的",
+  describe: "描述",
+  different: "不同的",
+  discussion: "讨论",
+  easier: "更容易的",
+  earlier: "更早地",
+  environment: "环境",
+  evidence: "证据",
+  existing: "已有的",
+  explain: "解释",
+  faster: "更快地",
+  fields: "字段",
+  file: "文件",
+  find: "发现；找到",
+  fix: "修复",
+  flow: "流程",
+  for: "为了；对于",
+  from: "来自；从……",
+  good: "好的",
+  has: "有；拥有",
+  help: "帮助",
+  helpful: "有帮助的",
+  helps: "帮助",
+  if: "如果",
+  important: "重要的",
+  in: "在……里面",
+  include: "包括",
+  input: "输入",
+  inputs: "输入",
+  interview: "面试",
+  is: "是",
+  issue: "问题；缺陷",
+  issues: "问题；缺陷",
+  it: "它",
+  jira: "项目/缺陷管理工具",
+  logic: "逻辑",
+  main: "主要的",
+  make: "使；制作",
+  may: "可能",
+  manager: "经理；负责人",
+  members: "成员",
+  negative: "异常的；反向的",
+  needs: "需要",
+  next: "下一个；下一步",
+  not: "不；没有",
+  of: "……的",
+  on: "在……上",
+  open: "打开的；未关闭的",
+  or: "或者",
+  parameters: "参数",
+  performed: "被执行",
+  plan: "计划",
+  point: "要点；观点",
+  points: "要点；观点",
+  prevent: "防止；避免",
+  problems: "问题",
+  product: "产品",
+  project: "项目",
+  quickly: "快速地",
+  questions: "问题",
+  qa: "质量保证；测试岗位",
+  report: "报告",
+  reports: "报告",
+  requirement: "需求",
+  requirements: "需求",
+  result: "结果",
+  results: "结果",
+  rework: "返工",
+  safely: "安全地",
+  same: "相同的",
+  service: "服务",
+  should: "应该",
+  simple: "简单的",
+  specific: "具体的",
+  steps: "步骤",
+  story: "需求故事",
+  summary: "总结",
+  team: "团队",
+  tester: "测试人员",
+  testing: "测试",
+  tests: "测试",
+  the: "这个；该",
+  this: "这个",
+  to: "去；为了",
+  understand: "理解",
+  unclear: "不清楚的",
+  useful: "有用的",
+  user: "用户",
+  users: "用户",
+  verify: "验证",
+  was: "是；被",
+  when: "当……时",
+  where: "在哪里",
+  whether: "是否",
+  why: "为什么",
+  with: "和；带有",
+  work: "工作",
+  writing: "编写；写作"
+};
+
 const sentenceBank = [
   "I work as a software testing engineer.",
   "My main responsibility is to ensure software quality.",
@@ -470,6 +602,15 @@ function init() {
       stopListeningPractice();
       stopPassageReading();
       speakEnglish(speakButton.dataset.speak, Number(speakButton.dataset.rate || "0.85"));
+      if (speakButton.classList.contains("passage-word")) {
+        showWordTranslation(speakButton, speakButton.dataset.speak);
+      }
+      return;
+    }
+
+    const translateButton = event.target.closest("[data-translate-control]");
+    if (translateButton) {
+      translateInputWord(translateButton);
       return;
     }
 
@@ -492,6 +633,17 @@ function init() {
       stopPassageReading();
       startFollowRead(readButton);
     }
+  });
+
+  els.studyContent.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") return;
+    const input = event.target.closest(".translation-input");
+    if (!input) return;
+
+    event.preventDefault();
+    const section = input.closest(".content-block");
+    const button = section?.querySelector("[data-translate-control]");
+    if (button) translateInputWord(button);
   });
 
   els.completeDayButton.addEventListener("click", () => {
@@ -631,7 +783,12 @@ function renderContentBlock(block) {
     controls.className = "listening-controls passage-controls";
     controls.innerHTML = `
       <button type="button" class="listening-control-button" data-passage-control>播放整段</button>
-      <span class="listening-status" aria-live="polite">按一次播放整篇短文；点击单个英文单词可单独听。</span>
+      <span class="listening-status" aria-live="polite">按一次播放整篇短文；点击单个英文单词可听发音并查翻译。</span>
+      <div class="translation-tools">
+        <input class="translation-input" type="text" placeholder="输入单词查中文" aria-label="输入单词查中文" />
+        <button type="button" class="translation-button" data-translate-control>查翻译</button>
+      </div>
+      <div class="translation-result" aria-live="polite">点短文里的单词，或输入单词查询中文意思。</div>
     `;
     section.appendChild(controls);
 
@@ -653,9 +810,49 @@ function renderClickablePassage(text) {
       if (!match) return escapeHtml(part);
 
       const [, prefix, word, suffix] = match;
-      return `${escapeHtml(prefix)}<button type="button" class="passage-word" data-speak="${escapeHtml(word)}" data-rate="0.72">${escapeHtml(word)}</button>${escapeHtml(suffix)}`;
+      return `${escapeHtml(prefix)}<button type="button" class="passage-word" data-speak="${escapeHtml(word)}" data-rate="0.72" title="点我听发音并查翻译">${escapeHtml(word)}</button>${escapeHtml(suffix)}`;
     })
     .join("");
+}
+
+function translateInputWord(button) {
+  const section = button.closest(".content-block");
+  const input = section?.querySelector(".translation-input");
+  const word = input?.value?.trim() || "";
+  showWordTranslation(button, word);
+}
+
+function showWordTranslation(sourceElement, rawWord) {
+  const section = sourceElement.closest(".content-block");
+  const result = section?.querySelector(".translation-result");
+  const input = section?.querySelector(".translation-input");
+  const word = normalizeLookupWord(rawWord);
+  if (!result || !word) return;
+
+  if (input) input.value = word;
+
+  const translation = lookupTranslation(word);
+  result.className = `translation-result ${translation ? "has-result" : "missing-result"}`;
+  result.innerHTML = translation
+    ? `<strong>${escapeHtml(word)}</strong><span>${escapeHtml(translation)}</span>`
+    : `<strong>${escapeHtml(word)}</strong><span>暂未收录这个词。可以先记到复盘笔记里，我后续帮你补进词库。</span>`;
+}
+
+function normalizeLookupWord(word) {
+  return String(word || "")
+    .toLowerCase()
+    .replace(/^[^a-z]+|[^a-z]+$/g, "")
+    .trim();
+}
+
+function lookupTranslation(word) {
+  const normalized = normalizeLookupWord(word);
+  if (!normalized) return "";
+
+  const fromWordBank = wordBank.find(([item]) => item.toLowerCase() === normalized);
+  if (fromWordBank) return fromWordBank[1];
+
+  return translationBank[normalized] || "";
 }
 
 function togglePassageReading(button) {
