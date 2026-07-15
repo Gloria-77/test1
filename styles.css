@@ -481,6 +481,75 @@ a:focus-visible {
   line-height: 1.45;
 }
 
+.translation-tools {
+  flex: 1 1 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.translation-input {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--ink);
+  padding: 0 11px;
+  font: inherit;
+}
+
+.translation-input:focus {
+  border-color: #98cdb8;
+  outline: none;
+}
+
+.translation-button {
+  min-height: 38px;
+  border: 1px solid #cfe9dc;
+  border-radius: 8px;
+  background: #edf8f2;
+  color: #176348;
+  font-weight: 800;
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+.translation-result {
+  flex: 1 1 100%;
+  min-height: 40px;
+  border: 1px solid #e3e9ee;
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--muted);
+  padding: 9px 11px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.translation-result strong {
+  color: var(--ink);
+  margin-right: 8px;
+}
+
+.translation-result span {
+  color: var(--muted);
+}
+
+.translation-result.has-result {
+  border-color: #cfe9dc;
+  background: #f7fcf9;
+}
+
+.translation-result.has-result span {
+  color: #176348;
+  font-weight: 700;
+}
+
+.translation-result.missing-result {
+  border-color: #f0d3aa;
+  background: #fff9ef;
+}
+
 .work-passage {
   line-height: 1.9;
 }
