@@ -546,6 +546,27 @@ a:focus-visible {
   font-weight: 800;
 }
 
+.word-info-speak {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  margin-top: 10px;
+  border: 1px solid #bdd7e9;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #285f91;
+  font-weight: 800;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.word-info-speak:hover,
+.word-info-speak:focus-visible {
+  background: #eef6ff;
+  outline: none;
+}
+
 .word-info-close {
   position: absolute;
   top: 7px;
