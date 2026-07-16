@@ -425,6 +425,16 @@ a:focus-visible {
   line-height: 1.15;
 }
 
+.word-card .phonetic {
+  display: inline-block;
+  margin-top: 5px;
+  color: #285f91;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
 .word-card span {
   display: block;
   margin-top: 5px;
