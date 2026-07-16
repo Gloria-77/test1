@@ -289,6 +289,40 @@ const phoneticBank = {
   workaround: "/ˈwɜːrkaraʊnd/"
 };
 
+const phoneticVariantBank = {
+  blocked: "/blɑːkt/",
+  changed: "/tʃeɪndʒd/",
+  checks: "/tʃeks/",
+  configured: "/kənˈfɪɡjərd/",
+  contains: "/kənˈteɪnz/",
+  covered: "/ˈkʌvərd/",
+  created: "/kriˈeɪtɪd/",
+  discussed: "/dɪˈskʌst/",
+  expired: "/ɪkˈspaɪərd/",
+  expires: "/ɪkˈspaɪərz/",
+  failed: "/feɪld/",
+  happens: "/ˈhæpənz/",
+  linked: "/lɪŋkt/",
+  missing: "/ˈmɪsɪŋ/",
+  passed: "/pæst/",
+  planned: "/plænd/",
+  prepares: "/prɪˈperz/",
+  refreshed: "/rɪˈfreʃt/",
+  rejects: "/rɪˈdʒekts/",
+  requires: "/rɪˈkwaɪərz/",
+  returns: "/rɪˈtɜːrnz/",
+  reviewed: "/rɪˈvjuːd/",
+  starts: "/stɑːrts/",
+  tested: "/ˈtestɪd/",
+  throws: "/θroʊz/",
+  timed: "/taɪmd/",
+  updated: "/ˌʌpˈdeɪtɪd/",
+  used: "/juːzd/",
+  users: "/ˈjuːzərz/",
+  values: "/ˈvæljuːz/",
+  versions: "/ˈvɜːrʒənz/"
+};
+
 const sentenceTranslationBank = {
   "I need to confirm the requirement first.": "我需要先确认这个需求。",
   "This scenario should be covered by automation.": "这个场景应该被自动化测试覆盖。",
@@ -1056,7 +1090,10 @@ function getSentenceTranslation(sentence, word, meaning) {
 }
 
 function getPhonetic(word) {
-  return phoneticBank[String(word || "").toLowerCase()] || "";
+  const normalized = normalizeLookupWord(word);
+  if (!normalized) return "";
+
+  return phoneticBank[normalized] || phoneticVariantBank[normalized] || lookupBaseFormPhonetic(normalized);
 }
 
 function renderClickablePassage(text) {
@@ -1113,6 +1150,7 @@ function toggleWordInfo(button) {
       <strong>${escapeHtml(word)}</strong>
       <em>${escapeHtml(phonetic)}</em>
       <span>${escapeHtml(meaning)}</span>
+      <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听发音</button>
     </div>
     <button type="button" class="word-info-close" data-word-info-close aria-label="关闭">×</button>
   `;
@@ -1133,6 +1171,7 @@ function showExampleWordSearch(button, rawWord) {
       <strong>${escapeHtml(word)}</strong>
       <em>${escapeHtml(phonetic)}</em>
       <span>${translation ? escapeHtml(translation) : "暂未收录这个词。可以先记到复盘笔记里，我后续帮你补进词库。"}</span>
+      <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听发音</button>
     </div>
     <button type="button" class="word-info-close" data-word-info-close aria-label="关闭">×</button>
   `;
@@ -1206,6 +1245,28 @@ function lookupBaseFormTranslation(word) {
   }
 
   return "";
+}
+
+function lookupBaseFormPhonetic(word) {
+  const candidates = getBaseFormCandidates(word);
+
+  for (const candidate of candidates) {
+    if (phoneticBank[candidate]) return phoneticBank[candidate];
+    if (phoneticVariantBank[candidate]) return phoneticVariantBank[candidate];
+  }
+
+  return "";
+}
+
+function getBaseFormCandidates(word) {
+  const candidates = [];
+  if (word.endsWith("ies") && word.length > 4) candidates.push(`${word.slice(0, -3)}y`);
+  if (word.endsWith("es") && word.length > 3) candidates.push(word.slice(0, -2), word.slice(0, -1));
+  if (word.endsWith("s") && word.length > 3) candidates.push(word.slice(0, -1));
+  if (word.endsWith("ed") && word.length > 4) candidates.push(word.slice(0, -2), word.slice(0, -1));
+  if (word.endsWith("ing") && word.length > 5) candidates.push(word.slice(0, -3), `${word.slice(0, -3)}e`);
+
+  return [...new Set(candidates)];
 }
 
 function togglePassageReading(button) {
