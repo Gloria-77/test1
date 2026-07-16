@@ -425,6 +425,33 @@ a:focus-visible {
   line-height: 1.15;
 }
 
+.word-title-button {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 21px;
+  font-weight: 900;
+  line-height: 1.15;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: rgba(40, 95, 145, 0.26);
+  text-underline-offset: 4px;
+}
+
+.word-title-button:hover,
+.word-title-button:focus-visible {
+  color: #285f91;
+  background: #eef6ff;
+  outline: none;
+}
+
 .word-card .phonetic {
   display: inline-block;
   margin-top: 5px;
@@ -441,6 +468,97 @@ a:focus-visible {
   color: var(--muted);
   font-size: 14px;
   line-height: 1.45;
+}
+
+.word-card .word-meaning {
+  color: #176348;
+  font-weight: 800;
+}
+
+.word-card .word-example {
+  color: #46515d;
+}
+
+.example-word {
+  display: inline;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 0 1px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgba(40, 95, 145, 0.25);
+  text-underline-offset: 3px;
+}
+
+.example-word:hover,
+.example-word:focus-visible {
+  color: #285f91;
+  background: #eef6ff;
+  outline: none;
+  text-decoration-color: #285f91;
+}
+
+.word-card .word-example b,
+.word-card .word-example-cn b {
+  color: var(--ink);
+}
+
+.word-card .word-example-cn {
+  color: #80521f;
+  background: #fff8ed;
+  border: 1px solid #f2dfbd;
+  border-radius: 8px;
+  padding: 8px 9px;
+}
+
+.word-info-popover {
+  display: none;
+  position: relative;
+  border: 1px solid #bdd7e9;
+  border-radius: 8px;
+  background: #f5fbff;
+  padding: 10px 42px 10px 12px;
+  color: var(--ink);
+}
+
+.word-card.show-word-info .word-info-popover {
+  display: block;
+}
+
+.word-info-popover strong {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.word-info-popover em {
+  color: #285f91;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.word-info-popover span {
+  margin-top: 6px;
+  color: #176348;
+  font-weight: 800;
+}
+
+.word-info-close {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #c8dbe9;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #285f91;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
 }
 
 .speech-helper {
