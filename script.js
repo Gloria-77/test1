@@ -9,21 +9,22 @@ const dayOne = {
   phase: "第 1 周",
   band: "工作基础",
   goals: [
-    "认识并能读出 20 个软件测试工作高频词。",
+    "认识并能读出 30 个软件测试工作高频词。",
+    "看懂单词音标，先跟着系统语音模仿发音。",
     "掌握会议时间、版本号、缺陷编号的基础听力表达。",
     "读懂一段简单的英文需求/缺陷描述。",
     "能用英文完成 30 秒测试工程师自我介绍。"
   ],
   tasks: [
-    { title: "工作单词 + 句子", time: "20 分钟", desc: "学习 20 个测试高频词，背熟 5 个开口句。" },
-    { title: "会议听力", time: "35 分钟", desc: "练时间、版本号、Bug 编号和会议安排。" },
-    { title: "英文需求阅读", time: "35 分钟", desc: "读短文，圈出需求、实际结果、预期结果。" },
+    { title: "工作单词 + 音标", time: "30 分钟", desc: "学习 30 个测试高频词，看音标、听单词、跟读例句。" },
+    { title: "会议听力", time: "30 分钟", desc: "练时间、版本号、Bug 编号和会议安排。" },
+    { title: "英文需求阅读", time: "30 分钟", desc: "读短文，圈出需求、实际结果、预期结果。" },
     { title: "项目口语", time: "30 分钟", desc: "读测试工程师自我介绍，录音 30 秒。" }
   ],
   content: [
     {
       type: "words",
-      title: "20 个软件测试工作高频词",
+      title: "30 个软件测试工作高频词",
       words: [
         ["requirement", "需求 | I need to confirm the requirement first."],
         ["scenario", "场景 | This scenario should be covered by automation."],
@@ -44,7 +45,17 @@ const dayOne = {
         ["environment", "环境 | The issue only happens in the staging environment."],
         ["release", "发布 | The release is planned for Friday."],
         ["rollback", "回滚 | We may need a rollback plan."],
-        ["clarify", "澄清 | I want to clarify one requirement."]
+        ["clarify", "澄清 | I want to clarify one requirement."],
+        ["request", "请求 | The request header is missing the token."],
+        ["status", "状态 | The order status should be updated to paid."],
+        ["parameter", "参数 | This parameter is required."],
+        ["validation", "校验 | The validation rule is not correct."],
+        ["coverage", "覆盖率 | We need better test coverage for payment."],
+        ["configuration", "配置 | The configuration is different in staging."],
+        ["developer", "开发人员 | I discussed the issue with the developer."],
+        ["production", "生产环境 | We should not test with fake data in production."],
+        ["log", "日志 | The log shows a database timeout."],
+        ["workaround", "临时解决方案 | There is a workaround, but it is not user-friendly."]
       ]
     },
     {
@@ -196,6 +207,87 @@ const wordBank = [
   ["verify", "验证", "I verified the fix on the staging environment."],
   ["workaround", "临时解决方案", "There is a workaround, but it is not user-friendly."]
 ];
+
+const phoneticBank = {
+  actual: "/ˈæktʃuəl/",
+  analyse: "/ˈænəlaɪz/",
+  application: "/ˌæplɪˈkeɪʃən/",
+  assertion: "/əˈsɜːrʃən/",
+  authentication: "/ɔːˌθentɪˈkeɪʃən/",
+  authorization: "/ˌɔːθərəˈzeɪʃən/",
+  automation: "/ˌɔːtəˈmeɪʃən/",
+  available: "/əˈveɪləbl/",
+  behavior: "/bɪˈheɪvjər/",
+  boundary: "/ˈbaʊndəri/",
+  branch: "/bræntʃ/",
+  checklist: "/ˈtʃeklɪst/",
+  clarify: "/ˈklærəfaɪ/",
+  client: "/ˈklaɪənt/",
+  comment: "/ˈkɑːment/",
+  compatible: "/kəmˈpætəbl/",
+  configuration: "/kənˌfɪɡjəˈreɪʃən/",
+  confirm: "/kənˈfɜːrm/",
+  consistent: "/kənˈsɪstənt/",
+  coverage: "/ˈkʌvərɪdʒ/",
+  critical: "/ˈkrɪtɪkl/",
+  database: "/ˈdeɪtəbeɪs/",
+  deadline: "/ˈdedlaɪn/",
+  debug: "/ˌdiːˈbʌɡ/",
+  defect: "/ˈdiːfekt/",
+  dependency: "/dɪˈpendənsi/",
+  description: "/dɪˈskrɪpʃən/",
+  developer: "/dɪˈveləpər/",
+  endpoint: "/ˈendpɔɪnt/",
+  environment: "/ɪnˈvaɪrənmənt/",
+  evidence: "/ˈevɪdəns/",
+  exception: "/ɪkˈsepʃən/",
+  expected: "/ɪkˈspektɪd/",
+  failure: "/ˈfeɪljər/",
+  feature: "/ˈfiːtʃər/",
+  fixture: "/ˈfɪkstʃər/",
+  framework: "/ˈfreɪmwɜːrk/",
+  impact: "/ˈɪmpækt/",
+  implementation: "/ˌɪmplɪmenˈteɪʃən/",
+  incident: "/ˈɪnsɪdənt/",
+  integration: "/ˌɪntɪˈɡreɪʃən/",
+  invalid: "/ɪnˈvælɪd/",
+  jira: "/ˈdʒɪrə/",
+  log: "/lɔːɡ/",
+  maintain: "/meɪnˈteɪn/",
+  mock: "/mɑːk/",
+  parameter: "/pəˈræmɪtər/",
+  payload: "/ˈpeɪloʊd/",
+  permission: "/pərˈmɪʃən/",
+  priority: "/praɪˈɔːrəti/",
+  production: "/prəˈdʌkʃən/",
+  pytest: "/ˌpaɪˈtest/",
+  quality: "/ˈkwɑːləti/",
+  regression: "/rɪˈɡreʃən/",
+  release: "/rɪˈliːs/",
+  reproduce: "/ˌriːprəˈduːs/",
+  request: "/rɪˈkwest/",
+  requirement: "/rɪˈkwaɪərmənt/",
+  response: "/rɪˈspɑːns/",
+  review: "/rɪˈvjuː/",
+  risk: "/rɪsk/",
+  rollback: "/ˈroʊlbæk/",
+  scenario: "/səˈnɑːrioʊ/",
+  scope: "/skoʊp/",
+  severity: "/səˈverəti/",
+  sprint: "/sprɪnt/",
+  stable: "/ˈsteɪbl/",
+  status: "/ˈsteɪtəs/",
+  summary: "/ˈsʌməri/",
+  timeout: "/ˈtaɪmaʊt/",
+  token: "/ˈtoʊkən/",
+  trace: "/treɪs/",
+  trigger: "/ˈtrɪɡər/",
+  update: "/ˌʌpˈdeɪt/",
+  validate: "/ˈvælɪdeɪt/",
+  validation: "/ˌvælɪˈdeɪʃən/",
+  verify: "/ˈverɪfaɪ/",
+  workaround: "/ˈwɜːrkaraʊnd/"
+};
 
 const translationBank = {
   a: "一个；一项",
@@ -437,7 +529,7 @@ function createDetailedPlan(index) {
       "记录今天最想在工作里用起来的一句话。"
     ],
     tasks: [
-      { title: "工作单词 + 句子", time: "20 分钟", desc: `学习 ${focus} 主题 10 个词，跟读 5 个核心工作句。` },
+      { title: "工作单词 + 音标", time: "20 分钟", desc: `学习 ${focus} 主题 15 个词，看音标并跟读 5 个核心工作句。` },
       { title: "会议听力", time: "35 分钟", desc: "听时间、版本号、缺陷编号、状态码和会议安排，写下你听到的内容。" },
       { title: "工作短文阅读", time: "35 分钟", desc: "读需求、Bug、接口或项目相关短文，找出关键信息。" },
       { title: outputModule, time: "30 分钟", desc: dayInWeek % 2 === 0 ? "按工作汇报提示录音 45 秒，练清楚表达。" : "按英文工作消息框架写 5 句，并大声读出来。" }
@@ -445,7 +537,7 @@ function createDetailedPlan(index) {
     content: [
       {
         type: "words",
-        title: `10 个 ${focus} 高频词`,
+        title: `15 个 ${focus} 高频词`,
         words: makeWordSet(index)
       },
       {
@@ -482,7 +574,7 @@ function createDetailedPlan(index) {
 }
 
 function makeWordSet(index) {
-  return Array.from({ length: 10 }, (_, offset) => {
+  return Array.from({ length: 15 }, (_, offset) => {
     const [word, meaning, sentence] = wordBank[(index * 7 + offset) % wordBank.length];
     return [word, `${meaning} | ${sentence}`];
   });
@@ -720,17 +812,19 @@ function renderContentBlock(block) {
   if (block.type === "words") {
     const helper = document.createElement("p");
     helper.className = "speech-helper";
-    helper.textContent = "点“听单词”用手机系统英语语音带读；点“我的跟读”可以录你的发音并给出反馈。";
+    helper.textContent = "先看音标，再点“听单词”模仿发音；点“我的跟读”可以录你的发音并给出反馈。";
     section.appendChild(helper);
     const grid = document.createElement("div");
     grid.className = "word-grid";
     block.words.forEach(([word, desc]) => {
       const [meaning, sentence = ""] = desc.split(" | ");
+      const phonetic = getPhonetic(word);
       const card = document.createElement("div");
       card.className = "word-card";
       card.innerHTML = `
         <div class="word-main">
           <strong>${escapeHtml(word)}</strong>
+          ${phonetic ? `<em class="phonetic">${escapeHtml(phonetic)}</em>` : ""}
           <span>${escapeHtml(desc)}</span>
         </div>
         <div class="speech-actions">
@@ -799,6 +893,10 @@ function renderContentBlock(block) {
   }
 
   return section;
+}
+
+function getPhonetic(word) {
+  return phoneticBank[String(word || "").toLowerCase()] || "";
 }
 
 function renderClickablePassage(text) {
