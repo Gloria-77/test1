@@ -289,6 +289,102 @@ const phoneticBank = {
   workaround: "/ˈwɜːrkaraʊnd/"
 };
 
+const sentenceTranslationBank = {
+  "I need to confirm the requirement first.": "我需要先确认这个需求。",
+  "This scenario should be covered by automation.": "这个场景应该被自动化测试覆盖。",
+  "The expected result is a success message.": "预期结果是显示成功消息。",
+  "The actual result is an error message.": "实际结果是显示错误消息。",
+  "I can reproduce this issue on the test environment.": "我可以在测试环境复现这个问题。",
+  "I created a defect in Jira.": "我在 Jira 里创建了一个缺陷。",
+  "The severity is high because payment is blocked.": "严重程度是高，因为支付被阻塞了。",
+  "The priority should be changed to high.": "优先级应该改成高。",
+  "We need to run regression tests before release.": "发布前我们需要跑回归测试。",
+  "I use pytest for API automation testing.": "我使用 pytest 做接口自动化测试。",
+  "The assertion checks the response code.": "这个断言会检查响应状态码。",
+  "This endpoint returns user information.": "这个接口会返回用户信息。",
+  "Please check the request payload.": "请检查请求体。",
+  "The response body contains an error code.": "响应体里包含错误码。",
+  "The token expires after two hours.": "这个令牌两小时后过期。",
+  "I verify the result in the database.": "我在数据库里验证结果。",
+  "The issue only happens in the staging environment.": "这个问题只在预发环境出现。",
+  "The release is planned for Friday.": "这次发布计划在周五进行。",
+  "We may need a rollback plan.": "我们可能需要一个回滚方案。",
+  "I want to clarify one requirement.": "我想澄清一个需求。",
+  "The request header is missing the token.": "请求头缺少令牌。",
+  "The order status should be updated to paid.": "订单状态应该更新为已支付。",
+  "This parameter is required.": "这个参数是必填的。",
+  "The validation rule is not correct.": "这个校验规则不正确。",
+  "We need better test coverage for payment.": "我们需要提高支付场景的测试覆盖率。",
+  "The configuration is different in staging.": "预发环境的配置不一样。",
+  "I discussed the issue with the developer.": "我和开发人员讨论了这个问题。",
+  "We should not test with fake data in production.": "我们不应该在生产环境用假数据测试。",
+  "The log shows a database timeout.": "日志显示数据库超时。",
+  "There is a workaround, but it is not user-friendly.": "有一个临时解决方案，但对用户不友好。",
+  "Could you clarify the expected behavior?": "你能澄清一下预期行为吗？",
+  "The API response should be consistent.": "接口响应应该保持一致。",
+  "I verified the order status in the database.": "我已经在数据库里验证了订单状态。",
+  "The developer needs more logs to debug the issue.": "开发人员需要更多日志来调试这个问题。",
+  "The bug description should be clear and complete.": "Bug 描述应该清楚且完整。",
+  "The expected result is that the user logs in successfully.": "预期结果是用户可以成功登录。",
+  "I use a pytest fixture to prepare the token.": "我使用 pytest fixture 准备 token。",
+  "I built an API automation framework with pytest.": "我用 pytest 搭建了接口自动化框架。",
+  "The API should reject invalid parameters.": "接口应该拒绝无效参数。",
+  "I updated the Jira ticket with test evidence.": "我已经用测试证据更新了 Jira 工单。",
+  "The request payload is missing the phone number.": "请求体缺少手机号。",
+  "The release is blocked by two high-priority defects.": "这次发布被两个高优先级缺陷阻塞。",
+  "I can reproduce the issue with these steps.": "我可以用这些步骤复现问题。",
+  "The response body contains the wrong status.": "响应体包含了错误状态。",
+  "There is a risk if we skip payment testing.": "如果跳过支付测试，会有风险。",
+  "The request timed out after ten seconds.": "请求在十秒后超时。",
+  "The token should be refreshed before it expires.": "token 应该在过期前刷新。",
+  "We need to validate the response schema.": "我们需要校验响应结构。",
+  "I analyse the failed test result carefully.": "我会仔细分析失败的测试结果。",
+  "This application has a login issue.": "这个应用程序有登录问题。",
+  "The assertion checks the business code.": "这个断言会检查业务状态码。",
+  "The API requires token authentication.": "这个接口需要 token 认证。",
+  "The user does not have authorization for this action.": "用户没有权限执行这个操作。",
+  "The test environment is available now.": "测试环境现在可用了。",
+  "We should test the boundary values.": "我们应该测试边界值。",
+  "The fix is on the release branch.": "修复代码在发布分支上。",
+  "I use a checklist for regression testing.": "我用检查清单做回归测试。",
+  "The issue happens on the iOS client.": "这个问题发生在 iOS 客户端。",
+  "I added a comment in Jira.": "我在 Jira 里添加了一条评论。",
+  "This feature should be compatible with older versions.": "这个功能应该兼容旧版本。",
+  "Please confirm the requirement with the product manager.": "请和产品经理确认这个需求。",
+  "This is a critical issue because users cannot pay.": "这是一个严重问题，因为用户无法支付。",
+  "The testing deadline is this Thursday.": "测试截止时间是本周四。",
+  "I linked the defect to the test case.": "我把这个缺陷关联到了测试用例。",
+  "This task has a dependency on the backend service.": "这个任务依赖后端服务。",
+  "This endpoint is used to create an order.": "这个接口用于创建订单。",
+  "The issue cannot be reproduced in production.": "这个问题无法在生产环境复现。",
+  "Screenshots and logs are useful evidence.": "截图和日志是有用的证据。",
+  "The server throws an exception when the payload is empty.": "当请求体为空时，服务器会抛出异常。",
+  "The failure is caused by invalid test data.": "这次失败是由无效测试数据导致的。",
+  "This feature needs more negative test cases.": "这个功能需要更多异常测试用例。",
+  "This issue has a high impact on user checkout.": "这个问题对用户结账流程影响很大。",
+  "The implementation does not match the requirement.": "实现方式和需求不一致。",
+  "The team reviewed the incident after release.": "团队在发布后复盘了这次事故。",
+  "Integration testing found a data issue.": "集成测试发现了一个数据问题。",
+  "We maintain test scripts after each release.": "每次发布后我们都会维护测试脚本。",
+  "We use mock data when the third-party service is unavailable.": "当第三方服务不可用时，我们使用模拟数据。",
+  "The user permission is not configured correctly.": "用户权限配置不正确。",
+  "The priority should be high for this defect.": "这个缺陷的优先级应该是高。",
+  "Quality is the responsibility of the whole team.": "质量是整个团队的责任。",
+  "Regression testing is required before release.": "发布前必须进行回归测试。",
+  "We review test cases before execution.": "执行前我们会评审测试用例。",
+  "The team prepared a rollback plan.": "团队准备了回滚方案。",
+  "This scenario covers an expired token.": "这个场景覆盖 token 过期的情况。",
+  "The testing scope includes login and payment.": "测试范围包括登录和支付。",
+  "The severity is medium because there is a workaround.": "严重程度是中等，因为有临时解决方案。",
+  "This story is planned for the next sprint.": "这个需求故事计划放到下一个迭代。",
+  "The test environment is not stable today.": "测试环境今天不稳定。",
+  "Please add a short summary to the ticket.": "请在工单里添加一个简短总结。",
+  "We need to trace the request ID in the logs.": "我们需要在日志里追踪请求 ID。",
+  "This action triggers a notification.": "这个操作会触发一条通知。",
+  "I updated the test case after the requirement changed.": "需求变更后，我更新了测试用例。",
+  "I verified the fix on the staging environment.": "我已经在预发环境验证了修复。"
+};
+
 const translationBank = {
   a: "一个；一项",
   about: "关于",
@@ -298,8 +394,10 @@ const translationBank = {
   after: "在……之后",
   also: "也；同样",
   and: "和；并且",
+  are: "是；为",
   app: "应用程序",
   ask: "询问；提出问题",
+  attached: "已附上",
   based: "基于",
   before: "在……之前",
   behavior: "行为；表现",
@@ -307,17 +405,22 @@ const translationBank = {
   body: "响应体；正文",
   build: "构建；版本包",
   business: "业务",
+  by: "由；通过",
   can: "能够；可以",
   case: "用例；情况",
   cases: "用例；情况",
   changes: "变更；修改",
+  changed: "已改变；已修改",
   check: "检查",
   checks: "检查项",
   clear: "清楚的；明确的",
   code: "代码；状态码",
+  common: "常见的；通用的",
   comments: "评论；备注",
   communication: "沟通",
   completed: "已完成的",
+  contains: "包含",
+  covered: "被覆盖",
   correct: "正确的",
   create: "创建",
   data: "数据",
@@ -327,15 +430,19 @@ const translationBank = {
   discussion: "讨论",
   easier: "更容易的",
   earlier: "更早地",
+  error: "错误",
   environment: "环境",
   evidence: "证据",
   existing: "已有的",
+  expires: "过期",
   explain: "解释",
   faster: "更快地",
   fields: "字段",
   file: "文件",
   find: "发现；找到",
+  first: "首先；第一",
   fix: "修复",
+  friday: "周五",
   flow: "流程",
   for: "为了；对于",
   from: "来自；从……",
@@ -344,6 +451,8 @@ const translationBank = {
   help: "帮助",
   helpful: "有帮助的",
   helps: "帮助",
+  high: "高的",
+  hours: "小时",
   if: "如果",
   important: "重要的",
   in: "在……里面",
@@ -362,7 +471,10 @@ const translationBank = {
   may: "可能",
   manager: "经理；负责人",
   members: "成员",
+  message: "消息；提示",
+  missing: "缺少的",
   negative: "异常的；反向的",
+  need: "需要",
   needs: "需要",
   next: "下一个；下一步",
   not: "不；没有",
@@ -370,9 +482,12 @@ const translationBank = {
   on: "在……上",
   open: "打开的；未关闭的",
   or: "或者",
+  paid: "已支付",
+  payment: "支付",
   parameters: "参数",
   performed: "被执行",
   plan: "计划",
+  planned: "已计划的",
   point: "要点；观点",
   points: "要点；观点",
   prevent: "防止；避免",
@@ -382,6 +497,8 @@ const translationBank = {
   quickly: "快速地",
   questions: "问题",
   qa: "质量保证；测试岗位",
+  required: "必填的；必需的",
+  returns: "返回",
   report: "报告",
   reports: "报告",
   requirement: "需求",
@@ -389,6 +506,8 @@ const translationBank = {
   result: "结果",
   results: "结果",
   rework: "返工",
+  rule: "规则",
+  run: "运行；执行",
   safely: "安全地",
   same: "相同的",
   service: "服务",
@@ -410,6 +529,8 @@ const translationBank = {
   useful: "有用的",
   user: "用户",
   users: "用户",
+  want: "想要",
+  values: "值",
   verify: "验证",
   was: "是；被",
   when: "当……时",
@@ -689,6 +810,24 @@ function init() {
   });
 
   els.studyContent.addEventListener("click", (event) => {
+    const wordInfoClose = event.target.closest("[data-word-info-close]");
+    if (wordInfoClose) {
+      closeWordInfoPopovers();
+      return;
+    }
+
+    const wordInfoButton = event.target.closest("[data-word-info]");
+    if (wordInfoButton) {
+      toggleWordInfo(wordInfoButton);
+      return;
+    }
+
+    const exampleWordButton = event.target.closest("[data-example-word]");
+    if (exampleWordButton) {
+      showExampleWordSearch(exampleWordButton, exampleWordButton.dataset.exampleWord);
+      return;
+    }
+
     const speakButton = event.target.closest("[data-speak]");
     if (speakButton) {
       stopListeningPractice();
@@ -817,16 +956,21 @@ function renderContentBlock(block) {
     const grid = document.createElement("div");
     grid.className = "word-grid";
     block.words.forEach(([word, desc]) => {
-      const [meaning, sentence = ""] = desc.split(" | ");
+      const { meaning, sentence, sentenceCn } = parseWordDescription(word, desc);
       const phonetic = getPhonetic(word);
       const card = document.createElement("div");
       card.className = "word-card";
       card.innerHTML = `
         <div class="word-main">
-          <strong>${escapeHtml(word)}</strong>
+          <button type="button" class="word-title-button" data-word-info data-word="${escapeHtml(word)}" data-meaning="${escapeHtml(meaning)}" data-phonetic="${escapeHtml(phonetic)}">${escapeHtml(word)}</button>
           ${phonetic ? `<em class="phonetic">${escapeHtml(phonetic)}</em>` : ""}
-          <span>${escapeHtml(desc)}</span>
+          <span class="word-meaning">${escapeHtml(meaning)}</span>
+          ${sentence ? `
+            <span class="word-example"><b>例句：</b>${renderClickableExample(sentence)}</span>
+            <span class="word-example-cn">${escapeHtml(sentenceCn)}</span>
+          ` : ""}
         </div>
+        <div class="word-info-popover" aria-live="polite"></div>
         <div class="speech-actions">
           <button type="button" class="speech-button" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
           ${sentence ? `<button type="button" class="speech-button" data-speak="${escapeHtml(sentence)}" data-rate="0.82">听例句</button>` : ""}
@@ -895,6 +1039,22 @@ function renderContentBlock(block) {
   return section;
 }
 
+function parseWordDescription(word, desc) {
+  const [meaning = "", sentence = ""] = String(desc || "").split(" | ");
+  return {
+    meaning,
+    sentence,
+    sentenceCn: getSentenceTranslation(sentence, word, meaning)
+  };
+}
+
+function getSentenceTranslation(sentence, word, meaning) {
+  const text = String(sentence || "").trim();
+  if (!text) return "";
+
+  return sentenceTranslationBank[text] || `这句是在工作中表达“${meaning}”相关场景，重点记住 ${word} 的用法。`;
+}
+
 function getPhonetic(word) {
   return phoneticBank[String(word || "").toLowerCase()] || "";
 }
@@ -913,11 +1073,78 @@ function renderClickablePassage(text) {
     .join("");
 }
 
+function renderClickableExample(text) {
+  return String(text || "")
+    .split(/(\s+)/)
+    .map((part) => {
+      if (/^\s+$/.test(part)) return part;
+      const match = part.match(/^([^A-Za-z]*)([A-Za-z][A-Za-z'-]*)([^A-Za-z]*)$/);
+      if (!match) return escapeHtml(part);
+
+      const [, prefix, word, suffix] = match;
+      return `${escapeHtml(prefix)}<button type="button" class="example-word" data-example-word="${escapeHtml(word)}" title="点我查中文和音标">${escapeHtml(word)}</button>${escapeHtml(suffix)}`;
+    })
+    .join("");
+}
+
 function translateInputWord(button) {
   const section = button.closest(".content-block");
   const input = section?.querySelector(".translation-input");
   const word = input?.value?.trim() || "";
   showWordTranslation(button, word);
+}
+
+function toggleWordInfo(button) {
+  const card = button.closest(".word-card");
+  const popover = card?.querySelector(".word-info-popover");
+  if (!card || !popover) return;
+
+  const isOpen = card.classList.contains("show-word-info");
+  closeWordInfoPopovers();
+
+  if (isOpen) return;
+
+  const word = button.dataset.word || button.textContent || "";
+  const meaning = button.dataset.meaning || lookupTranslation(word) || "暂未收录中文解释";
+  const phonetic = button.dataset.phonetic || getPhonetic(word) || "暂无音标";
+  card.classList.add("show-word-info");
+  popover.innerHTML = `
+    <div>
+      <strong>${escapeHtml(word)}</strong>
+      <em>${escapeHtml(phonetic)}</em>
+      <span>${escapeHtml(meaning)}</span>
+    </div>
+    <button type="button" class="word-info-close" data-word-info-close aria-label="关闭">×</button>
+  `;
+}
+
+function showExampleWordSearch(button, rawWord) {
+  const card = button.closest(".word-card");
+  const popover = card?.querySelector(".word-info-popover");
+  const word = normalizeLookupWord(rawWord);
+  if (!card || !popover || !word) return;
+
+  closeWordInfoPopovers(card);
+  const translation = lookupTranslation(word);
+  const phonetic = getPhonetic(word) || "暂无音标";
+  card.classList.add("show-word-info");
+  popover.innerHTML = `
+    <div>
+      <strong>${escapeHtml(word)}</strong>
+      <em>${escapeHtml(phonetic)}</em>
+      <span>${translation ? escapeHtml(translation) : "暂未收录这个词。可以先记到复盘笔记里，我后续帮你补进词库。"}</span>
+    </div>
+    <button type="button" class="word-info-close" data-word-info-close aria-label="关闭">×</button>
+  `;
+}
+
+function closeWordInfoPopovers(exceptCard = null) {
+  els.studyContent.querySelectorAll(".word-card.show-word-info").forEach((card) => {
+    if (card === exceptCard) return;
+    card.classList.remove("show-word-info");
+    const popover = card.querySelector(".word-info-popover");
+    if (popover) popover.innerHTML = "";
+  });
 }
 
 function showWordTranslation(sourceElement, rawWord) {
@@ -950,7 +1177,35 @@ function lookupTranslation(word) {
   const fromWordBank = wordBank.find(([item]) => item.toLowerCase() === normalized);
   if (fromWordBank) return fromWordBank[1];
 
-  return translationBank[normalized] || "";
+  const fromDayOne = dayOne.content
+    .find((block) => block.type === "words")
+    ?.words.find(([item]) => item.toLowerCase() === normalized);
+  if (fromDayOne) return String(fromDayOne[1]).split(" | ")[0] || "";
+
+  return translationBank[normalized] || lookupBaseFormTranslation(normalized);
+}
+
+function lookupBaseFormTranslation(word) {
+  const candidates = [];
+  if (word.endsWith("ies") && word.length > 4) candidates.push(`${word.slice(0, -3)}y`);
+  if (word.endsWith("es") && word.length > 3) candidates.push(word.slice(0, -2));
+  if (word.endsWith("s") && word.length > 3) candidates.push(word.slice(0, -1));
+  if (word.endsWith("ed") && word.length > 4) candidates.push(word.slice(0, -2), word.slice(0, -1));
+  if (word.endsWith("ing") && word.length > 5) candidates.push(word.slice(0, -3), word.slice(0, -3) + "e");
+
+  for (const candidate of candidates) {
+    const fromWordBank = wordBank.find(([item]) => item.toLowerCase() === candidate);
+    if (fromWordBank) return fromWordBank[1];
+
+    const fromDayOne = dayOne.content
+      .find((block) => block.type === "words")
+      ?.words.find(([item]) => item.toLowerCase() === candidate);
+    if (fromDayOne) return String(fromDayOne[1]).split(" | ")[0] || "";
+
+    if (translationBank[candidate]) return translationBank[candidate];
+  }
+
+  return "";
 }
 
 function togglePassageReading(button) {
