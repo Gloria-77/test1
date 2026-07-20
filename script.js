@@ -344,6 +344,88 @@ const pronunciationHintBank = {
   workaround: "wur-kah-round"
 };
 
+const partOfSpeechBank = {
+  actual: "adj. 形容词",
+  analyse: "v. 动词",
+  application: "n. 名词",
+  assertion: "n. 名词",
+  authentication: "n. 名词",
+  authorization: "n. 名词",
+  automation: "n. 名词",
+  available: "adj. 形容词",
+  boundary: "n. 名词",
+  branch: "n. 名词",
+  checklist: "n. 名词",
+  clarify: "v. 动词",
+  client: "n. 名词",
+  comment: "n./v. 名词/动词",
+  compatible: "adj. 形容词",
+  configuration: "n. 名词",
+  confirm: "v. 动词",
+  consistent: "adj. 形容词",
+  coverage: "n. 名词",
+  critical: "adj. 形容词",
+  database: "n. 名词",
+  deadline: "n. 名词",
+  debug: "v. 动词",
+  defect: "n. 名词",
+  dependency: "n. 名词",
+  description: "n. 名词",
+  developer: "n. 名词",
+  endpoint: "n. 名词",
+  environment: "n. 名词",
+  evidence: "n. 名词",
+  exception: "n. 名词",
+  expected: "adj. 形容词",
+  failure: "n. 名词",
+  feature: "n. 名词",
+  fixture: "n. 名词",
+  framework: "n. 名词",
+  impact: "n./v. 名词/动词",
+  implementation: "n. 名词",
+  incident: "n. 名词",
+  integration: "n. 名词",
+  invalid: "adj. 形容词",
+  issue: "n. 名词",
+  jira: "n. 名词",
+  log: "n./v. 名词/动词",
+  maintain: "v. 动词",
+  mock: "adj./v. 形容词/动词",
+  parameter: "n. 名词",
+  payload: "n. 名词",
+  permission: "n. 名词",
+  priority: "n. 名词",
+  production: "n. 名词",
+  pytest: "n. 名词",
+  quality: "n. 名词",
+  regression: "n. 名词",
+  release: "n./v. 名词/动词",
+  reproduce: "v. 动词",
+  request: "n./v. 名词/动词",
+  requirement: "n. 名词",
+  response: "n. 名词",
+  review: "n./v. 名词/动词",
+  risk: "n. 名词",
+  rollback: "n./v. 名词/动词",
+  scenario: "n. 名词",
+  scope: "n. 名词",
+  severity: "n. 名词",
+  sprint: "n. 名词",
+  stable: "adj. 形容词",
+  staging: "n. 名词",
+  status: "n. 名词",
+  summary: "n. 名词",
+  timeout: "n. 名词",
+  token: "n. 名词",
+  trace: "n./v. 名词/动词",
+  trigger: "n./v. 名词/动词",
+  update: "n./v. 名词/动词",
+  validate: "v. 动词",
+  validation: "n. 名词",
+  verify: "v. 动词",
+  workaround: "n. 名词"
+};
+
 const sentenceTranslationBank = {
   "I need to confirm the requirement first.": "我需要先确认这个需求。",
   "This scenario should be covered by automation.": "这个场景应该被自动化测试覆盖。",
@@ -1014,12 +1096,14 @@ function renderContentBlock(block) {
     block.words.forEach(([word, desc]) => {
       const { meaning, sentence, sentenceCn } = parseWordDescription(word, desc);
       const phonetic = getPhonetic(word);
+      const partOfSpeech = getPartOfSpeech(word);
       const card = document.createElement("div");
       card.className = "word-card";
       card.innerHTML = `
         <div class="word-main">
           <button type="button" class="word-title-button" data-word-info data-word="${escapeHtml(word)}" data-meaning="${escapeHtml(meaning)}" data-phonetic="${escapeHtml(phonetic)}">${escapeHtml(word)}</button>
           ${phonetic ? `<em class="phonetic">${escapeHtml(phonetic)}</em>` : ""}
+          ${partOfSpeech ? `<span class="word-pos">词性：${escapeHtml(partOfSpeech)}</span>` : ""}
           <span class="word-meaning">${escapeHtml(meaning)}</span>
           ${sentence ? `
             <span class="word-example"><b>例句：</b>${renderClickableExample(sentence)}</span>
@@ -1118,6 +1202,20 @@ function getPhonetic(word) {
   return phoneticBank[normalized] || phoneticVariantBank[normalized] || lookupBaseFormPhonetic(normalized);
 }
 
+function getPartOfSpeech(word) {
+  const normalized = normalizeLookupWord(word);
+  if (!normalized) return "";
+
+  if (partOfSpeechBank[normalized]) return partOfSpeechBank[normalized];
+
+  const candidates = getBaseFormCandidates(normalized);
+  for (const candidate of candidates) {
+    if (partOfSpeechBank[candidate]) return partOfSpeechBank[candidate];
+  }
+
+  return "";
+}
+
 function getPronunciationHint(word) {
   const normalized = normalizeLookupWord(word);
   if (!normalized) return "";
@@ -1180,12 +1278,14 @@ function toggleWordInfo(button) {
   const word = button.dataset.word || button.textContent || "";
   const meaning = button.dataset.meaning || lookupTranslation(word) || "暂未收录中文解释";
   const phonetic = button.dataset.phonetic || getPhonetic(word) || "暂无音标";
+  const partOfSpeech = getPartOfSpeech(word);
   const pronunciationHint = getPronunciationHint(word);
   card.classList.add("show-word-info");
   popover.innerHTML = `
     <div>
       <strong>${escapeHtml(word)}</strong>
       <em>${escapeHtml(phonetic)}</em>
+      ${partOfSpeech ? `<small class="word-pos">词性：${escapeHtml(partOfSpeech)}</small>` : ""}
       ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
       <span>${escapeHtml(meaning)}</span>
       <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
@@ -1203,12 +1303,14 @@ function showExampleWordSearch(button, rawWord) {
   closeWordInfoPopovers(card);
   const translation = lookupTranslation(word);
   const phonetic = getPhonetic(word) || "暂无音标";
+  const partOfSpeech = getPartOfSpeech(word);
   const pronunciationHint = getPronunciationHint(word);
   card.classList.add("show-word-info");
   popover.innerHTML = `
     <div>
       <strong>${escapeHtml(word)}</strong>
       <em>${escapeHtml(phonetic)}</em>
+      ${partOfSpeech ? `<small class="word-pos">词性：${escapeHtml(partOfSpeech)}</small>` : ""}
       ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
       <span>${translation ? escapeHtml(translation) : "暂未收录这个词。可以先记到复盘笔记里，我后续帮你补进词库。"}</span>
       <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
@@ -1237,12 +1339,14 @@ function showWordTranslation(sourceElement, rawWord) {
 
   const translation = lookupTranslation(word);
   const phonetic = getPhonetic(word) || "暂无音标";
+  const partOfSpeech = getPartOfSpeech(word);
   const pronunciationHint = getPronunciationHint(word);
   result.className = `translation-result ${translation ? "has-result" : "missing-result"}`;
   result.innerHTML = translation
     ? `
       <strong>${escapeHtml(word)}</strong>
       <em>${escapeHtml(phonetic)}</em>
+      ${partOfSpeech ? `<small class="word-pos">词性：${escapeHtml(partOfSpeech)}</small>` : ""}
       ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
       <span>${escapeHtml(translation)}</span>
       <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
@@ -1250,6 +1354,7 @@ function showWordTranslation(sourceElement, rawWord) {
     : `
       <strong>${escapeHtml(word)}</strong>
       <em>${escapeHtml(phonetic)}</em>
+      ${partOfSpeech ? `<small class="word-pos">词性：${escapeHtml(partOfSpeech)}</small>` : ""}
       ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
       <span>暂未收录这个词。可以先记到复盘笔记里，我后续帮你补进词库。</span>
       <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
