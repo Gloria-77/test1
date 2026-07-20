@@ -5,7 +5,7 @@ let activeListeningSession = null;
 let activePassageSession = null;
 
 const dayOne = {
-  title: "第 1 天：外企测试英语启动",
+  title: "第一天",
   phase: "第 1 周",
   band: "工作基础",
   goals: [
@@ -805,7 +805,7 @@ function createDetailedPlan(index) {
   const outputModule = dayInWeek % 2 === 0 ? "口语汇报" : "工作写作";
 
   return {
-    title: `第 ${dayNumber} 天：${weekTheme} · ${focus}`,
+    title: formatDayTitle(dayNumber),
     phase: `第 ${week + 1} 周`,
     band: week < 4 ? "工作基础" : week < 8 ? "测试场景" : week < 12 ? "项目表达" : "外企面试",
     goals: [
@@ -945,7 +945,7 @@ function init() {
   plans.forEach((_, index) => {
     const option = document.createElement("option");
     option.value = String(index);
-    option.textContent = `第 ${index + 1} 天`;
+    option.textContent = formatDayTitle(index + 1);
     els.daySelect.appendChild(option);
   });
 
@@ -1051,6 +1051,25 @@ function init() {
   });
 
   render();
+}
+
+function formatDayTitle(dayNumber) {
+  return `第${toChineseNumber(dayNumber)}天`;
+}
+
+function toChineseNumber(number) {
+  const digits = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
+  if (number <= 10) return number === 10 ? "十" : digits[number];
+  if (number < 20) return `十${digits[number % 10]}`;
+  if (number < 100) {
+    const ten = Math.floor(number / 10);
+    const one = number % 10;
+    return `${digits[ten]}十${one ? digits[one] : ""}`;
+  }
+  const hundred = Math.floor(number / 100);
+  const rest = number % 100;
+  if (!rest) return `${digits[hundred]}百`;
+  return `${digits[hundred]}百${rest < 10 ? "零" : ""}${toChineseNumber(rest)}`;
 }
 
 function render() {
