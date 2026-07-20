@@ -577,18 +577,29 @@ a:focus-visible {
 }
 
 .word-info-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 7px;
   right: 7px;
   width: 28px;
   height: 28px;
-  border: 1px solid #c8dbe9;
+  border: 1px solid #a9d8bf;
   border-radius: 7px;
   background: #ffffff;
-  color: #285f91;
+  color: #146c4a;
   cursor: pointer;
   font-size: 18px;
+  font-weight: 800;
   line-height: 1;
+  padding: 0;
+}
+
+.word-info-close:hover,
+.word-info-close:focus-visible {
+  background: #e4f7eb;
+  outline: none;
 }
 
 .speech-helper {
