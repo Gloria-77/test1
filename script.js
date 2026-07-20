@@ -251,6 +251,7 @@ const phoneticBank = {
   incident: "/ˈɪnsɪdənt/",
   integration: "/ˌɪntɪˈɡreɪʃən/",
   invalid: "/ɪnˈvælɪd/",
+  issue: "/ˈɪʃuː/",
   jira: "/ˈdʒɪrə/",
   log: "/lɔːɡ/",
   maintain: "/meɪnˈteɪn/",
@@ -275,6 +276,7 @@ const phoneticBank = {
   scope: "/skoʊp/",
   severity: "/səˈverəti/",
   sprint: "/sprɪnt/",
+  staging: "/ˈsteɪdʒɪŋ/",
   stable: "/ˈsteɪbl/",
   status: "/ˈsteɪtəs/",
   summary: "/ˈsʌməri/",
@@ -321,6 +323,25 @@ const phoneticVariantBank = {
   users: "/ˈjuːzərz/",
   values: "/ˈvæljuːz/",
   versions: "/ˈvɜːrʒənz/"
+};
+
+const pronunciationHintBank = {
+  actual: "ak-choo-uhl",
+  automation: "aw-tuh-may-shun",
+  configuration: "kuhn-fig-yuh-ray-shun",
+  environment: "en-vy-ruhn-muhnt",
+  expected: "ik-spek-tid",
+  expires: "ik-spy-erz",
+  issue: "ish-oo",
+  parameter: "puh-ram-i-ter",
+  regression: "ri-gresh-un",
+  release: "ri-lees",
+  requirement: "ri-kwy-er-muhnt",
+  scenario: "suh-nair-ee-oh",
+  severity: "suh-ver-i-tee",
+  staging: "stay-jing",
+  token: "toh-kuhn",
+  workaround: "wur-kah-round"
 };
 
 const sentenceTranslationBank = {
@@ -548,6 +569,7 @@ const translationBank = {
   should: "应该",
   simple: "简单的",
   specific: "具体的",
+  staging: "预发环境；上线前测试环境",
   steps: "步骤",
   story: "需求故事",
   summary: "总结",
@@ -1096,6 +1118,20 @@ function getPhonetic(word) {
   return phoneticBank[normalized] || phoneticVariantBank[normalized] || lookupBaseFormPhonetic(normalized);
 }
 
+function getPronunciationHint(word) {
+  const normalized = normalizeLookupWord(word);
+  if (!normalized) return "";
+
+  if (pronunciationHintBank[normalized]) return pronunciationHintBank[normalized];
+
+  const candidates = getBaseFormCandidates(normalized);
+  for (const candidate of candidates) {
+    if (pronunciationHintBank[candidate]) return pronunciationHintBank[candidate];
+  }
+
+  return "";
+}
+
 function renderClickablePassage(text) {
   return String(text || "")
     .split(/(\s+)/)
@@ -1144,11 +1180,13 @@ function toggleWordInfo(button) {
   const word = button.dataset.word || button.textContent || "";
   const meaning = button.dataset.meaning || lookupTranslation(word) || "暂未收录中文解释";
   const phonetic = button.dataset.phonetic || getPhonetic(word) || "暂无音标";
+  const pronunciationHint = getPronunciationHint(word);
   card.classList.add("show-word-info");
   popover.innerHTML = `
     <div>
       <strong>${escapeHtml(word)}</strong>
       <em>${escapeHtml(phonetic)}</em>
+      ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
       <span>${escapeHtml(meaning)}</span>
       <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听发音</button>
     </div>
@@ -1165,11 +1203,13 @@ function showExampleWordSearch(button, rawWord) {
   closeWordInfoPopovers(card);
   const translation = lookupTranslation(word);
   const phonetic = getPhonetic(word) || "暂无音标";
+  const pronunciationHint = getPronunciationHint(word);
   card.classList.add("show-word-info");
   popover.innerHTML = `
     <div>
       <strong>${escapeHtml(word)}</strong>
       <em>${escapeHtml(phonetic)}</em>
+      ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
       <span>${translation ? escapeHtml(translation) : "暂未收录这个词。可以先记到复盘笔记里，我后续帮你补进词库。"}</span>
       <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听发音</button>
     </div>
@@ -1196,10 +1236,24 @@ function showWordTranslation(sourceElement, rawWord) {
   if (input) input.value = word;
 
   const translation = lookupTranslation(word);
+  const phonetic = getPhonetic(word) || "暂无音标";
+  const pronunciationHint = getPronunciationHint(word);
   result.className = `translation-result ${translation ? "has-result" : "missing-result"}`;
   result.innerHTML = translation
-    ? `<strong>${escapeHtml(word)}</strong><span>${escapeHtml(translation)}</span>`
-    : `<strong>${escapeHtml(word)}</strong><span>暂未收录这个词。可以先记到复盘笔记里，我后续帮你补进词库。</span>`;
+    ? `
+      <strong>${escapeHtml(word)}</strong>
+      <em>${escapeHtml(phonetic)}</em>
+      ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
+      <span>${escapeHtml(translation)}</span>
+      <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听发音</button>
+    `
+    : `
+      <strong>${escapeHtml(word)}</strong>
+      <em>${escapeHtml(phonetic)}</em>
+      ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
+      <span>暂未收录这个词。可以先记到复盘笔记里，我后续帮你补进词库。</span>
+      <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听发音</button>
+    `;
 }
 
 function normalizeLookupWord(word) {
