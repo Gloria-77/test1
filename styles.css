@@ -508,10 +508,10 @@ a:focus-visible {
 
 .word-card .word-example-cn {
   color: #80521f;
-  background: #fff8ed;
-  border: 1px solid #f2dfbd;
-  border-radius: 8px;
-  padding: 8px 9px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 2px 0 0;
 }
 
 .word-info-popover {
@@ -766,10 +766,10 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  border: 1px solid var(--line-strong);
-  background: #f8fbff;
-  color: #285f91;
-  font-weight: 700;
+  border: 1px solid #146c4a;
+  background: #146c4a;
+  color: #ffffff;
+  font-weight: 800;
   text-decoration: none;
   cursor: pointer;
   padding: 0 10px;
@@ -780,8 +780,8 @@ a:focus-visible {
 .inline-speech-button:hover,
 .speech-link:hover {
   transform: translateY(-1px);
-  border-color: #b8c8d9;
-  background: #eef6ff;
+  border-color: #0f5a3d;
+  background: #0f5a3d;
 }
 
 .speech-button:disabled,
@@ -808,9 +808,15 @@ a:focus-visible {
 }
 
 .read-button {
-  color: #9a4a17;
-  border-color: #efc59f;
-  background: #fff6ee;
+  color: #ffffff;
+  border-color: #146c4a;
+  background: #146c4a;
+}
+
+.read-button:hover,
+.read-button:focus-visible {
+  border-color: #0f5a3d;
+  background: #0f5a3d;
 }
 
 .read-feedback {
