@@ -475,6 +475,12 @@ a:focus-visible {
   font-weight: 800;
 }
 
+.word-card .word-pos {
+  color: #4d6375;
+  font-size: 13px;
+  font-weight: 800;
+}
+
 .word-card .word-example {
   color: #46515d;
 }
@@ -545,6 +551,14 @@ a:focus-visible {
   display: block;
   margin-top: 6px;
   color: #80521f;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.word-info-popover .word-pos {
+  display: block;
+  margin-top: 6px;
+  color: #4d6375;
   font-size: 13px;
   font-weight: 800;
 }
@@ -711,6 +725,14 @@ a:focus-visible {
   display: block;
   margin-top: 5px;
   color: #285f91;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.translation-result .word-pos {
+  display: block;
+  margin-top: 5px;
+  color: #4d6375;
   font-size: 13px;
   font-weight: 800;
 }
