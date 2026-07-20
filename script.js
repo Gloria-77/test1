@@ -1007,7 +1007,7 @@ function renderContentBlock(block) {
   if (block.type === "words") {
     const helper = document.createElement("p");
     helper.className = "speech-helper";
-    helper.textContent = "先看音标，再点“听单词”模仿发音；点“我的跟读”可以录你的发音并给出反馈。";
+    helper.textContent = "先看音标，再点“听单词”模仿发音；点“跟读”可以录你的发音并给出反馈。";
     section.appendChild(helper);
     const grid = document.createElement("div");
     grid.className = "word-grid";
@@ -1030,7 +1030,7 @@ function renderContentBlock(block) {
         <div class="speech-actions">
           <button type="button" class="speech-button" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
           ${sentence ? `<button type="button" class="speech-button" data-speak="${escapeHtml(sentence)}" data-rate="0.82">听例句</button>` : ""}
-          <button type="button" class="speech-button read-button" data-read-target="${escapeHtml(sentence || word)}">我的跟读</button>
+          <button type="button" class="speech-button read-button" data-read-target="${escapeHtml(sentence || word)}">跟读</button>
         </div>
         <div class="read-feedback" aria-live="polite"></div>
       `;
@@ -1064,7 +1064,7 @@ function renderContentBlock(block) {
       li.innerHTML = `
         <span class="practice-text">${escapeHtml(item)}</span>
         <button type="button" class="inline-speech-button" data-speak="${escapeHtml(item)}" data-rate="0.78">听</button>
-        <button type="button" class="inline-speech-button read-button" data-read-target="${escapeHtml(item)}">我的跟读</button>
+        <button type="button" class="inline-speech-button read-button" data-read-target="${escapeHtml(item)}">跟读</button>
         <div class="read-feedback" aria-live="polite"></div>
       `;
       list.appendChild(li);
@@ -1514,7 +1514,7 @@ function startFollowRead(button) {
 
   recognition.onend = () => {
     button.disabled = false;
-    button.textContent = "我的跟读";
+    button.textContent = "跟读";
     activeRecognition = null;
   };
 
