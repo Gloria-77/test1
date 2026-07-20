@@ -450,6 +450,39 @@ const partOfSpeechBank = {
 };
 
 const sentenceTranslationBank = {
+  "My name is ____.": "我的名字是 ____。",
+  "I work as a software testing engineer.": "我是一名软件测试工程师。",
+  "I am responsible for API testing and regression testing.": "我负责接口测试和回归测试。",
+  "I found an issue in the login API.": "我在登录接口里发现了一个问题。",
+  "The actual result is different from the expected result.": "实际结果和预期结果不一样。",
+  "Could you help me clarify this requirement?": "你能帮我澄清一下这个需求吗？",
+  "My main work includes API testing, writing test cases, and reporting defects.": "我的主要工作包括接口测试、编写测试用例和提交缺陷。",
+  "I have experience with pytest-based automation testing.": "我有基于 pytest 的自动化测试经验。",
+  "I usually communicate with developers and product managers.": "我通常和开发人员、产品经理沟通。",
+  "I want to improve my workplace English so I can work better in an international team.": "我想提升职场英语，这样能在国际化团队里更好地工作。",
+  "My main responsibility is to ensure software quality.": "我的主要职责是保障软件质量。",
+  "Could you clarify the expected behavior for this scenario?": "你能澄清一下这个场景的预期行为吗？",
+  "I attached screenshots and logs to the Jira ticket.": "我已经把截图和日志附到了 Jira 工单里。",
+  "This defect blocks the payment flow, so the priority should be high.": "这个缺陷阻塞了支付流程，所以优先级应该是高。",
+  "I use pytest to build and maintain API automation tests.": "我使用 pytest 构建并维护接口自动化测试。",
+  "The test data is separated from the test logic.": "测试数据和测试逻辑是分离的。",
+  "The fixture prepares the token before the test starts.": "fixture 会在测试开始前准备 token。",
+  "The assertion checks the response code and business fields.": "断言会检查响应状态码和业务字段。",
+  "We should run regression tests before the release.": "发布前我们应该执行回归测试。",
+  "I verified the fix and the issue is no longer reproducible.": "我验证了修复，这个问题已经不能再复现。",
+  "There is a risk if we skip the database validation.": "如果跳过数据库校验，会有风险。",
+  "I will update the test case after the requirement is confirmed.": "需求确认后，我会更新测试用例。",
+  "The automation report helps the team understand failed cases quickly.": "自动化报告可以帮助团队快速了解失败用例。",
+  "I need more information before I can estimate the testing time.": "在估算测试时间前，我需要更多信息。",
+  "From a QA perspective, this behavior may confuse users.": "从测试视角看，这个行为可能会让用户困惑。",
+  "Let me summarize my understanding of the requirement.": "我来总结一下我对需求的理解。",
+  "I completed the main test scenarios and found one issue.": "我完成了主要测试场景，并发现了一个问题。",
+  "The issue can be reproduced on the staging environment.": "这个问题可以在预发环境复现。",
+  "I have attached the logs and screenshots in Jira.": "我已经把日志和截图附在 Jira 里。",
+  "My next step is to verify the fix after the developer updates the build.": "我的下一步是在开发更新构建后验证修复。",
+  "Please check the attached logs and screenshots.": "请查看附件里的日志和截图。",
+  "Could you confirm whether this behavior is expected?": "你能确认一下这个行为是否符合预期吗？",
+  "After the fix is ready, I will run regression testing again.": "修复完成后，我会再次执行回归测试。",
   "I need to confirm the requirement first.": "我需要先确认这个需求。",
   "This scenario should be covered by automation.": "这个场景应该被自动化测试覆盖。",
   "The expected result is a success message.": "预期结果是显示成功消息。",
@@ -1190,9 +1223,11 @@ function renderContentBlock(block) {
     const list = document.createElement("ol");
     list.className = "practice-list";
     block.items.forEach((item) => {
+      const translation = isListeningPractice ? "" : getPracticeSentenceTranslation(item);
       const li = document.createElement("li");
       li.innerHTML = `
         <span class="practice-text">${escapeHtml(item)}</span>
+        ${translation ? `<span class="practice-translation">${escapeHtml(translation)}</span>` : ""}
         <button type="button" class="inline-speech-button" data-speak="${escapeHtml(item)}" data-rate="0.78">听</button>
         <button type="button" class="inline-speech-button read-button" data-read-target="${escapeHtml(item)}">跟读</button>
         <div class="read-feedback" aria-live="polite"></div>
@@ -1239,6 +1274,21 @@ function getSentenceTranslation(sentence, word, meaning) {
   if (!text) return "";
 
   return sentenceTranslationBank[text] || `这句是在工作中表达“${meaning}”相关场景，重点记住 ${word} 的用法。`;
+}
+
+function getPracticeSentenceTranslation(sentence) {
+  const text = String(sentence || "").trim();
+  if (!text) return "";
+
+  if (sentenceTranslationBank[text]) return sentenceTranslationBank[text];
+
+  let match = text.match(/^Today I worked on (.+)\\.$/);
+  if (match) return `今天我处理了 ${match[1]} 相关工作。`;
+
+  match = text.match(/^I tested the (.+) scenario today\\.$/);
+  if (match) return `今天我测试了 ${match[1]} 场景。`;
+
+  return "";
 }
 
 function getPhonetic(word) {
