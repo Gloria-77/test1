@@ -926,6 +926,14 @@ a:focus-visible {
   background: #f6fbff;
 }
 
+.practice-translation {
+  display: block;
+  margin-top: 4px;
+  color: #5d6f7e;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
 .content-block.focus-listening .practice-text {
   color: transparent;
   background: linear-gradient(90deg, #dce8f2, #edf4fa);
