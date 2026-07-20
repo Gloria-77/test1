@@ -495,10 +495,10 @@ a:focus-visible {
 
 .example-word:hover,
 .example-word:focus-visible {
-  color: #285f91;
-  background: #eef6ff;
+  color: #146c4a;
+  background: #e4f7eb;
   outline: none;
-  text-decoration-color: #285f91;
+  text-decoration-color: #146c4a;
 }
 
 .word-card .word-example b,
@@ -517,9 +517,10 @@ a:focus-visible {
 .word-info-popover {
   display: none;
   position: relative;
-  border: 1px solid #bdd7e9;
+  border: 2px solid #4eb883;
   border-radius: 8px;
-  background: #f5fbff;
+  background: #f1fbf6;
+  box-shadow: 0 10px 24px rgba(23, 99, 72, 0.14);
   padding: 10px 42px 10px 12px;
   color: var(--ink);
 }
@@ -535,7 +536,7 @@ a:focus-visible {
 }
 
 .word-info-popover em {
-  color: #285f91;
+  color: #146c4a;
   font-style: normal;
   font-weight: 800;
 }
@@ -543,7 +544,7 @@ a:focus-visible {
 .word-info-popover .pronunciation-hint {
   display: block;
   margin-top: 6px;
-  color: #285f91;
+  color: #80521f;
   font-size: 13px;
   font-weight: 800;
 }
@@ -560,10 +561,10 @@ a:focus-visible {
   justify-content: center;
   min-height: 32px;
   margin-top: 10px;
-  border: 1px solid #bdd7e9;
+  border: 1px solid #146c4a;
   border-radius: 8px;
-  background: #ffffff;
-  color: #285f91;
+  background: #146c4a;
+  color: #ffffff;
   font-weight: 800;
   padding: 0 12px;
   cursor: pointer;
@@ -571,7 +572,7 @@ a:focus-visible {
 
 .word-info-speak:hover,
 .word-info-speak:focus-visible {
-  background: #eef6ff;
+  background: #0f5a3d;
   outline: none;
 }
 
