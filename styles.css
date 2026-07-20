@@ -540,6 +540,14 @@ a:focus-visible {
   font-weight: 800;
 }
 
+.word-info-popover .pronunciation-hint {
+  display: block;
+  margin-top: 6px;
+  color: #285f91;
+  font-size: 13px;
+  font-weight: 800;
+}
+
 .word-info-popover span {
   margin-top: 6px;
   color: #176348;
@@ -676,11 +684,28 @@ a:focus-visible {
 }
 
 .translation-result strong {
+  display: inline-block;
   color: var(--ink);
   margin-right: 8px;
 }
 
+.translation-result em {
+  color: #285f91;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.translation-result .pronunciation-hint {
+  display: block;
+  margin-top: 5px;
+  color: #285f91;
+  font-size: 13px;
+  font-weight: 800;
+}
+
 .translation-result span {
+  display: block;
+  margin-top: 5px;
   color: var(--muted);
 }
 
