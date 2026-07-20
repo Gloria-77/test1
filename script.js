@@ -1077,7 +1077,7 @@ function renderContentBlock(block) {
     controls.className = "listening-controls passage-controls";
     controls.innerHTML = `
       <button type="button" class="listening-control-button" data-passage-control>播放整段</button>
-      <span class="listening-status" aria-live="polite">按一次播放整篇短文；点击单个英文单词可听发音并查翻译。</span>
+      <span class="listening-status" aria-live="polite">按一次播放整篇短文；点击单个英文单词可听单词并查翻译。</span>
       <div class="translation-tools">
         <input class="translation-input" type="text" placeholder="输入单词查中文" aria-label="输入单词查中文" />
         <button type="button" class="translation-button" data-translate-control>查翻译</button>
@@ -1141,7 +1141,7 @@ function renderClickablePassage(text) {
       if (!match) return escapeHtml(part);
 
       const [, prefix, word, suffix] = match;
-      return `${escapeHtml(prefix)}<button type="button" class="passage-word" data-speak="${escapeHtml(word)}" data-rate="0.72" title="点我听发音并查翻译">${escapeHtml(word)}</button>${escapeHtml(suffix)}`;
+      return `${escapeHtml(prefix)}<button type="button" class="passage-word" data-speak="${escapeHtml(word)}" data-rate="0.72" title="点我听单词并查翻译">${escapeHtml(word)}</button>${escapeHtml(suffix)}`;
     })
     .join("");
 }
@@ -1188,7 +1188,7 @@ function toggleWordInfo(button) {
       <em>${escapeHtml(phonetic)}</em>
       ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
       <span>${escapeHtml(meaning)}</span>
-      <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听发音</button>
+      <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
     </div>
     <button type="button" class="word-info-close" data-word-info-close aria-label="关闭">×</button>
   `;
@@ -1211,7 +1211,7 @@ function showExampleWordSearch(button, rawWord) {
       <em>${escapeHtml(phonetic)}</em>
       ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
       <span>${translation ? escapeHtml(translation) : "暂未收录这个词。可以先记到复盘笔记里，我后续帮你补进词库。"}</span>
-      <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听发音</button>
+      <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
     </div>
     <button type="button" class="word-info-close" data-word-info-close aria-label="关闭">×</button>
   `;
@@ -1245,14 +1245,14 @@ function showWordTranslation(sourceElement, rawWord) {
       <em>${escapeHtml(phonetic)}</em>
       ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
       <span>${escapeHtml(translation)}</span>
-      <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听发音</button>
+      <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
     `
     : `
       <strong>${escapeHtml(word)}</strong>
       <em>${escapeHtml(phonetic)}</em>
       ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
       <span>暂未收录这个词。可以先记到复盘笔记里，我后续帮你补进词库。</span>
-      <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听发音</button>
+      <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
     `;
 }
 
