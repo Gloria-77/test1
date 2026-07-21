@@ -740,6 +740,230 @@ const translationBank = {
   writing: "编写；写作"
 };
 
+Object.assign(translationBank, {
+  actual: "实际的；实际结果",
+  am: "是",
+  an: "一个；一项",
+  api: "接口；应用程序编程接口",
+  as: "作为",
+  attached: "已附上的",
+  blocks: "阻塞；挡住",
+  clarify: "澄清",
+  communicate: "沟通",
+  confirmed: "已确认的",
+  confuse: "使困惑",
+  could: "可以；能否",
+  database: "数据库",
+  defect: "缺陷",
+  developers: "开发人员",
+  engineer: "工程师",
+  ensure: "确保",
+  estimate: "估算",
+  expected: "预期的；预期结果",
+  failed: "失败的",
+  fixture: "测试夹具；准备数据的 fixture",
+  i: "我",
+  information: "信息",
+  let: "让；请允许",
+  logs: "日志",
+  longer: "更久；再也不",
+  maintain: "维护",
+  managers: "经理；负责人",
+  me: "我；给我",
+  more: "更多的",
+  my: "我的",
+  no: "不；没有",
+  perspective: "视角；角度",
+  prepares: "准备",
+  priority: "优先级",
+  pytest: "Python 自动化测试框架",
+  quality: "质量",
+  regression: "回归测试",
+  release: "发布",
+  reproduce: "复现",
+  reproducible: "可复现的",
+  response: "响应",
+  responsibility: "职责",
+  risk: "风险",
+  scenario: "场景",
+  screenshots: "截图",
+  separated: "分离的",
+  skip: "跳过",
+  so: "所以",
+  software: "软件",
+  starts: "开始",
+  test: "测试",
+  there: "那里；有",
+  ticket: "工单",
+  time: "时间",
+  token: "令牌；token",
+  understanding: "理解",
+  update: "更新",
+  use: "使用",
+  usually: "通常",
+  validation: "校验",
+  verified: "已验证的",
+  we: "我们",
+  will: "将会",
+  you: "你；你们"
+});
+
+Object.assign(phoneticBank, {
+  api: "/ˌeɪ piː ˈaɪ/",
+  engineer: "/ˌendʒɪˈnɪr/",
+  ensure: "/ɪnˈʃʊr/",
+  estimate: "/ˈestɪmeɪt/",
+  information: "/ˌɪnfərˈmeɪʃən/",
+  perspective: "/pərˈspektɪv/",
+  responsibility: "/rɪˌspɑːnsəˈbɪləti/",
+  software: "/ˈsɔːftwer/",
+  test: "/test/"
+});
+
+Object.assign(phoneticVariantBank, {
+  after: "/ˈæftər/",
+  am: "/əm/",
+  an: "/ən/",
+  and: "/ænd/",
+  as: "/æz/",
+  attached: "/əˈtætʃt/",
+  before: "/bɪˈfɔːr/",
+  blocks: "/blɑːks/",
+  build: "/bɪld/",
+  can: "/kæn/",
+  communicate: "/kəˈmjuːnɪkeɪt/",
+  confirmed: "/kənˈfɜːrmd/",
+  confuse: "/kənˈfjuːz/",
+  could: "/kʊd/",
+  developers: "/dɪˈveləpərz/",
+  different: "/ˈdɪfrənt/",
+  fix: "/fɪks/",
+  for: "/fɔːr/",
+  from: "/frəm/",
+  i: "/aɪ/",
+  let: "/let/",
+  logs: "/lɔːɡz/",
+  longer: "/ˈlɔːŋɡər/",
+  managers: "/ˈmænɪdʒərz/",
+  me: "/miː/",
+  more: "/mɔːr/",
+  my: "/maɪ/",
+  no: "/noʊ/",
+  reproducible: "/ˌriːprəˈduːsəbl/",
+  responsible: "/rɪˈspɑːnsəbl/",
+  screenshots: "/ˈskriːnʃɑːts/",
+  separated: "/ˈsepəreɪtɪd/",
+  skip: "/skɪp/",
+  so: "/soʊ/",
+  there: "/ðer/",
+  use: "/juːz/",
+  usually: "/ˈjuːʒuəli/",
+  verified: "/ˈverɪfaɪd/",
+  we: "/wiː/",
+  will: "/wɪl/",
+  you: "/juː/"
+});
+
+Object.assign(partOfSpeechBank, {
+  after: "prep./conj. 介词/连词",
+  am: "v. 动词",
+  an: "art. 冠词",
+  and: "conj. 连词",
+  api: "n. 名词",
+  as: "prep./conj. 介词/连词",
+  attached: "adj. 形容词",
+  before: "prep./conj. 介词/连词",
+  blocks: "v. 动词",
+  build: "n./v. 名词/动词",
+  can: "modal v. 情态动词",
+  checks: "v./n. 动词/名词",
+  code: "n. 名词",
+  communicate: "v. 动词",
+  confirmed: "adj./v. 形容词/动词",
+  confuse: "v. 动词",
+  could: "modal v. 情态动词",
+  data: "n. 名词",
+  developers: "n. 名词",
+  different: "adj. 形容词",
+  engineer: "n. 名词",
+  ensure: "v. 动词",
+  estimate: "v./n. 动词/名词",
+  failed: "adj./v. 形容词/动词",
+  fields: "n. 名词",
+  fix: "n./v. 名词/动词",
+  flow: "n. 名词",
+  for: "prep. 介词",
+  from: "prep. 介词",
+  helps: "v. 动词",
+  high: "adj. 形容词",
+  i: "pron. 代词",
+  if: "conj. 连词",
+  information: "n. 名词",
+  let: "v. 动词",
+  logic: "n. 名词",
+  logs: "n. 名词",
+  longer: "adv./adj. 副词/形容词",
+  main: "adj. 形容词",
+  managers: "n. 名词",
+  may: "modal v. 情态动词",
+  me: "pron. 代词",
+  more: "adj./adv. 形容词/副词",
+  my: "pron. 代词",
+  need: "v./n. 动词/名词",
+  no: "det./adv. 限定词/副词",
+  of: "prep. 介词",
+  on: "prep. 介词",
+  payment: "n. 名词",
+  perspective: "n. 名词",
+  prepares: "v. 动词",
+  product: "n. 名词",
+  quickly: "adv. 副词",
+  report: "n./v. 名词/动词",
+  reproducible: "adj. 形容词",
+  responsibility: "n. 名词",
+  run: "v./n. 动词/名词",
+  screenshots: "n. 名词",
+  separated: "adj./v. 形容词/动词",
+  skip: "v. 动词",
+  so: "conj./adv. 连词/副词",
+  software: "n. 名词",
+  starts: "v. 动词",
+  team: "n. 名词",
+  test: "n./v. 名词/动词",
+  testing: "n. 名词",
+  tests: "n./v. 名词/动词",
+  there: "adv./pron. 副词/代词",
+  this: "det./pron. 限定词/代词",
+  ticket: "n. 名词",
+  time: "n. 名词",
+  to: "prep. 介词",
+  understand: "v. 动词",
+  understanding: "n. 名词",
+  use: "v./n. 动词/名词",
+  users: "n. 名词",
+  usually: "adv. 副词",
+  verified: "adj./v. 形容词/动词",
+  we: "pron. 代词",
+  will: "modal v. 情态动词",
+  with: "prep. 介词",
+  work: "n./v. 名词/动词",
+  you: "pron. 代词"
+});
+
+Object.assign(pronunciationHintBank, {
+  api: "ay-pee-eye",
+  clarify: "klar-uh-fy",
+  could: "kud",
+  engineer: "en-juh-neer",
+  ensure: "in-shoor",
+  estimate: "es-tuh-mayt",
+  fixture: "fik-scher",
+  pytest: "pie-test",
+  responsible: "ri-spon-suh-buhl",
+  software: "sawft-wair",
+  validation: "val-uh-day-shun"
+});
+
 const sentenceBank = [
   "I work as a software testing engineer.",
   "My main responsibility is to ensure software quality.",
@@ -1031,7 +1255,7 @@ function init() {
       stopListeningPractice();
       stopPassageReading();
       speakEnglish(speakButton.dataset.speak, Number(speakButton.dataset.rate || "0.85"));
-      if (speakButton.classList.contains("passage-word")) {
+      if (speakButton.classList.contains("passage-word") || speakButton.classList.contains("practice-word")) {
         showWordTranslation(speakButton, speakButton.dataset.speak);
       }
       return;
@@ -1222,11 +1446,18 @@ function renderContentBlock(block) {
 
     const list = document.createElement("ol");
     list.className = "practice-list";
+    if (!isListeningPractice) {
+      const result = document.createElement("div");
+      result.className = "translation-result practice-lookup-result";
+      result.setAttribute("aria-live", "polite");
+      result.textContent = "点击英文单词查看中文、音标、词性和读音。";
+      section.appendChild(result);
+    }
     block.items.forEach((item) => {
       const translation = isListeningPractice ? "" : getPracticeSentenceTranslation(item);
       const li = document.createElement("li");
       li.innerHTML = `
-        <span class="practice-text">${escapeHtml(item)}</span>
+        <span class="practice-text">${isListeningPractice ? escapeHtml(item) : renderClickablePracticeSentence(item)}</span>
         ${translation ? `<span class="practice-translation">${escapeHtml(translation)}</span>` : ""}
         <button type="button" class="inline-speech-button" data-speak="${escapeHtml(item)}" data-rate="0.78">听</button>
         <button type="button" class="inline-speech-button read-button" data-read-target="${escapeHtml(item)}">跟读</button>
@@ -1350,6 +1581,20 @@ function renderClickableExample(text) {
 
       const [, prefix, word, suffix] = match;
       return `${escapeHtml(prefix)}<button type="button" class="example-word" data-example-word="${escapeHtml(word)}" title="点我查中文和音标">${escapeHtml(word)}</button>${escapeHtml(suffix)}`;
+    })
+    .join("");
+}
+
+function renderClickablePracticeSentence(text) {
+  return String(text || "")
+    .split(/(\s+)/)
+    .map((part) => {
+      if (/^\s+$/.test(part)) return part;
+      const match = part.match(/^([^A-Za-z]*)([A-Za-z][A-Za-z'-]*)([^A-Za-z]*)$/);
+      if (!match) return escapeHtml(part);
+
+      const [, prefix, word, suffix] = match;
+      return `${escapeHtml(prefix)}<button type="button" class="practice-word" data-speak="${escapeHtml(word)}" data-rate="0.72" title="点我查中文、音标和词性">${escapeHtml(word)}</button>${escapeHtml(suffix)}`;
     })
     .join("");
 }
