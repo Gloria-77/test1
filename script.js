@@ -964,6 +964,179 @@ Object.assign(pronunciationHintBank, {
   validation: "val-uh-day-shun"
 });
 
+Object.assign(translationBank, {
+  account: "账号；账户",
+  at: "在……点；在……位置",
+  bug: "缺陷；Bug",
+  candidate: "候选版本",
+  daily: "每日的；日常的",
+  detail: "详情；明细",
+  eight: "八",
+  ends: "以……结尾",
+  every: "每一个；每次",
+  execution: "执行",
+  fifteen: "十五",
+  finish: "完成；结束",
+  five: "五",
+  four: "四",
+  hundred: "一百",
+  id: "编号；ID",
+  ios: "苹果 iOS 系统",
+  job: "任务；作业",
+  login: "登录",
+  meeting: "会议",
+  minutes: "分钟",
+  monday: "周一",
+  morning: "早上；上午",
+  moved: "已移动；已改期",
+  nine: "九",
+  noon: "中午",
+  number: "编号；数字",
+  one: "一",
+  order: "订单",
+  passed: "通过的",
+  "p.m": "下午；午后",
+  please: "请",
+  postponed: "已推迟",
+  pr: "合并请求；Pull Request",
+  pull: "拉取；拉",
+  returned: "返回了",
+  runs: "运行",
+  seven: "七",
+  seventeen: "十七",
+  six: "六",
+  "stand-up": "站会；每日站会",
+  table: "表；数据表",
+  ten: "十",
+  thirty: "三十",
+  three: "三",
+  thursday: "周四",
+  today: "今天",
+  twenty: "二十",
+  two: "二",
+  unavailable: "不可用的",
+  underscore: "下划线",
+  version: "版本",
+  wednesday: "周三",
+  zero: "零"
+});
+
+Object.assign(phoneticBank, {
+  account: "/əˈkaʊnt/",
+  candidate: "/ˈkændɪdət/",
+  daily: "/ˈdeɪli/",
+  detail: "/dɪˈteɪl/",
+  execution: "/ˌeksɪˈkjuːʃən/",
+  login: "/ˈlɔːɡɪn/",
+  meeting: "/ˈmiːtɪŋ/",
+  morning: "/ˈmɔːrnɪŋ/",
+  number: "/ˈnʌmbər/",
+  order: "/ˈɔːrdər/",
+  "stand-up": "/ˈstænd ʌp/"
+});
+
+Object.assign(phoneticVariantBank, {
+  at: "/æt/",
+  bug: "/bʌɡ/",
+  eight: "/eɪt/",
+  ends: "/endz/",
+  every: "/ˈevri/",
+  fifteen: "/ˌfɪfˈtiːn/",
+  finish: "/ˈfɪnɪʃ/",
+  five: "/faɪv/",
+  four: "/fɔːr/",
+  hundred: "/ˈhʌndrəd/",
+  id: "/ˌaɪ ˈdiː/",
+  ios: "/ˌaɪ oʊ ˈes/",
+  job: "/dʒɑːb/",
+  minutes: "/ˈmɪnɪts/",
+  monday: "/ˈmʌndeɪ/",
+  moved: "/muːvd/",
+  nine: "/naɪn/",
+  noon: "/nuːn/",
+  one: "/wʌn/",
+  passed: "/pæst/",
+  "p.m": "/ˌpiː ˈem/",
+  please: "/pliːz/",
+  postponed: "/poʊˈspoʊnd/",
+  pr: "/ˌpiː ˈɑːr/",
+  pull: "/pʊl/",
+  returned: "/rɪˈtɜːrnd/",
+  runs: "/rʌnz/",
+  seven: "/ˈsevən/",
+  seventeen: "/ˌsevnˈtiːn/",
+  six: "/sɪks/",
+  table: "/ˈteɪbl/",
+  ten: "/ten/",
+  thirty: "/ˈθɜːrti/",
+  three: "/θriː/",
+  thursday: "/ˈθɜːrzdeɪ/",
+  today: "/təˈdeɪ/",
+  twenty: "/ˈtwenti/",
+  two: "/tuː/",
+  unavailable: "/ˌʌnəˈveɪləbl/",
+  underscore: "/ˈʌndərskɔːr/",
+  wednesday: "/ˈwenzdeɪ/",
+  zero: "/ˈzɪroʊ/"
+});
+
+Object.assign(partOfSpeechBank, {
+  account: "n. 名词",
+  at: "prep. 介词",
+  bug: "n. 名词",
+  candidate: "n. 名词",
+  daily: "adj./adv. 形容词/副词",
+  detail: "n. 名词",
+  eight: "num. 数词",
+  ends: "v. 动词",
+  every: "det. 限定词",
+  execution: "n. 名词",
+  fifteen: "num. 数词",
+  finish: "v. 动词",
+  five: "num. 数词",
+  four: "num. 数词",
+  hundred: "num./n. 数词/名词",
+  id: "n. 名词",
+  ios: "n. 名词",
+  job: "n. 名词",
+  login: "n./v. 名词/动词",
+  meeting: "n. 名词",
+  minutes: "n. 名词",
+  monday: "n. 名词",
+  morning: "n. 名词",
+  moved: "v. 动词",
+  nine: "num. 数词",
+  noon: "n. 名词",
+  number: "n. 名词",
+  one: "num. 数词",
+  order: "n./v. 名词/动词",
+  passed: "adj./v. 形容词/动词",
+  "p.m": "adv. 副词",
+  please: "adv./interj. 副词/感叹词",
+  postponed: "adj./v. 形容词/动词",
+  pr: "n. 名词",
+  pull: "n./v. 名词/动词",
+  returned: "v. 动词",
+  runs: "v. 动词",
+  seven: "num. 数词",
+  seventeen: "num. 数词",
+  six: "num. 数词",
+  "stand-up": "n. 名词",
+  table: "n. 名词",
+  ten: "num. 数词",
+  thirty: "num. 数词",
+  three: "num. 数词",
+  thursday: "n. 名词",
+  today: "adv./n. 副词/名词",
+  twenty: "num. 数词",
+  two: "num. 数词",
+  unavailable: "adj. 形容词",
+  underscore: "n. 名词",
+  version: "n. 名词",
+  wednesday: "n. 名词",
+  zero: "num. 数词"
+});
+
 const sentenceBank = [
   "I work as a software testing engineer.",
   "My main responsibility is to ensure software quality.",
@@ -1448,25 +1621,18 @@ function renderContentBlock(block) {
       controls.className = "listening-controls";
       controls.innerHTML = `
         <button type="button" class="listening-control-button" data-listening-control>开始盲听</button>
-        <span class="listening-status" aria-live="polite">按一次后连续播放，本组文字会临时隐藏。</span>
+        <span class="listening-status" aria-live="polite">按一次后连续播放，本组文字会临时隐藏；平时可点单词查中文、音标和词性。</span>
       `;
       section.appendChild(controls);
     }
 
     const list = document.createElement("ol");
     list.className = "practice-list";
-    if (!isListeningPractice) {
-      const result = document.createElement("div");
-      result.className = "translation-result practice-lookup-result";
-      result.setAttribute("aria-live", "polite");
-      result.textContent = "点击英文单词查看中文、音标、词性和读音。";
-      section.appendChild(result);
-    }
     block.items.forEach((item) => {
       const translation = isListeningPractice ? "" : getPracticeSentenceTranslation(item);
       const li = document.createElement("li");
       li.innerHTML = `
-        <span class="practice-text">${isListeningPractice ? escapeHtml(item) : renderClickablePracticeSentence(item)}</span>
+        <span class="practice-text">${renderClickablePracticeSentence(item)}</span>
         ${translation ? `<span class="practice-translation">${escapeHtml(translation)}</span>` : ""}
         <button type="button" class="inline-speech-button" data-speak="${escapeHtml(item)}" data-rate="0.78">听</button>
         <button type="button" class="inline-speech-button read-button" data-read-target="${escapeHtml(item)}">跟读</button>
@@ -1599,7 +1765,7 @@ function renderClickablePracticeSentence(text) {
     .split(/(\s+)/)
     .map((part) => {
       if (/^\s+$/.test(part)) return part;
-      const match = part.match(/^([^A-Za-z]*)([A-Za-z][A-Za-z'-]*)([^A-Za-z]*)$/);
+      const match = part.match(/^([^A-Za-z]*)([A-Za-z][A-Za-z'.-]*[A-Za-z]?)([^A-Za-z]*)$/);
       if (!match) return escapeHtml(part);
 
       const [, prefix, word, suffix] = match;
@@ -1628,14 +1794,14 @@ function toggleWordInfo(button) {
   const word = button.dataset.word || button.textContent || "";
   const meaning = button.dataset.meaning || lookupTranslation(word) || "暂未收录中文解释";
   const phonetic = button.dataset.phonetic || getPhonetic(word) || "暂无音标";
-  const partOfSpeech = getPartOfSpeech(word);
+  const partOfSpeech = getPartOfSpeech(word) || "暂无词性";
   const pronunciationHint = getPronunciationHint(word);
   card.classList.add("show-word-info");
   popover.innerHTML = `
     <div>
       <strong>${escapeHtml(word)}</strong>
       <em>${escapeHtml(phonetic)}</em>
-      ${partOfSpeech ? `<small class="word-pos">词性：${escapeHtml(partOfSpeech)}</small>` : ""}
+      <small class="word-pos">词性：${escapeHtml(partOfSpeech)}</small>
       ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
       <span>${escapeHtml(meaning)}</span>
       <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
@@ -1653,14 +1819,14 @@ function showExampleWordSearch(button, rawWord) {
   closeWordInfoPopovers(card);
   const translation = lookupTranslation(word);
   const phonetic = getPhonetic(word) || "暂无音标";
-  const partOfSpeech = getPartOfSpeech(word);
+  const partOfSpeech = getPartOfSpeech(word) || "暂无词性";
   const pronunciationHint = getPronunciationHint(word);
   card.classList.add("show-word-info");
   popover.innerHTML = `
     <div>
       <strong>${escapeHtml(word)}</strong>
       <em>${escapeHtml(phonetic)}</em>
-      ${partOfSpeech ? `<small class="word-pos">词性：${escapeHtml(partOfSpeech)}</small>` : ""}
+      <small class="word-pos">词性：${escapeHtml(partOfSpeech)}</small>
       ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
       <span>${translation ? escapeHtml(translation) : "暂未收录这个词。可以先记到复盘笔记里，我后续帮你补进词库。"}</span>
       <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
@@ -1680,8 +1846,8 @@ function closeWordInfoPopovers(exceptCard = null) {
 
 function showWordTranslation(sourceElement, rawWord) {
   const section = sourceElement.closest(".content-block");
-  const result = section?.querySelector(".translation-result");
-  const input = section?.querySelector(".translation-input");
+  const result = getWordTranslationResultElement(sourceElement);
+  const input = sourceElement.closest(".practice-list") ? null : section?.querySelector(".translation-input");
   const word = normalizeLookupWord(rawWord);
   if (!result || !word) return;
 
@@ -1689,14 +1855,14 @@ function showWordTranslation(sourceElement, rawWord) {
 
   const translation = lookupTranslation(word);
   const phonetic = getPhonetic(word) || "暂无音标";
-  const partOfSpeech = getPartOfSpeech(word);
+  const partOfSpeech = getPartOfSpeech(word) || "暂无词性";
   const pronunciationHint = getPronunciationHint(word);
   result.className = `translation-result ${translation ? "has-result" : "missing-result"}`;
   result.innerHTML = translation
     ? `
       <strong>${escapeHtml(word)}</strong>
       <em>${escapeHtml(phonetic)}</em>
-      ${partOfSpeech ? `<small class="word-pos">词性：${escapeHtml(partOfSpeech)}</small>` : ""}
+      <small class="word-pos">词性：${escapeHtml(partOfSpeech)}</small>
       ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
       <span>${escapeHtml(translation)}</span>
       <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
@@ -1704,11 +1870,36 @@ function showWordTranslation(sourceElement, rawWord) {
     : `
       <strong>${escapeHtml(word)}</strong>
       <em>${escapeHtml(phonetic)}</em>
-      ${partOfSpeech ? `<small class="word-pos">词性：${escapeHtml(partOfSpeech)}</small>` : ""}
+      <small class="word-pos">词性：${escapeHtml(partOfSpeech)}</small>
       ${pronunciationHint ? `<small class="pronunciation-hint">读音提示：${escapeHtml(pronunciationHint)}</small>` : ""}
       <span>暂未收录这个词。可以先记到复盘笔记里，我后续帮你补进词库。</span>
       <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
     `;
+}
+
+function getWordTranslationResultElement(sourceElement) {
+  if (sourceElement.matches("[data-practice-word]")) {
+    const section = sourceElement.closest(".content-block");
+    const item = sourceElement.closest(".practice-list li");
+    if (!section || !item) return null;
+
+    section.querySelectorAll(".practice-list .practice-lookup-result").forEach((result) => {
+      if (!item.contains(result)) result.remove();
+    });
+
+    let result = item.querySelector(".practice-lookup-result");
+    if (!result) {
+      result = document.createElement("div");
+      result.className = "translation-result practice-lookup-result";
+      result.setAttribute("aria-live", "polite");
+      const firstAction = item.querySelector(".inline-speech-button");
+      item.insertBefore(result, firstAction || null);
+    }
+
+    return result;
+  }
+
+  return sourceElement.closest(".content-block")?.querySelector(".translation-result") || null;
 }
 
 function normalizeLookupWord(word) {

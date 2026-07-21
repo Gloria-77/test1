@@ -951,7 +951,11 @@ a:focus-visible {
 }
 
 .practice-lookup-result {
-  margin: 2px 0 12px;
+  display: block;
+  margin: 8px 0 9px;
+  border-color: #b9dfcd;
+  background: #f7fcf9;
+  box-shadow: 0 8px 18px rgba(23, 99, 72, 0.08);
 }
 
 .content-block.focus-listening .practice-text {
