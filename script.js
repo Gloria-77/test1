@@ -967,13 +967,19 @@ Object.assign(pronunciationHintBank, {
 Object.assign(translationBank, {
   account: "账号；账户",
   at: "在……点；在……位置",
+  based: "基于",
+  better: "更好的；更好地",
   bug: "缺陷；Bug",
   candidate: "候选版本",
+  case: "用例；情况",
+  cases: "用例；情况",
+  communication: "沟通",
   daily: "每日的；日常的",
   detail: "详情；明细",
   eight: "八",
   ends: "以……结尾",
   every: "每一个；每次",
+  experience: "经验；经历",
   execution: "执行",
   fifteen: "十五",
   finish: "完成；结束",
@@ -981,14 +987,24 @@ Object.assign(translationBank, {
   four: "四",
   hundred: "一百",
   id: "编号；ID",
+  help: "帮助",
+  helps: "帮助",
+  improve: "提高；改进",
+  include: "包括",
+  includes: "包括",
+  international: "国际的",
   ios: "苹果 iOS 系统",
   job: "任务；作业",
   login: "登录",
+  manager: "经理；负责人",
+  managers: "经理；负责人",
   meeting: "会议",
   minutes: "分钟",
   monday: "周一",
   morning: "早上；上午",
   moved: "已移动；已改期",
+  need: "需要",
+  needs: "需要",
   nine: "九",
   noon: "中午",
   number: "编号；数字",
@@ -997,9 +1013,15 @@ Object.assign(translationBank, {
   passed: "通过的",
   "p.m": "下午；午后",
   please: "请",
+  problem: "问题",
+  problems: "问题",
   postponed: "已推迟",
   pr: "合并请求；Pull Request",
+  product: "产品；产品经理里的产品",
   pull: "拉取；拉",
+  question: "问题",
+  questions: "问题",
+  reporting: "报告；提交",
   returned: "返回了",
   runs: "运行",
   seven: "七",
@@ -1007,37 +1029,64 @@ Object.assign(translationBank, {
   six: "六",
   "stand-up": "站会；每日站会",
   table: "表；数据表",
+  team: "团队",
   ten: "十",
+  tester: "测试人员",
   thirty: "三十",
   three: "三",
   thursday: "周四",
   today: "今天",
   twenty: "二十",
   two: "二",
+  unclear: "不清楚的",
   unavailable: "不可用的",
   underscore: "下划线",
   version: "版本",
   wednesday: "周三",
+  with: "和；带有",
+  workplace: "职场；工作场所",
+  write: "写；编写",
+  writing: "写；编写",
   zero: "零"
 });
 
 Object.assign(phoneticBank, {
   account: "/əˈkaʊnt/",
+  based: "/beɪst/",
+  better: "/ˈbetər/",
   candidate: "/ˈkændɪdət/",
+  case: "/keɪs/",
+  communication: "/kəˌmjuːnɪˈkeɪʃən/",
   daily: "/ˈdeɪli/",
   detail: "/dɪˈteɪl/",
+  experience: "/ɪkˈspɪriəns/",
   execution: "/ˌeksɪˈkjuːʃən/",
+  earlier: "/ˈɜːrliər/",
+  improve: "/ɪmˈpruːv/",
+  include: "/ɪnˈkluːd/",
+  international: "/ˌɪntərˈnæʃənəl/",
   login: "/ˈlɔːɡɪn/",
+  manager: "/ˈmænɪdʒər/",
   meeting: "/ˈmiːtɪŋ/",
   morning: "/ˈmɔːrnɪŋ/",
+  need: "/niːd/",
   number: "/ˈnʌmbər/",
   order: "/ˈɔːrdər/",
+  product: "/ˈprɑːdʌkt/",
+  problem: "/ˈprɑːbləm/",
+  question: "/ˈkwestʃən/",
+  report: "/rɪˈpɔːrt/",
+  team: "/tiːm/",
+  tester: "/ˈtestər/",
+  unclear: "/ˌʌnˈklɪr/",
+  with: "/wɪð/",
   "stand-up": "/ˈstænd ʌp/"
 });
 
 Object.assign(phoneticVariantBank, {
   at: "/æt/",
   bug: "/bʌɡ/",
+  cases: "/ˈkeɪsɪz/",
   eight: "/eɪt/",
   ends: "/endz/",
   every: "/ˈevri/",
@@ -1047,11 +1096,14 @@ Object.assign(phoneticVariantBank, {
   four: "/fɔːr/",
   hundred: "/ˈhʌndrəd/",
   id: "/ˌaɪ ˈdiː/",
+  helps: "/helps/",
+  includes: "/ɪnˈkluːdz/",
   ios: "/ˌaɪ oʊ ˈes/",
   job: "/dʒɑːb/",
   minutes: "/ˈmɪnɪts/",
   monday: "/ˈmʌndeɪ/",
   moved: "/muːvd/",
+  needs: "/niːdz/",
   nine: "/naɪn/",
   noon: "/nuːn/",
   one: "/wʌn/",
@@ -1060,7 +1112,11 @@ Object.assign(phoneticVariantBank, {
   please: "/pliːz/",
   postponed: "/poʊˈspoʊnd/",
   pr: "/ˌpiː ˈɑːr/",
+  problems: "/ˈprɑːbləmz/",
   pull: "/pʊl/",
+  "pytest-based": "/ˈpaɪ test beɪst/",
+  questions: "/ˈkwestʃənz/",
+  reporting: "/rɪˈpɔːrtɪŋ/",
   returned: "/rɪˈtɜːrnd/",
   runs: "/rʌnz/",
   seven: "/ˈsevən/",
@@ -1074,37 +1130,58 @@ Object.assign(phoneticVariantBank, {
   today: "/təˈdeɪ/",
   twenty: "/ˈtwenti/",
   two: "/tuː/",
+  to: "/tuː/",
   unavailable: "/ˌʌnəˈveɪləbl/",
   underscore: "/ˈʌndərskɔːr/",
   wednesday: "/ˈwenzdeɪ/",
+  workplace: "/ˈwɜːrkpleɪs/",
+  write: "/raɪt/",
+  writing: "/ˈraɪtɪŋ/",
   zero: "/ˈzɪroʊ/"
 });
 
 Object.assign(partOfSpeechBank, {
   account: "n. 名词",
   at: "prep. 介词",
+  based: "adj. 形容词",
+  better: "adj./adv. 形容词/副词",
   bug: "n. 名词",
   candidate: "n. 名词",
+  case: "n. 名词",
+  cases: "n. 名词",
+  communication: "n. 名词",
   daily: "adj./adv. 形容词/副词",
   detail: "n. 名词",
   eight: "num. 数词",
   ends: "v. 动词",
   every: "det. 限定词",
+  experience: "n./v. 名词/动词",
   execution: "n. 名词",
+  earlier: "adv./adj. 副词/形容词",
   fifteen: "num. 数词",
   finish: "v. 动词",
   five: "num. 数词",
   four: "num. 数词",
   hundred: "num./n. 数词/名词",
   id: "n. 名词",
+  help: "n./v. 名词/动词",
+  helps: "v. 动词",
+  improve: "v. 动词",
+  include: "v. 动词",
+  includes: "v. 动词",
+  international: "adj. 形容词",
   ios: "n. 名词",
   job: "n. 名词",
   login: "n./v. 名词/动词",
+  manager: "n. 名词",
+  managers: "n. 名词",
   meeting: "n. 名词",
   minutes: "n. 名词",
   monday: "n. 名词",
   morning: "n. 名词",
   moved: "v. 动词",
+  need: "v./n. 动词/名词",
+  needs: "v./n. 动词/名词",
   nine: "num. 数词",
   noon: "n. 名词",
   number: "n. 名词",
@@ -1115,7 +1192,14 @@ Object.assign(partOfSpeechBank, {
   please: "adv./interj. 副词/感叹词",
   postponed: "adj./v. 形容词/动词",
   pr: "n. 名词",
+  problem: "n. 名词",
+  problems: "n. 名词",
+  product: "n. 名词",
   pull: "n./v. 名词/动词",
+  "pytest-based": "adj. 形容词",
+  question: "n./v. 名词/动词",
+  questions: "n. 名词",
+  reporting: "n./v. 名词/动词",
   returned: "v. 动词",
   runs: "v. 动词",
   seven: "num. 数词",
@@ -1123,17 +1207,24 @@ Object.assign(partOfSpeechBank, {
   six: "num. 数词",
   "stand-up": "n. 名词",
   table: "n. 名词",
+  team: "n. 名词",
   ten: "num. 数词",
+  tester: "n. 名词",
   thirty: "num. 数词",
   three: "num. 数词",
   thursday: "n. 名词",
   today: "adv./n. 副词/名词",
   twenty: "num. 数词",
   two: "num. 数词",
+  unclear: "adj. 形容词",
   unavailable: "adj. 形容词",
   underscore: "n. 名词",
   version: "n. 名词",
   wednesday: "n. 名词",
+  with: "prep. 介词",
+  workplace: "n. 名词",
+  write: "v. 动词",
+  writing: "n./v. 名词/动词",
   zero: "num. 数词"
 });
 
@@ -1857,7 +1948,8 @@ function showWordTranslation(sourceElement, rawWord) {
   const phonetic = getPhonetic(word) || "暂无音标";
   const partOfSpeech = getPartOfSpeech(word) || "暂无词性";
   const pronunciationHint = getPronunciationHint(word);
-  result.className = `translation-result ${translation ? "has-result" : "missing-result"}`;
+  const isPracticeLookup = result.dataset.practiceLookup === "true";
+  result.className = `translation-result ${isPracticeLookup ? "practice-lookup-result" : ""} ${translation ? "has-result" : "missing-result"}`.trim();
   result.innerHTML = translation
     ? `
       <strong>${escapeHtml(word)}</strong>
@@ -1883,11 +1975,14 @@ function getWordTranslationResultElement(sourceElement) {
     const item = sourceElement.closest(".practice-list li");
     if (!section || !item) return null;
 
-    section.querySelectorAll(".practice-list .practice-lookup-result").forEach((result) => {
+    section.querySelectorAll(".practice-list .translation-result").forEach((result) => {
       if (!item.contains(result)) result.remove();
     });
 
-    let result = item.querySelector(".practice-lookup-result");
+    const results = Array.from(item.querySelectorAll(":scope > .translation-result"));
+    let result = results[0] || null;
+    results.slice(1).forEach((extraResult) => extraResult.remove());
+
     if (!result) {
       result = document.createElement("div");
       result.className = "translation-result practice-lookup-result";
@@ -1896,6 +1991,7 @@ function getWordTranslationResultElement(sourceElement) {
       item.insertBefore(result, firstAction || null);
     }
 
+    result.dataset.practiceLookup = "true";
     return result;
   }
 
