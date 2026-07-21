@@ -499,8 +499,24 @@ a:focus-visible {
   text-underline-offset: 3px;
 }
 
+.practice-word {
+  display: inline;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 0 1px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgba(40, 95, 145, 0.25);
+  text-underline-offset: 3px;
+}
+
 .example-word:hover,
-.example-word:focus-visible {
+.example-word:focus-visible,
+.practice-word:hover,
+.practice-word:focus-visible {
   color: #146c4a;
   background: #e4f7eb;
   outline: none;
@@ -932,6 +948,10 @@ a:focus-visible {
   color: #5d6f7e;
   font-size: 14px;
   line-height: 1.55;
+}
+
+.practice-lookup-result {
+  margin: 2px 0 12px;
 }
 
 .content-block.focus-listening .practice-text {
