@@ -1254,10 +1254,10 @@ function init() {
     if (speakButton) {
       stopListeningPractice();
       stopPassageReading();
-      speakEnglish(speakButton.dataset.speak, Number(speakButton.dataset.rate || "0.85"));
       if (speakButton.classList.contains("passage-word") || speakButton.classList.contains("practice-word")) {
         showWordTranslation(speakButton, speakButton.dataset.speak);
       }
+      speakEnglish(speakButton.dataset.speak, Number(speakButton.dataset.rate || "0.85"));
       return;
     }
 
