@@ -1250,11 +1250,20 @@ function init() {
       return;
     }
 
+    const practiceWordButton = event.target.closest("[data-practice-word]");
+    if (practiceWordButton) {
+      stopListeningPractice();
+      stopPassageReading();
+      showWordTranslation(practiceWordButton, practiceWordButton.dataset.practiceWord);
+      speakEnglish(practiceWordButton.dataset.practiceWord, Number(practiceWordButton.dataset.rate || "0.72"));
+      return;
+    }
+
     const speakButton = event.target.closest("[data-speak]");
     if (speakButton) {
       stopListeningPractice();
       stopPassageReading();
-      if (speakButton.classList.contains("passage-word") || speakButton.classList.contains("practice-word")) {
+      if (speakButton.classList.contains("passage-word")) {
         showWordTranslation(speakButton, speakButton.dataset.speak);
       }
       speakEnglish(speakButton.dataset.speak, Number(speakButton.dataset.rate || "0.85"));
@@ -1594,7 +1603,7 @@ function renderClickablePracticeSentence(text) {
       if (!match) return escapeHtml(part);
 
       const [, prefix, word, suffix] = match;
-      return `${escapeHtml(prefix)}<button type="button" class="practice-word" data-speak="${escapeHtml(word)}" data-rate="0.72" title="点我查中文、音标和词性">${escapeHtml(word)}</button>${escapeHtml(suffix)}`;
+      return `${escapeHtml(prefix)}<button type="button" class="practice-word" data-practice-word="${escapeHtml(word)}" data-rate="0.72" title="点我查中文、音标和词性">${escapeHtml(word)}</button>${escapeHtml(suffix)}`;
     })
     .join("");
 }
