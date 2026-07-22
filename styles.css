@@ -26,7 +26,7 @@
   --button-border: #d8dee6;
   --button-text: #3f4b57;
   --tap-height: 44px;
-  --tap-height-small: 40px;
+  --tap-height-small: 42px;
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
 }
 
@@ -871,6 +871,7 @@ a:focus-visible {
 .inline-speech-button,
 .speech-link {
   min-height: var(--tap-height-small);
+  min-width: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -905,8 +906,8 @@ a:focus-visible {
 }
 
 .word-card .speech-button {
-  min-height: 38px;
-  padding: 0 11px;
+  min-height: var(--tap-height-small);
+  padding: 0 12px;
   font-size: 13px;
   font-weight: 700;
 }
