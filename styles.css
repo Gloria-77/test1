@@ -25,6 +25,8 @@
   --button-hover: #f6f8fa;
   --button-border: #d8dee6;
   --button-text: #3f4b57;
+  --tap-height: 44px;
+  --tap-height-small: 40px;
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
 }
 
@@ -151,7 +153,7 @@ a:focus-visible {
 
 .day-tools {
   display: grid;
-  grid-template-columns: 44px 1fr 44px;
+  grid-template-columns: 48px 1fr 48px;
   gap: 8px;
 }
 
@@ -164,10 +166,10 @@ a:focus-visible {
 }
 
 .icon-button {
-  height: 44px;
+  height: 48px;
   background: #eef8f3;
   color: var(--accent-dark);
-  font-size: 28px;
+  font-size: 30px;
   line-height: 1;
   border: 1px solid #d3eadf;
 }
@@ -187,8 +189,8 @@ a:focus-visible {
   background: #ffffff;
   color: var(--ink);
   border-radius: 8px;
-  padding: 0 12px;
-  min-height: 44px;
+  padding: 0 14px;
+  min-height: 48px;
 }
 
 .progress-wrap {
@@ -261,11 +263,12 @@ a:focus-visible {
 }
 
 .primary-button {
-  min-height: 44px;
-  padding: 0 20px;
+  min-height: 48px;
+  padding: 0 24px;
   border: 1px solid var(--button-border);
   background: var(--button-bg);
   color: var(--button-text);
+  font-size: 15px;
   font-weight: 700;
   box-shadow: none;
 }
@@ -339,7 +342,7 @@ a:focus-visible {
 
 .task-item {
   display: grid;
-  grid-template-columns: 22px 1fr auto;
+  grid-template-columns: 28px 1fr auto;
   gap: 12px;
   align-items: start;
   padding: 14px;
@@ -350,8 +353,8 @@ a:focus-visible {
 }
 
 .task-item input {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   margin-top: 2px;
   accent-color: var(--accent-2);
 }
@@ -556,7 +559,7 @@ a:focus-visible {
   border-radius: 8px;
   background: #f1fbf6;
   box-shadow: 0 10px 24px rgba(23, 99, 72, 0.14);
-  padding: 10px 42px 10px 12px;
+  padding: 10px 48px 10px 12px;
   color: var(--ink);
 }
 
@@ -602,14 +605,15 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 32px;
+  min-height: var(--tap-height-small);
   margin-top: 10px;
   border: 1px solid var(--button-border);
   border-radius: 8px;
   background: var(--button-bg);
   color: var(--button-text);
+  font-size: 14px;
   font-weight: 800;
-  padding: 0 12px;
+  padding: 0 16px;
   cursor: pointer;
 }
 
@@ -627,7 +631,7 @@ a:focus-visible {
 }
 
 .practice-lookup-result .word-info-speak {
-  margin-right: -33px;
+  margin-right: -39px;
 }
 
 .word-info-close {
@@ -637,8 +641,8 @@ a:focus-visible {
   position: absolute;
   top: 7px;
   right: 7px;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border: 1px solid #a9d8bf;
   border-radius: 7px;
   background: #ffffff;
@@ -684,13 +688,14 @@ a:focus-visible {
 }
 
 .listening-control-button {
-  min-height: 38px;
+  min-height: var(--tap-height);
   border: 1px solid var(--button-border);
   border-radius: 8px;
   background: var(--button-bg);
   color: var(--button-text);
+  font-size: 14px;
   font-weight: 800;
-  padding: 0 16px;
+  padding: 0 18px;
   cursor: pointer;
 }
 
@@ -714,7 +719,7 @@ a:focus-visible {
 }
 
 .translation-input {
-  min-height: 38px;
+  min-height: var(--tap-height);
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #ffffff;
@@ -729,13 +734,14 @@ a:focus-visible {
 }
 
 .translation-button {
-  min-height: 38px;
+  min-height: var(--tap-height);
   border: 1px solid #cfe9dc;
   border-radius: 8px;
   background: #edf8f2;
   color: #176348;
+  font-size: 14px;
   font-weight: 800;
-  padding: 0 14px;
+  padding: 0 18px;
   cursor: pointer;
 }
 
@@ -808,14 +814,14 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
   border: 1px solid #c9d1da;
   border-radius: 7px;
   background: #ffffff;
   color: #4d6375;
   cursor: pointer;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 800;
   line-height: 1;
   padding: 0;
@@ -864,7 +870,7 @@ a:focus-visible {
 .speech-button,
 .inline-speech-button,
 .speech-link {
-  min-height: 34px;
+  min-height: var(--tap-height-small);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -875,7 +881,8 @@ a:focus-visible {
   font-weight: 800;
   text-decoration: none;
   cursor: pointer;
-  padding: 0 10px;
+  padding: 0 14px;
+  font-size: 14px;
   transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
 }
 
@@ -898,17 +905,17 @@ a:focus-visible {
 }
 
 .word-card .speech-button {
-  min-height: 30px;
-  padding: 0 8px;
-  font-size: 12px;
+  min-height: 38px;
+  padding: 0 11px;
+  font-size: 13px;
   font-weight: 700;
 }
 
 .inline-speech-button {
-  min-height: 30px;
+  min-height: var(--tap-height-small);
   margin-left: 8px;
-  padding: 0 9px;
-  font-size: 13px;
+  padding: 0 13px;
+  font-size: 14px;
 }
 
 .translation-toggle-button {
@@ -1029,7 +1036,7 @@ a:focus-visible {
 .practice-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
   justify-content: flex-end;
   align-items: center;
 }
@@ -1052,7 +1059,7 @@ a:focus-visible {
 
 .practice-lookup-result {
   display: block;
-  padding-right: 44px;
+  padding-right: 50px;
   margin: 8px 0 9px;
   border-color: #b9dfcd;
   background: #f7fcf9;
@@ -1200,13 +1207,13 @@ a:focus-visible {
   .speech-button,
   .speech-link {
     width: 100%;
-    padding: 0 6px;
-    min-height: 38px;
-    font-size: 13px;
+    padding: 0 10px;
+    min-height: var(--tap-height-small);
+    font-size: 14px;
   }
 
   .task-item {
-    grid-template-columns: 22px 1fr;
+    grid-template-columns: 28px 1fr;
   }
 
   .task-time {
