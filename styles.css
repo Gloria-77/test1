@@ -620,6 +620,12 @@ a:focus-visible {
   outline: none;
 }
 
+.translation-result .word-info-speak {
+  display: flex;
+  width: max-content;
+  margin-left: auto;
+}
+
 .word-info-close {
   display: inline-flex;
   align-items: center;
