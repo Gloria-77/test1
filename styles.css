@@ -626,6 +626,10 @@ a:focus-visible {
   margin-left: auto;
 }
 
+.practice-lookup-result .word-info-speak {
+  margin-right: -33px;
+}
+
 .word-info-close {
   display: inline-flex;
   align-items: center;
