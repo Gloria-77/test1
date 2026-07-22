@@ -89,7 +89,8 @@ const dayOne = {
     {
       type: "text",
       title: "英文工作短文",
-      body: "A software testing engineer needs to understand requirements before writing test cases. If the requirement is unclear, the tester should ask questions and confirm the expected behavior with the product manager. Clear communication helps the team avoid rework and find problems earlier."
+      body: "A software testing engineer needs to understand requirements before writing test cases. If the requirement is unclear, the tester should ask questions and confirm the expected behavior with the product manager. Clear communication helps the team avoid rework and find problems earlier.",
+      translation: "软件测试工程师在编写测试用例前，需要先理解需求。如果需求不清楚，测试人员应该提出问题，并和产品经理确认预期行为。清晰的沟通可以帮助团队避免返工，并更早发现问题。"
     },
     {
       type: "list",
@@ -217,6 +218,7 @@ const phoneticBank = {
   authorization: "/ˌɔːθərəˈzeɪʃən/",
   automation: "/ˌɔːtəˈmeɪʃən/",
   available: "/əˈveɪləbl/",
+  avoid: "/əˈvɔɪd/",
   behavior: "/bɪˈheɪvjər/",
   boundary: "/ˈbaʊndəri/",
   branch: "/bræntʃ/",
@@ -339,6 +341,7 @@ const phoneticVariantBank = {
 const pronunciationHintBank = {
   actual: "ak-choo-uhl",
   automation: "aw-tuh-may-shun",
+  avoid: "uh-voyd",
   configuration: "kuhn-fig-yuh-ray-shun",
   environment: "en-vy-ruhn-muhnt",
   expected: "ik-spek-tid",
@@ -365,6 +368,7 @@ const partOfSpeechBank = {
   authorization: "n. 名词",
   automation: "n. 名词",
   available: "adj. 形容词",
+  avoid: "v. 动词",
   be: "v. 动词",
   boundary: "n. 名词",
   branch: "n. 名词",
@@ -602,6 +606,7 @@ const translationBank = {
   ask: "询问；提出问题",
   attached: "已附上",
   automation: "自动化",
+  avoid: "避免",
   based: "基于",
   be: "是；成为",
   before: "在……之前",
@@ -1287,43 +1292,53 @@ const listeningBank = [
 const readingTopics = [
   {
     title: "Requirement clarification",
-    body: "Before writing test cases, a QA engineer should understand the requirement and confirm unclear points. If the expected behavior is not defined, different team members may make different assumptions. A short question in a meeting or a written summary after discussion can prevent rework."
+    body: "Before writing test cases, a QA engineer should understand the requirement and confirm unclear points. If the expected behavior is not defined, different team members may make different assumptions. A short question in a meeting or a written summary after discussion can prevent rework.",
+    translation: "在编写测试用例之前，测试工程师应该理解需求，并确认不清楚的点。如果预期行为没有定义，不同团队成员可能会产生不同假设。会议中的一个简短问题，或讨论后的书面总结，都可以防止返工。"
   },
   {
     title: "Bug report quality",
-    body: "A good bug report should include a clear title, test environment, preconditions, steps to reproduce, actual result, expected result and evidence. Developers can fix issues faster when the report is specific. Screenshots, logs and request IDs are often useful evidence."
+    body: "A good bug report should include a clear title, test environment, preconditions, steps to reproduce, actual result, expected result and evidence. Developers can fix issues faster when the report is specific. Screenshots, logs and request IDs are often useful evidence.",
+    translation: "一份好的 Bug 报告应该包括清晰的标题、测试环境、前置条件、复现步骤、实际结果、预期结果和证据。当报告内容具体时，开发人员可以更快修复问题。截图、日志和请求 ID 通常都是有用的证据。"
   },
   {
     title: "API testing",
-    body: "API testing checks whether a service returns the correct response for different requests. A tester should verify the status code, response body, business fields and database result. Negative cases are also important because invalid parameters should be handled safely."
+    body: "API testing checks whether a service returns the correct response for different requests. A tester should verify the status code, response body, business fields and database result. Negative cases are also important because invalid parameters should be handled safely.",
+    translation: "接口测试会检查服务是否针对不同请求返回正确响应。测试人员应该验证状态码、响应体、业务字段和数据库结果。异常用例也很重要，因为无效参数应该被安全处理。"
   },
   {
     title: "Pytest automation",
-    body: "A pytest automation project is easier to maintain when common logic is separated from test cases. Fixtures can prepare tokens or test data. Data-driven tests can run the same logic with different inputs, and reports can help the team understand failures quickly."
+    body: "A pytest automation project is easier to maintain when common logic is separated from test cases. Fixtures can prepare tokens or test data. Data-driven tests can run the same logic with different inputs, and reports can help the team understand failures quickly.",
+    translation: "当公共逻辑和测试用例分离时，pytest 自动化项目会更容易维护。fixture 可以准备 token 或测试数据。数据驱动测试可以用不同输入运行相同逻辑，测试报告可以帮助团队快速理解失败原因。"
   },
   {
     title: "Regression testing",
-    body: "Regression testing is performed before a release to make sure existing features still work after code changes. The scope should be based on risk, changed modules and important user flows. Automation is useful for stable and repeated regression scenarios."
+    body: "Regression testing is performed before a release to make sure existing features still work after code changes. The scope should be based on risk, changed modules and important user flows. Automation is useful for stable and repeated regression scenarios.",
+    translation: "回归测试通常在发布前执行，用来确认代码变更后已有功能仍然正常。测试范围应该基于风险、变更模块和重要用户流程来确定。自动化测试适合稳定且重复执行的回归场景。"
   },
   {
     title: "Stand-up update",
-    body: "In a daily stand-up, a QA engineer usually gives a short update about completed work, current tasks and blockers. The update should be clear and brief. If a blocker needs discussion, it is better to follow up after the meeting."
+    body: "In a daily stand-up, a QA engineer usually gives a short update about completed work, current tasks and blockers. The update should be clear and brief. If a blocker needs discussion, it is better to follow up after the meeting.",
+    translation: "在每日站会中，测试工程师通常会简短汇报已完成工作、当前任务和阻塞点。汇报应该清晰、简短。如果某个阻塞点需要讨论，最好在会后继续跟进。"
   },
   {
     title: "Release risk",
-    body: "When a release has open defects, QA should explain the risk in simple language. The team needs to know which users are affected, whether there is a workaround and whether the defect blocks the main flow. Clear risk communication helps managers make better decisions."
+    body: "When a release has open defects, QA should explain the risk in simple language. The team needs to know which users are affected, whether there is a workaround and whether the defect blocks the main flow. Clear risk communication helps managers make better decisions.",
+    translation: "当发布仍有未关闭缺陷时，测试人员应该用简单语言说明风险。团队需要知道哪些用户会受影响、是否有临时解决方案，以及该缺陷是否阻塞主流程。清晰的风险沟通可以帮助管理者做出更好的决策。"
   },
   {
     title: "Jira communication",
-    body: "Jira comments should be short, factual and easy to follow. A useful comment may say what was tested, where it was tested, what evidence was attached and what action is needed next. This style is especially helpful for international teams."
+    body: "Jira comments should be short, factual and easy to follow. A useful comment may say what was tested, where it was tested, what evidence was attached and what action is needed next. This style is especially helpful for international teams.",
+    translation: "Jira 评论应该简短、基于事实，并且容易理解。一条有用的评论可以说明测试了什么、在哪里测试、附上了什么证据，以及下一步需要什么动作。这种表达方式对国际化团队尤其有帮助。"
   },
   {
     title: "Working with developers",
-    body: "A QA engineer and a developer should work together to understand the root cause of an issue. QA can provide steps, logs and test data, while the developer checks the code and service behavior. Good cooperation makes defect fixing faster."
+    body: "A QA engineer and a developer should work together to understand the root cause of an issue. QA can provide steps, logs and test data, while the developer checks the code and service behavior. Good cooperation makes defect fixing faster.",
+    translation: "测试工程师和开发人员应该一起理解问题的根本原因。测试人员可以提供步骤、日志和测试数据，开发人员则检查代码和服务行为。良好的协作可以让缺陷修复更快。"
   },
   {
     title: "Interview project explanation",
-    body: "When explaining an automation project in an interview, it is important to describe the background, your responsibility, the framework structure and the result. A strong answer also explains why you used data-driven testing, fixtures, reports and CI execution."
+    body: "When explaining an automation project in an interview, it is important to describe the background, your responsibility, the framework structure and the result. A strong answer also explains why you used data-driven testing, fixtures, reports and CI execution.",
+    translation: "在面试中讲自动化项目时，描述项目背景、你的职责、框架结构和结果很重要。一个有说服力的回答还会说明你为什么使用数据驱动测试、fixture、测试报告和 CI 自动执行。"
   }
 ];
 
@@ -1371,7 +1386,8 @@ function createDetailedPlan(index) {
       {
         type: "text",
         title: "工作短文",
-        body: makeReading(index).body
+        body: makeReading(index).body,
+        translation: makeReading(index).translation
       },
       {
         type: "list",
@@ -1554,6 +1570,12 @@ function init() {
     const translateButton = event.target.closest("[data-translate-control]");
     if (translateButton) {
       translateInputWord(translateButton);
+      return;
+    }
+
+    const passageTranslationButton = event.target.closest("[data-passage-translation-toggle]");
+    if (passageTranslationButton) {
+      togglePassageTranslation(passageTranslationButton);
       return;
     }
 
@@ -1764,16 +1786,19 @@ function renderContentBlock(block) {
   }
 
   if (block.type === "text") {
+    const passageTranslation = block.translation || getPassageTranslation(block.body);
     const controls = document.createElement("div");
     controls.className = "listening-controls passage-controls";
     controls.innerHTML = `
       <button type="button" class="listening-control-button" data-passage-control>播放整段</button>
+      ${passageTranslation ? `<button type="button" class="listening-control-button passage-translation-button" data-passage-translation-toggle aria-expanded="false">显示全文翻译</button>` : ""}
       <span class="listening-status" aria-live="polite">按一次播放整篇短文；点击单个英文单词可听单词并查翻译。</span>
       <div class="translation-tools">
         <input class="translation-input" type="text" placeholder="输入单词查中文" aria-label="输入单词查中文" />
         <button type="button" class="translation-button" data-translate-control>查翻译</button>
       </div>
       <div class="translation-result" aria-live="polite">点短文里的单词，或输入单词查询中文意思。</div>
+      ${passageTranslation ? `<div class="passage-translation" hidden>${escapeHtml(passageTranslation)}</div>` : ""}
     `;
     section.appendChild(controls);
 
@@ -1817,6 +1842,14 @@ function getPracticeSentenceTranslation(sentence) {
   return "";
 }
 
+function getPassageTranslation(text) {
+  const normalized = String(text || "").trim();
+  if (!normalized) return "";
+
+  const topic = readingTopics.find((item) => item.body === normalized);
+  return topic?.translation || "";
+}
+
 function togglePracticeTranslation(button) {
   const item = button.closest(".practice-list li");
   const translation = item?.querySelector(".practice-translation");
@@ -1832,6 +1865,23 @@ function togglePracticeTranslation(button) {
     translation.setAttribute("hidden", "");
     translation.classList.add("is-hidden");
     button.textContent = "显示翻译";
+    button.setAttribute("aria-expanded", "false");
+  }
+}
+
+function togglePassageTranslation(button) {
+  const section = button.closest(".content-block");
+  const translation = section?.querySelector(".passage-translation");
+  if (!translation) return;
+
+  const isHidden = translation.hasAttribute("hidden");
+  if (isHidden) {
+    translation.removeAttribute("hidden");
+    button.textContent = "关闭全文翻译";
+    button.setAttribute("aria-expanded", "true");
+  } else {
+    translation.setAttribute("hidden", "");
+    button.textContent = "显示全文翻译";
     button.setAttribute("aria-expanded", "false");
   }
 }

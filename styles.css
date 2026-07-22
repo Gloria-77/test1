@@ -705,10 +705,32 @@ a:focus-visible {
   color: #7a552a;
 }
 
+.passage-translation-button[aria-expanded="true"] {
+  border-color: #d9c7a7;
+  background: #fff9ef;
+  color: #7a552a;
+}
+
 .listening-status {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.45;
+}
+
+.passage-translation {
+  flex: 1 1 100%;
+  border: 1px solid #dce9f4;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #445566;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.65;
+}
+
+.passage-translation[hidden] {
+  display: none;
 }
 
 .translation-tools {
