@@ -8,13 +8,23 @@
   --line-strong: #d1d8e2;
   --accent: #2f8f6b;
   --accent-dark: #17624f;
+  --accent-soft: #eef8f3;
+  --accent-border: #9ed4bd;
   --accent-2: #3b82f6;
+  --accent-2-soft: #eef5ff;
+  --accent-2-border: #b8d2ff;
   --warm: #d86f35;
+  --warm-soft: #fff4e8;
+  --warm-border: #efbf8c;
   --warn: #8a5600;
   --sidebar: #ffffff;
   --sidebar-2: #f2fbf7;
   --shadow: 0 14px 34px rgba(24, 32, 38, 0.07);
   --shadow-soft: 0 6px 18px rgba(24, 32, 38, 0.05);
+  --button-bg: #ffffff;
+  --button-hover: #f6f8fa;
+  --button-border: #d8dee6;
+  --button-text: #3f4b57;
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
 }
 
@@ -253,15 +263,18 @@ a:focus-visible {
 .primary-button {
   min-height: 44px;
   padding: 0 20px;
-  background: var(--accent);
-  color: white;
+  border: 1px solid var(--button-border);
+  background: var(--button-bg);
+  color: var(--button-text);
   font-weight: 700;
-  box-shadow: 0 8px 18px rgba(47, 143, 107, 0.18);
+  box-shadow: none;
 }
 
 .primary-button.done {
-  background: var(--accent-2);
-  box-shadow: 0 8px 18px rgba(59, 130, 246, 0.18);
+  border-color: #cfd8e3;
+  background: #f8fafc;
+  color: #3d4f63;
+  box-shadow: none;
 }
 
 .layout {
@@ -591,10 +604,10 @@ a:focus-visible {
   justify-content: center;
   min-height: 32px;
   margin-top: 10px;
-  border: 1px solid #146c4a;
+  border: 1px solid var(--button-border);
   border-radius: 8px;
-  background: #146c4a;
-  color: #ffffff;
+  background: var(--button-bg);
+  color: var(--button-text);
   font-weight: 800;
   padding: 0 12px;
   cursor: pointer;
@@ -602,7 +615,8 @@ a:focus-visible {
 
 .word-info-speak:hover,
 .word-info-speak:focus-visible {
-  background: #0f5a3d;
+  border-color: #c9d1da;
+  background: var(--button-hover);
   outline: none;
 }
 
@@ -661,17 +675,19 @@ a:focus-visible {
 
 .listening-control-button {
   min-height: 38px;
-  border: 0;
+  border: 1px solid var(--button-border);
   border-radius: 8px;
-  background: #285f91;
-  color: #ffffff;
+  background: var(--button-bg);
+  color: var(--button-text);
   font-weight: 800;
   padding: 0 16px;
   cursor: pointer;
 }
 
 .listening-control-button.is-playing {
-  background: #9a4a17;
+  border-color: #e7d6bf;
+  background: #fffaf3;
+  color: #7a552a;
 }
 
 .listening-status {
@@ -815,9 +831,9 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  border: 1px solid #146c4a;
-  background: #146c4a;
-  color: #ffffff;
+  border: 1px solid var(--button-border);
+  background: var(--button-bg);
+  color: var(--button-text);
   font-weight: 800;
   text-decoration: none;
   cursor: pointer;
@@ -829,8 +845,8 @@ a:focus-visible {
 .inline-speech-button:hover,
 .speech-link:hover {
   transform: translateY(-1px);
-  border-color: #0f5a3d;
-  background: #0f5a3d;
+  border-color: #c9d1da;
+  background: var(--button-hover);
 }
 
 .speech-button:disabled,
@@ -843,6 +859,13 @@ a:focus-visible {
   flex: 0 0 auto;
 }
 
+.word-card .speech-button {
+  min-height: 30px;
+  padding: 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
 .inline-speech-button {
   min-height: 30px;
   margin-left: 8px;
@@ -850,22 +873,34 @@ a:focus-visible {
   font-size: 13px;
 }
 
+.translation-toggle-button {
+  border-color: var(--button-border);
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+
+.translation-toggle-button:hover,
+.translation-toggle-button:focus-visible {
+  border-color: #c9d1da;
+  background: var(--button-hover);
+}
+
 .speech-link {
-  color: var(--accent-dark);
-  background: #edf8f2;
-  border-color: #cfe9dc;
+  color: var(--button-text);
+  background: var(--button-bg);
+  border-color: var(--button-border);
 }
 
 .read-button {
-  color: #ffffff;
-  border-color: #146c4a;
-  background: #146c4a;
+  color: var(--button-text);
+  border-color: var(--button-border);
+  background: var(--button-bg);
 }
 
 .read-button:hover,
 .read-button:focus-visible {
-  border-color: #0f5a3d;
-  background: #0f5a3d;
+  border-color: #c9d1da;
+  background: var(--button-hover);
 }
 
 .read-feedback {
@@ -948,6 +983,10 @@ a:focus-visible {
   color: #5d6f7e;
   font-size: 14px;
   line-height: 1.55;
+}
+
+.practice-translation.is-hidden {
+  display: none;
 }
 
 .practice-lookup-result {

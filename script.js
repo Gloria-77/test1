@@ -456,6 +456,16 @@ const sentenceTranslationBank = {
   "I found an issue in the login API.": "我在登录接口里发现了一个问题。",
   "The actual result is different from the expected result.": "实际结果和预期结果不一样。",
   "Could you help me clarify this requirement?": "你能帮我澄清一下这个需求吗？",
+  "The daily stand-up starts at ten thirty.": "每日站会十点半开始。",
+  "The release version is two point three point one.": "发布版本是 2.3.1。",
+  "The defect ID is QA one zero eight seven.": "缺陷编号是 QA1087。",
+  "The regression test should finish before six p.m.": "回归测试应该在下午六点前完成。",
+  "The API returned status code five hundred.": "接口返回了 500 状态码。",
+  "Please update the test case by Friday.": "请在周五前更新测试用例。",
+  "The meeting is moved to Wednesday morning.": "会议改到周三上午。",
+  "The ticket number is BUG two four six eight.": "工单编号是 BUG2468。",
+  "The test account ends with nine seven seven.": "测试账号以 977 结尾。",
+  "The sprint review starts at three fifteen.": "迭代评审三点十五开始。",
   "My main work includes API testing, writing test cases, and reporting defects.": "我的主要工作包括接口测试、编写测试用例和提交缺陷。",
   "I have experience with pytest-based automation testing.": "我有基于 pytest 的自动化测试经验。",
   "I usually communicate with developers and product managers.": "我通常和开发人员、产品经理沟通。",
@@ -1540,6 +1550,12 @@ function init() {
       return;
     }
 
+    const translationToggleButton = event.target.closest("[data-translation-toggle]");
+    if (translationToggleButton) {
+      togglePracticeTranslation(translationToggleButton);
+      return;
+    }
+
     const passageButton = event.target.closest("[data-passage-control]");
     if (passageButton) {
       togglePassageReading(passageButton);
@@ -1720,11 +1736,13 @@ function renderContentBlock(block) {
     const list = document.createElement("ol");
     list.className = "practice-list";
     block.items.forEach((item) => {
-      const translation = isListeningPractice ? "" : getPracticeSentenceTranslation(item);
+      const translation = getPracticeSentenceTranslation(item);
+      const hasHiddenTranslation = isListeningPractice && translation;
       const li = document.createElement("li");
       li.innerHTML = `
         <span class="practice-text">${renderClickablePracticeSentence(item)}</span>
-        ${translation ? `<span class="practice-translation">${escapeHtml(translation)}</span>` : ""}
+        ${hasHiddenTranslation ? `<button type="button" class="inline-speech-button translation-toggle-button" data-translation-toggle aria-expanded="false">显示翻译</button>` : ""}
+        ${translation ? `<span class="practice-translation${hasHiddenTranslation ? " is-hidden" : ""}" ${hasHiddenTranslation ? "hidden" : ""}>${escapeHtml(translation)}</span>` : ""}
         <button type="button" class="inline-speech-button" data-speak="${escapeHtml(item)}" data-rate="0.78">听</button>
         <button type="button" class="inline-speech-button read-button" data-read-target="${escapeHtml(item)}">跟读</button>
         <div class="read-feedback" aria-live="polite"></div>
@@ -1786,6 +1804,25 @@ function getPracticeSentenceTranslation(sentence) {
   if (match) return `今天我测试了 ${match[1]} 场景。`;
 
   return "";
+}
+
+function togglePracticeTranslation(button) {
+  const item = button.closest(".practice-list li");
+  const translation = item?.querySelector(".practice-translation");
+  if (!translation) return;
+
+  const isHidden = translation.hasAttribute("hidden");
+  if (isHidden) {
+    translation.removeAttribute("hidden");
+    translation.classList.remove("is-hidden");
+    button.textContent = "关闭翻译";
+    button.setAttribute("aria-expanded", "true");
+  } else {
+    translation.setAttribute("hidden", "");
+    translation.classList.add("is-hidden");
+    button.textContent = "显示翻译";
+    button.setAttribute("aria-expanded", "false");
+  }
 }
 
 function getPhonetic(word) {
