@@ -1506,6 +1506,13 @@ function init() {
   });
 
   els.studyContent.addEventListener("click", (event) => {
+    const lookupClose = event.target.closest("[data-lookup-close]");
+    if (lookupClose) {
+      const lookupCard = lookupClose.closest(".practice-lookup-result");
+      if (lookupCard) lookupCard.remove();
+      return;
+    }
+
     const wordInfoClose = event.target.closest("[data-word-info-close]");
     if (wordInfoClose) {
       closeWordInfoPopovers();
@@ -1740,11 +1747,15 @@ function renderContentBlock(block) {
       const hasHiddenTranslation = isListeningPractice && translation;
       const li = document.createElement("li");
       li.innerHTML = `
-        <span class="practice-text">${renderClickablePracticeSentence(item)}</span>
-        ${hasHiddenTranslation ? `<button type="button" class="inline-speech-button translation-toggle-button" data-translation-toggle aria-expanded="false">显示翻译</button>` : ""}
+        <div class="practice-row">
+          <span class="practice-text">${renderClickablePracticeSentence(item)}</span>
+          <div class="practice-actions">
+            ${hasHiddenTranslation ? `<button type="button" class="inline-speech-button translation-toggle-button" data-translation-toggle aria-expanded="false">显示翻译</button>` : ""}
+            <button type="button" class="inline-speech-button" data-speak="${escapeHtml(item)}" data-rate="0.78">听</button>
+            <button type="button" class="inline-speech-button read-button" data-read-target="${escapeHtml(item)}">跟读</button>
+          </div>
+        </div>
         ${translation ? `<span class="practice-translation${hasHiddenTranslation ? " is-hidden" : ""}" ${hasHiddenTranslation ? "hidden" : ""}>${escapeHtml(translation)}</span>` : ""}
-        <button type="button" class="inline-speech-button" data-speak="${escapeHtml(item)}" data-rate="0.78">听</button>
-        <button type="button" class="inline-speech-button read-button" data-read-target="${escapeHtml(item)}">跟读</button>
         <div class="read-feedback" aria-live="polite"></div>
       `;
       list.appendChild(li);
@@ -1987,8 +1998,12 @@ function showWordTranslation(sourceElement, rawWord) {
   const pronunciationHint = getPronunciationHint(word);
   const isPracticeLookup = result.dataset.practiceLookup === "true";
   result.className = `translation-result ${isPracticeLookup ? "practice-lookup-result" : ""} ${translation ? "has-result" : "missing-result"}`.trim();
+  const closeButton = isPracticeLookup
+    ? `<button type="button" class="lookup-close" data-lookup-close aria-label="关闭查询卡片">×</button>`
+    : "";
   result.innerHTML = translation
     ? `
+      ${closeButton}
       <strong>${escapeHtml(word)}</strong>
       <em>${escapeHtml(phonetic)}</em>
       <small class="word-pos">词性：${escapeHtml(partOfSpeech)}</small>
@@ -1997,6 +2012,7 @@ function showWordTranslation(sourceElement, rawWord) {
       <button type="button" class="word-info-speak" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
     `
     : `
+      ${closeButton}
       <strong>${escapeHtml(word)}</strong>
       <em>${escapeHtml(phonetic)}</em>
       <small class="word-pos">词性：${escapeHtml(partOfSpeech)}</small>
@@ -2024,8 +2040,9 @@ function getWordTranslationResultElement(sourceElement) {
       result = document.createElement("div");
       result.className = "translation-result practice-lookup-result";
       result.setAttribute("aria-live", "polite");
-      const firstAction = item.querySelector(".inline-speech-button");
-      item.insertBefore(result, firstAction || null);
+      const translation = item.querySelector(":scope > .practice-translation");
+      const feedback = item.querySelector(":scope > .read-feedback");
+      item.insertBefore(result, translation || feedback || null);
     }
 
     result.dataset.practiceLookup = "true";

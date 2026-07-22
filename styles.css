@@ -731,6 +731,7 @@ a:focus-visible {
 
 .translation-result {
   flex: 1 1 100%;
+  position: relative;
   min-height: 40px;
   border: 1px solid #e3e9ee;
   border-radius: 8px;
@@ -788,6 +789,33 @@ a:focus-visible {
 .translation-result.missing-result {
   border-color: #f0d3aa;
   background: #fff9ef;
+}
+
+.lookup-close {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid #c9d1da;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #4d6375;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1;
+  padding: 0;
+}
+
+.lookup-close:hover,
+.lookup-close:focus-visible {
+  border-color: #aeb8c2;
+  background: #f5f7f9;
+  outline: none;
 }
 
 .work-passage {
@@ -977,6 +1005,29 @@ a:focus-visible {
   background: #f6fbff;
 }
 
+.practice-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: start;
+}
+
+.practice-text {
+  min-width: 0;
+}
+
+.practice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.practice-actions .inline-speech-button {
+  margin-left: 0;
+}
+
 .practice-translation {
   display: block;
   margin-top: 4px;
@@ -991,6 +1042,7 @@ a:focus-visible {
 
 .practice-lookup-result {
   display: block;
+  padding-right: 44px;
   margin: 8px 0 9px;
   border-color: #b9dfcd;
   background: #f7fcf9;
@@ -1012,6 +1064,18 @@ a:focus-visible {
 
 .practice-list li:last-child {
   border-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .practice-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .practice-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
 }
 
 .field-label {
