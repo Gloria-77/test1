@@ -16,7 +16,7 @@ const dayOne = {
     "能用英文完成 30 秒测试工程师自我介绍。"
   ],
   tasks: [
-    { title: "工作单词 + 音标", time: "30 分钟", desc: "学习 30 个测试高频词，看音标、听单词、跟读例句。" },
+    { title: "工作单词 + 音标", time: "30 分钟", desc: "学习 30 个测试高频词，看音标、播放单词和例句。" },
     { title: "会议听力", time: "30 分钟", desc: "练时间、版本号、Bug 编号和会议安排。" },
     { title: "英文需求阅读", time: "30 分钟", desc: "读短文，圈出需求、实际结果、预期结果。" },
     { title: "项目口语", time: "30 分钟", desc: "读测试工程师自我介绍，录音 30 秒。" }
@@ -2023,7 +2023,7 @@ function createDetailedPlan(index) {
       "记录今天最想在工作里用起来的一句话。"
     ],
     tasks: [
-      { title: "工作单词 + 音标", time: "20 分钟", desc: `学习 ${focus} 主题 15 个词，看音标并跟读 5 个核心工作句。` },
+      { title: "工作单词 + 音标", time: "20 分钟", desc: `学习 ${focus} 主题词，看音标并播放核心工作句。` },
       { title: "会议听力", time: "35 分钟", desc: "听时间、版本号、缺陷编号、状态码和会议安排，写下你听到的内容。" },
       { title: "工作短文阅读", time: "35 分钟", desc: "读需求、Bug、接口或项目相关短文，找出关键信息。" },
       { title: outputModule, time: "30 分钟", desc: dayInWeek % 2 === 0 ? "按工作汇报提示录音 45 秒，练清楚表达。" : "按英文工作消息框架写 5 句，并大声读出来。" }
@@ -2036,7 +2036,7 @@ function createDetailedPlan(index) {
       },
       {
         type: "list",
-        title: `今天必须跟读的 ${sentenceSet.length} 个句子${sentenceTitleSuffix}`,
+        title: `今天必须练的 ${sentenceSet.length} 个句子${sentenceTitleSuffix}`,
         items: sentenceSet
       },
       {
@@ -2429,7 +2429,7 @@ function renderContentBlock(block) {
   if (block.type === "words") {
     const helper = document.createElement("p");
     helper.className = "speech-helper";
-    helper.textContent = "先看音标，再点“听单词”模仿发音；点“跟读”可以录你的发音并给出反馈。";
+    helper.textContent = "先看音标，再点“听单词”和“听例句”模仿发音。";
     section.appendChild(helper);
     const grid = document.createElement("div");
     grid.className = "word-grid";
@@ -2454,7 +2454,6 @@ function renderContentBlock(block) {
         <div class="speech-actions">
           <button type="button" class="speech-button" data-speak="${escapeHtml(word)}" data-rate="0.72">听单词</button>
           ${sentence ? `<button type="button" class="speech-button" data-speak="${escapeHtml(sentence)}" data-rate="0.82">听例句</button>` : ""}
-          <button type="button" class="speech-button read-button" data-read-target="${escapeHtml(sentence || word)}">跟读</button>
         </div>
         <div class="read-feedback" aria-live="polite"></div>
       `;
@@ -2492,8 +2491,7 @@ function renderContentBlock(block) {
           <span class="practice-text">${renderClickablePracticeSentence(item)}</span>
           <div class="practice-actions">
             ${hasHiddenTranslation ? `<button type="button" class="inline-speech-button translation-toggle-button" data-translation-toggle aria-expanded="false">显示翻译</button>` : ""}
-            <button type="button" class="inline-speech-button" data-speak="${escapeHtml(item)}" data-rate="0.78">听</button>
-            <button type="button" class="inline-speech-button read-button" data-read-target="${escapeHtml(item)}">跟读</button>
+            <button type="button" class="inline-speech-button" data-speak="${escapeHtml(item)}" data-rate="0.78">播放</button>
           </div>
         </div>
         ${translation ? `<span class="practice-translation${hasHiddenTranslation ? " is-hidden" : ""}" ${hasHiddenTranslation ? "hidden" : ""}>${escapeHtml(translation)}</span>` : ""}
