@@ -2481,6 +2481,8 @@ function render() {
   const plan = plans[currentDay];
   const record = ensureRecord(currentDay);
   els.daySelect.value = String(currentDay);
+  els.prevDay.disabled = currentDay === 0;
+  els.nextDay.disabled = currentDay === plans.length - 1;
   els.phaseLabel.textContent = plan.phase;
   els.dayTitle.textContent = plan.title;
   els.targetBand.textContent = plan.band;
