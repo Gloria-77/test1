@@ -152,9 +152,7 @@ a:focus-visible {
 }
 
 .day-tools {
-  display: grid;
-  grid-template-columns: 48px 1fr 48px;
-  gap: 8px;
+  display: block;
 }
 
 .icon-button,
@@ -183,7 +181,46 @@ a:focus-visible {
   background: #e1f3eb;
 }
 
+#prevDay,
+#nextDay {
+  position: fixed;
+  top: 50%;
+  z-index: 60;
+  width: 48px;
+  height: 58px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid #d7e5df;
+  color: var(--accent-dark);
+  box-shadow: 0 10px 24px rgba(28, 39, 45, 0.14);
+  backdrop-filter: blur(10px);
+}
+
+#prevDay {
+  left: max(10px, env(safe-area-inset-left));
+  transform: translateY(-50%);
+}
+
+#nextDay {
+  right: max(10px, env(safe-area-inset-right));
+  transform: translateY(-50%);
+}
+
+#prevDay:hover,
+#nextDay:hover {
+  transform: translateY(-50%);
+  background: #ffffff;
+}
+
+#prevDay:disabled,
+#nextDay:disabled {
+  opacity: 0.35;
+  cursor: default;
+  box-shadow: none;
+}
+
 #daySelect {
+  width: 100%;
   min-width: 0;
   border: 1px solid var(--line);
   background: #ffffff;
