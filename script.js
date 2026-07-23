@@ -664,6 +664,21 @@ const sentenceTranslationBank = {
 };
 
 Object.assign(sentenceTranslationBank, {
+  "I can reproduce this issue on the staging environment.": "我可以在预发环境复现这个问题。",
+  "The API returned status code four zero one.": "接口返回了 401 状态码。",
+  "The sprint review is moved to Wednesday morning.": "迭代评审改到周三上午。",
+  "The staging environment will be unavailable for thirty minutes.": "预发环境将不可用三十分钟。",
+  "Please update the Jira ticket before five thirty.": "请在五点半前更新 Jira 工单。",
+  "The pull request number is PR three two six.": "合并请求编号是 PR326。",
+  "The failed case is test login with an expired token.": "失败用例是使用过期 token 测试登录。",
+  "The request ID is A seven C nine two.": "请求 ID 是 A7C92。",
+  "The database table is order underscore detail.": "数据库表是 order_detail。",
+  "The meeting has been postponed to next Monday.": "会议已经推迟到下周一。",
+  "The bug was reproduced on iOS version seventeen point five.": "这个 Bug 在 iOS 17.5 版本复现了。",
+  "The automation job runs at eight every morning.": "自动化任务每天早上八点运行。",
+  "The report contains twenty failed cases and one hundred passed cases.": "报告包含 20 个失败用例和 100 个通过用例。",
+  "The deadline for test execution is Friday noon.": "测试执行截止时间是周五中午。",
+  "The release candidate is version one point nine point zero.": "候选发布版本是 1.9.0。",
   "The precondition is that the user is logged in.": "前置条件是用户已经登录。",
   "The postcondition should be updated after payment succeeds.": "支付成功后，后置条件应该被更新。",
   "The prerequisite for this test is a valid account.": "这个测试的先决条件是有一个有效账号。",
