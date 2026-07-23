@@ -1,9 +1,9 @@
-const CACHE_NAME = "qa-work-english-test1-v53";
+const CACHE_NAME = "qa-work-english-test1-v54";
 const ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=53",
-  "./script.js?v=53",
+  "./styles.css?v=54",
+  "./script.js?v=54",
   "./manifest.webmanifest",
   "./icons/icon.svg"
 ];
