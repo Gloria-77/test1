@@ -1243,6 +1243,28 @@ a:focus-visible {
     padding: 16px;
   }
 
+  #prevDay,
+  #nextDay {
+    top: auto;
+    bottom: calc(92px + env(safe-area-inset-bottom));
+    width: 46px;
+    height: 54px;
+    transform: none;
+  }
+
+  #prevDay {
+    left: max(8px, env(safe-area-inset-left));
+  }
+
+  #nextDay {
+    right: max(8px, env(safe-area-inset-right));
+  }
+
+  #prevDay:hover,
+  #nextDay:hover {
+    transform: none;
+  }
+
   .brand-mark {
     width: 42px;
     height: 42px;
