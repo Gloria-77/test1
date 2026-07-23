@@ -1,16 +1,16 @@
-const CACHE_NAME = "qa-work-english-test1-v49";
+const CACHE_NAME = "qa-work-english-test1-v52";
 const ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=47",
-  "./script.js?v=47",
+  "./styles.css?v=52",
+  "./script.js?v=52",
   "./manifest.webmanifest",
   "./icons/icon.svg"
 ];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)).catch(() => undefined)
   );
   self.skipWaiting();
 });
@@ -32,11 +32,27 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((cached) => {
       if (cached) return cached;
-      return fetch(event.request).then((response) => {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-        return response;
-      });
+      return fetch(event.request)
+        .then((response) => {
+          if (response && response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          }
+          return response;
+        })
+        .catch(() => {
+          if (event.request.mode === "navigate") {
+            return caches.match("./index.html").then((fallback) => fallback || offlinePage());
+          }
+          return caches.match(event.request).then((fallback) => fallback || offlinePage());
+        });
     })
   );
 });
+
+function offlinePage() {
+  return new Response("页面暂时无法加载，请联网后刷新。", {
+    status: 503,
+    headers: { "Content-Type": "text/plain; charset=utf-8" }
+  });
+}

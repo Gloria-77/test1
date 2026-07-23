@@ -206,8 +206,79 @@ const wordBank = [
   ["update", "更新", "I updated the test case after the requirement changed."],
   ["validate", "校验", "We need to validate the response schema."],
   ["verify", "验证", "I verified the fix on the staging environment."],
-  ["workaround", "临时解决方案", "There is a workaround, but it is not user-friendly."]
+  ["workaround", "临时解决方案", "There is a workaround, but it is not user-friendly."],
+  ["precondition", "前置条件", "The precondition is that the user is logged in."],
+  ["postcondition", "后置条件", "The postcondition should be updated after payment succeeds."],
+  ["prerequisite", "先决条件", "The prerequisite for this test is a valid account."],
+  ["usability", "可用性", "Usability testing checks whether the flow is easy to use."],
+  ["accessibility", "无障碍性", "Accessibility testing helps more users use the product."],
+  ["performance", "性能", "Performance testing checks response time under load."],
+  ["latency", "延迟", "High latency may cause timeout errors."],
+  ["throughput", "吞吐量", "Throughput measures how many requests the service can handle."],
+  ["concurrency", "并发", "Concurrency testing checks many users at the same time."],
+  ["security", "安全性", "Security testing protects user data."],
+  ["vulnerability", "漏洞", "This vulnerability should be fixed before release."],
+  ["encryption", "加密", "Encryption protects sensitive information."],
+  ["certificate", "证书", "The certificate expires next month."],
+  ["session", "会话", "The session should expire after thirty minutes."],
+  ["cookie", "Cookie", "The cookie stores the login state."],
+  ["header", "请求头", "The request header contains the token."],
+  ["schema", "结构", "The response schema should match the contract."],
+  ["contract", "契约", "The API contract defines required fields."],
+  ["gateway", "网关", "The gateway routes the request to the service."],
+  ["microservice", "微服务", "This microservice handles order creation."],
+  ["queue", "队列", "The message queue delays the notification."],
+  ["cache", "缓存", "The cache should be cleared after the update."],
+  ["browser", "浏览器", "The issue happens only in this browser."],
+  ["device", "设备", "Please test this flow on a real device."],
+  ["simulator", "模拟器", "I reproduced the bug on the simulator."],
+  ["emulator", "仿真器", "The emulator is useful for Android testing."],
+  ["platform", "平台", "The platform should support iOS and Android."],
+  ["deployment", "部署", "The deployment is scheduled tonight."],
+  ["hotfix", "紧急修复", "The hotfix needs quick verification."],
+  ["monitoring", "监控", "Monitoring helps us find production issues quickly."],
+  ["alert", "告警", "The alert shows a high error rate."],
+  ["metrics", "指标", "The metrics show slower response time."],
+  ["dashboard", "仪表盘", "The dashboard displays test results."],
+  ["pipeline", "流水线", "The pipeline runs automation tests after each commit."],
+  ["artifact", "构建产物", "The artifact contains the test report."],
+  ["container", "容器", "The container starts the test service."],
+  ["docker", "Docker", "Docker keeps the test environment consistent."],
+  ["merge", "合并", "Please merge the fix after review."],
+  ["commit", "提交", "This commit includes the bug fix."],
+  ["repository", "代码仓库", "The repository stores the automation project."],
+  ["version", "版本", "Please confirm the app version."],
+  ["tag", "标签", "The release tag is ready."],
+  ["changelog", "变更日志", "The changelog lists fixed issues."],
+  ["approval", "审批", "We need approval before release."],
+  ["owner", "负责人", "The owner should confirm the priority."],
+  ["stakeholder", "干系人", "The stakeholder cares about business impact."],
+  ["acceptance", "验收", "The acceptance criteria are not clear."],
+  ["criteria", "标准", "The criteria should include expected behavior."],
+  ["edge", "边缘", "Edge cases can reveal hidden bugs."],
+  ["positive", "正向的", "Positive cases check normal user flows."],
+  ["exploratory", "探索性的", "Exploratory testing can find unexpected issues."],
+  ["smoke", "冒烟测试", "Smoke testing checks the main flow quickly."],
+  ["sanity", "基本验证", "Sanity testing confirms the fix is reasonable."],
+  ["localization", "本地化", "Localization testing checks language and format."],
+  ["timezone", "时区", "Timezone issues may affect order time."],
+  ["currency", "货币", "Currency format should be correct."],
+  ["pagination", "分页", "Pagination should return the correct page."],
+  ["sorting", "排序", "Sorting should work by creation time."],
+  ["filtering", "筛选", "Filtering should keep the selected status."],
+  ["upload", "上传", "Upload should reject unsupported file types."],
+  ["download", "下载", "Download should return the correct file."],
+  ["attachment", "附件", "The attachment includes screenshots and logs."],
+  ["role", "角色", "The role controls user permission."],
+  ["profile", "个人资料", "The profile page should show correct user information."]
 ];
+
+const dayOneWordSet = new Set(
+  (dayOne.content.find((block) => block.type === "words")?.words || [])
+    .map(([word]) => word.toLowerCase())
+);
+const followUpWordBank = wordBank.filter(([word]) => !dayOneWordSet.has(word.toLowerCase()));
+const FOLLOW_UP_WORDS_PER_DAY = 15;
 
 const phoneticBank = {
   actual: "/ˈæktʃuəl/",
@@ -591,6 +662,73 @@ const sentenceTranslationBank = {
   "I updated the test case after the requirement changed.": "需求变更后，我更新了测试用例。",
   "I verified the fix on the staging environment.": "我已经在预发环境验证了修复。"
 };
+
+Object.assign(sentenceTranslationBank, {
+  "The precondition is that the user is logged in.": "前置条件是用户已经登录。",
+  "The postcondition should be updated after payment succeeds.": "支付成功后，后置条件应该被更新。",
+  "The prerequisite for this test is a valid account.": "这个测试的先决条件是有一个有效账号。",
+  "Usability testing checks whether the flow is easy to use.": "可用性测试会检查流程是否容易使用。",
+  "Accessibility testing helps more users use the product.": "无障碍测试可以帮助更多用户使用产品。",
+  "Performance testing checks response time under load.": "性能测试会检查负载下的响应时间。",
+  "High latency may cause timeout errors.": "高延迟可能导致超时错误。",
+  "Throughput measures how many requests the service can handle.": "吞吐量衡量服务可以处理多少请求。",
+  "Concurrency testing checks many users at the same time.": "并发测试会检查多个用户同时操作的情况。",
+  "Security testing protects user data.": "安全测试会保护用户数据。",
+  "This vulnerability should be fixed before release.": "这个漏洞应该在发布前修复。",
+  "Encryption protects sensitive information.": "加密可以保护敏感信息。",
+  "The certificate expires next month.": "证书下个月过期。",
+  "The session should expire after thirty minutes.": "会话应该在三十分钟后过期。",
+  "The cookie stores the login state.": "Cookie 会保存登录状态。",
+  "The request header contains the token.": "请求头包含 token。",
+  "The response schema should match the contract.": "响应结构应该符合接口契约。",
+  "The API contract defines required fields.": "接口契约定义必填字段。",
+  "The gateway routes the request to the service.": "网关会把请求路由到服务。",
+  "This microservice handles order creation.": "这个微服务处理订单创建。",
+  "The message queue delays the notification.": "消息队列延迟了通知。",
+  "The cache should be cleared after the update.": "更新后应该清理缓存。",
+  "The issue happens only in this browser.": "这个问题只在这个浏览器里出现。",
+  "Please test this flow on a real device.": "请在真机上测试这个流程。",
+  "I reproduced the bug on the simulator.": "我在模拟器上复现了这个 Bug。",
+  "The emulator is useful for Android testing.": "仿真器对 Android 测试很有用。",
+  "The platform should support iOS and Android.": "这个平台应该支持 iOS 和 Android。",
+  "The deployment is scheduled tonight.": "部署计划在今晚进行。",
+  "The hotfix needs quick verification.": "这个紧急修复需要快速验证。",
+  "Monitoring helps us find production issues quickly.": "监控可以帮助我们快速发现生产问题。",
+  "The alert shows a high error rate.": "告警显示错误率很高。",
+  "The metrics show slower response time.": "指标显示响应时间变慢。",
+  "The dashboard displays test results.": "仪表盘展示测试结果。",
+  "The pipeline runs automation tests after each commit.": "流水线会在每次提交后运行自动化测试。",
+  "The artifact contains the test report.": "构建产物包含测试报告。",
+  "The container starts the test service.": "容器会启动测试服务。",
+  "Docker keeps the test environment consistent.": "Docker 可以保持测试环境一致。",
+  "Please merge the fix after review.": "请在评审后合并这个修复。",
+  "This commit includes the bug fix.": "这次提交包含 Bug 修复。",
+  "The repository stores the automation project.": "代码仓库存放自动化项目。",
+  "Please confirm the app version.": "请确认应用版本。",
+  "The release tag is ready.": "发布标签已经准备好了。",
+  "The changelog lists fixed issues.": "变更日志列出了已修复的问题。",
+  "We need approval before release.": "发布前我们需要审批。",
+  "The owner should confirm the priority.": "负责人应该确认优先级。",
+  "The stakeholder cares about business impact.": "干系人关注业务影响。",
+  "The acceptance criteria are not clear.": "验收标准不清楚。",
+  "The criteria should include expected behavior.": "标准应该包含预期行为。",
+  "Edge cases can reveal hidden bugs.": "边缘用例可以暴露隐藏 Bug。",
+  "Positive cases check normal user flows.": "正向用例检查正常用户流程。",
+  "Exploratory testing can find unexpected issues.": "探索性测试可以发现意外问题。",
+  "Smoke testing checks the main flow quickly.": "冒烟测试会快速检查主流程。",
+  "Sanity testing confirms the fix is reasonable.": "基本验证会确认修复是合理的。",
+  "Localization testing checks language and format.": "本地化测试会检查语言和格式。",
+  "Timezone issues may affect order time.": "时区问题可能影响订单时间。",
+  "Currency format should be correct.": "货币格式应该正确。",
+  "Pagination should return the correct page.": "分页应该返回正确页面。",
+  "Sorting should work by creation time.": "排序应该按创建时间生效。",
+  "Filtering should keep the selected status.": "筛选应该保留选中的状态。",
+  "Upload should reject unsupported file types.": "上传应该拒绝不支持的文件类型。",
+  "Download should return the correct file.": "下载应该返回正确文件。",
+  "The attachment includes screenshots and logs.": "附件包含截图和日志。",
+  "The role controls user permission.": "角色控制用户权限。",
+  "The profile page should show correct user information.": "个人资料页应该显示正确的用户信息。"
+});
 
 const translationBank = {
   a: "一个；一项",
@@ -1243,6 +1381,203 @@ Object.assign(partOfSpeechBank, {
   zero: "num. 数词"
 });
 
+Object.assign(translationBank, {
+  accessibility: "无障碍性",
+  acceptance: "验收",
+  alert: "告警；提醒",
+  artifact: "构建产物",
+  attachment: "附件",
+  browser: "浏览器",
+  cache: "缓存",
+  certificate: "证书",
+  changelog: "变更日志",
+  commit: "提交",
+  concurrency: "并发",
+  container: "容器",
+  contract: "契约；接口约定",
+  cookie: "Cookie；浏览器保存的小数据",
+  criteria: "标准；准则",
+  currency: "货币",
+  dashboard: "仪表盘",
+  deployment: "部署",
+  device: "设备",
+  docker: "Docker 容器工具",
+  download: "下载",
+  edge: "边缘；边界",
+  emulator: "仿真器",
+  encryption: "加密",
+  exploratory: "探索性的",
+  filtering: "筛选",
+  gateway: "网关",
+  header: "请求头；页眉",
+  hotfix: "紧急修复",
+  latency: "延迟",
+  localization: "本地化",
+  merge: "合并",
+  metrics: "指标",
+  microservice: "微服务",
+  monitoring: "监控",
+  owner: "负责人；拥有者",
+  pagination: "分页",
+  performance: "性能",
+  platform: "平台",
+  positive: "正向的；积极的",
+  postcondition: "后置条件",
+  precondition: "前置条件",
+  prerequisite: "先决条件",
+  profile: "个人资料",
+  queue: "队列",
+  repository: "代码仓库",
+  role: "角色",
+  sanity: "基本验证",
+  schema: "结构；数据结构",
+  security: "安全性",
+  session: "会话",
+  simulator: "模拟器",
+  smoke: "冒烟测试",
+  sorting: "排序",
+  stakeholder: "干系人",
+  tag: "标签",
+  throughput: "吞吐量",
+  timezone: "时区",
+  upload: "上传",
+  usability: "可用性",
+  vulnerability: "漏洞"
+});
+
+Object.assign(phoneticBank, {
+  accessibility: "/əkˌsesəˈbɪləti/",
+  acceptance: "/əkˈseptəns/",
+  alert: "/əˈlɜːrt/",
+  approval: "/əˈpruːvəl/",
+  artifact: "/ˈɑːrtɪfækt/",
+  attachment: "/əˈtætʃmənt/",
+  browser: "/ˈbraʊzər/",
+  cache: "/kæʃ/",
+  certificate: "/sərˈtɪfɪkət/",
+  changelog: "/ˈtʃeɪndʒlɔːɡ/",
+  commit: "/kəˈmɪt/",
+  concurrency: "/kənˈkɜːrənsi/",
+  container: "/kənˈteɪnər/",
+  contract: "/ˈkɑːntrækt/",
+  cookie: "/ˈkʊki/",
+  criteria: "/kraɪˈtɪriə/",
+  currency: "/ˈkɜːrənsi/",
+  dashboard: "/ˈdæʃbɔːrd/",
+  deployment: "/dɪˈplɔɪmənt/",
+  device: "/dɪˈvaɪs/",
+  docker: "/ˈdɑːkər/",
+  download: "/ˈdaʊnloʊd/",
+  edge: "/edʒ/",
+  emulator: "/ˈemjəleɪtər/",
+  encryption: "/ɪnˈkrɪpʃən/",
+  exploratory: "/ɪkˈsplɔːrətɔːri/",
+  filtering: "/ˈfɪltərɪŋ/",
+  gateway: "/ˈɡeɪtweɪ/",
+  header: "/ˈhedər/",
+  hotfix: "/ˈhɑːtfɪks/",
+  latency: "/ˈleɪtənsi/",
+  localization: "/ˌloʊkələˈzeɪʃən/",
+  merge: "/mɜːrdʒ/",
+  metrics: "/ˈmetrɪks/",
+  microservice: "/ˈmaɪkroʊsɜːrvɪs/",
+  monitoring: "/ˈmɑːnɪtərɪŋ/",
+  owner: "/ˈoʊnər/",
+  pagination: "/ˌpædʒɪˈneɪʃən/",
+  performance: "/pərˈfɔːrməns/",
+  pipeline: "/ˈpaɪplaɪn/",
+  platform: "/ˈplætfɔːrm/",
+  positive: "/ˈpɑːzətɪv/",
+  postcondition: "/ˌpoʊstkənˈdɪʃən/",
+  precondition: "/ˌpriːkənˈdɪʃən/",
+  prerequisite: "/priːˈrekwəzɪt/",
+  profile: "/ˈproʊfaɪl/",
+  queue: "/kjuː/",
+  repository: "/rɪˈpɑːzətɔːri/",
+  role: "/roʊl/",
+  sanity: "/ˈsænəti/",
+  schema: "/ˈskiːmə/",
+  security: "/sɪˈkjʊrəti/",
+  session: "/ˈseʃən/",
+  simulator: "/ˈsɪmjəleɪtər/",
+  smoke: "/smoʊk/",
+  sorting: "/ˈsɔːrtɪŋ/",
+  stakeholder: "/ˈsteɪkhoʊldər/",
+  tag: "/tæɡ/",
+  throughput: "/ˈθruːpʊt/",
+  timezone: "/ˈtaɪmzoʊn/",
+  upload: "/ˈʌploʊd/",
+  usability: "/ˌjuːzəˈbɪləti/",
+  version: "/ˈvɜːrʒən/",
+  vulnerability: "/ˌvʌlnərəˈbɪləti/"
+});
+
+Object.assign(partOfSpeechBank, {
+  accessibility: "n. 名词",
+  acceptance: "n. 名词",
+  alert: "n./v. 名词/动词",
+  approval: "n. 名词",
+  artifact: "n. 名词",
+  attachment: "n. 名词",
+  browser: "n. 名词",
+  cache: "n./v. 名词/动词",
+  certificate: "n. 名词",
+  changelog: "n. 名词",
+  commit: "n./v. 名词/动词",
+  concurrency: "n. 名词",
+  container: "n. 名词",
+  contract: "n. 名词",
+  cookie: "n. 名词",
+  criteria: "n. 名词",
+  currency: "n. 名词",
+  dashboard: "n. 名词",
+  deployment: "n. 名词",
+  device: "n. 名词",
+  docker: "n. 名词",
+  download: "n./v. 名词/动词",
+  edge: "n. 名词",
+  emulator: "n. 名词",
+  encryption: "n. 名词",
+  exploratory: "adj. 形容词",
+  filtering: "n./v. 名词/动词",
+  gateway: "n. 名词",
+  header: "n. 名词",
+  hotfix: "n. 名词",
+  latency: "n. 名词",
+  localization: "n. 名词",
+  merge: "v./n. 动词/名词",
+  metrics: "n. 名词",
+  microservice: "n. 名词",
+  monitoring: "n./v. 名词/动词",
+  owner: "n. 名词",
+  pagination: "n. 名词",
+  performance: "n. 名词",
+  pipeline: "n. 名词",
+  platform: "n. 名词",
+  positive: "adj. 形容词",
+  postcondition: "n. 名词",
+  precondition: "n. 名词",
+  prerequisite: "n. 名词",
+  profile: "n. 名词",
+  queue: "n./v. 名词/动词",
+  repository: "n. 名词",
+  role: "n. 名词",
+  sanity: "n. 名词",
+  schema: "n. 名词",
+  security: "n. 名词",
+  session: "n. 名词",
+  simulator: "n. 名词",
+  smoke: "n./v. 名词/动词",
+  sorting: "n./v. 名词/动词",
+  stakeholder: "n. 名词",
+  tag: "n./v. 名词/动词",
+  throughput: "n. 名词",
+  timezone: "n. 名词",
+  upload: "n./v. 名词/动词",
+  usability: "n. 名词",
+  vulnerability: "n. 名词"
+});
+
 const sentenceBank = [
   "I work as a software testing engineer.",
   "My main responsibility is to ensure software quality.",
@@ -1288,6 +1623,17 @@ const listeningBank = [
   "The deadline for test execution is Friday noon.",
   "The release candidate is version one point nine point zero."
 ];
+
+const dayOneSentenceSet = new Set(
+  dayOne.content
+    .filter((block) => block.type === "list")
+    .flatMap((block) => block.items || [])
+    .map(normalizeSentenceText)
+);
+const followUpSentenceBank = sentenceBank.filter((sentence) => !dayOneSentenceSet.has(normalizeSentenceText(sentence)));
+const followUpListeningBank = listeningBank.filter((sentence) => !dayOneSentenceSet.has(normalizeSentenceText(sentence)));
+const FOLLOW_UP_SENTENCES_PER_DAY = 5;
+const FOLLOW_UP_LISTENING_PER_DAY = 10;
 
 const readingTopics = [
   {
@@ -1349,6 +1695,12 @@ function createDetailedPlan(index) {
   const weekTheme = weeklyPlans[week].split("：")[0];
   const focus = dailyFocus[index % dailyFocus.length];
   const outputModule = dayInWeek % 2 === 0 ? "口语汇报" : "工作写作";
+  const wordSet = makeWordSet(index);
+  const sentenceSet = makeSentenceSet(index);
+  const listeningSet = makeListeningSet(index);
+  const wordTitleSuffix = isReviewWordDay(index) ? "（复习）" : "";
+  const sentenceTitleSuffix = isReviewSentenceDay(index) ? "（复习）" : "";
+  const listeningTitleSuffix = isReviewListeningDay(index) ? "（复习）" : "";
 
   return {
     title: formatDayTitle(dayNumber),
@@ -1369,19 +1721,19 @@ function createDetailedPlan(index) {
     content: [
       {
         type: "words",
-        title: `15 个 ${focus} 高频词`,
-        words: makeWordSet(index)
+        title: `${wordSet.length} 个 ${focus} 高频词${wordTitleSuffix}`,
+        words: wordSet
       },
       {
         type: "list",
-        title: "今天必须跟读的 5 个句子",
-        items: makeSentenceSet(index)
+        title: `今天必须跟读的 ${sentenceSet.length} 个句子${sentenceTitleSuffix}`,
+        items: sentenceSet
       },
       {
         type: "list",
-        title: "会议听力小练习",
+        title: `会议听力小练习（${listeningSet.length} 句）${listeningTitleSuffix}`,
         intro: "先点“听”，把你听到的英文、数字、版本号或编号写进笔记：",
-        items: makeListeningSet(index)
+        items: listeningSet
       },
       {
         type: "text",
@@ -1407,18 +1759,75 @@ function createDetailedPlan(index) {
 }
 
 function makeWordSet(index) {
-  return Array.from({ length: 15 }, (_, offset) => {
-    const [word, meaning, sentence] = wordBank[(index * 7 + offset) % wordBank.length];
-    return [word, `${meaning} | ${sentence}`];
-  });
+  const bank = followUpWordBank.length ? followUpWordBank : wordBank;
+  const start = Math.max(0, index - 1) * FOLLOW_UP_WORDS_PER_DAY;
+  const isReview = start >= bank.length;
+  const effectiveStart = isReview ? (start - bank.length) % bank.length : start;
+  const limit = isReview ? FOLLOW_UP_WORDS_PER_DAY : Math.min(FOLLOW_UP_WORDS_PER_DAY, bank.length - start);
+  const selected = [];
+  const seen = new Set();
+
+  for (let offset = 0; selected.length < limit && offset < bank.length; offset += 1) {
+    const entry = bank[(effectiveStart + offset) % bank.length];
+    const key = entry[0].toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    selected.push(entry);
+  }
+
+  return selected.map(([word, meaning, sentence]) => [word, `${meaning} | ${sentence}`]);
+}
+
+function isReviewWordDay(index) {
+  const bank = followUpWordBank.length ? followUpWordBank : wordBank;
+  const start = Math.max(0, index - 1) * FOLLOW_UP_WORDS_PER_DAY;
+  return start >= bank.length;
 }
 
 function makeSentenceSet(index) {
-  return Array.from({ length: 5 }, (_, offset) => sentenceBank[(index * 3 + offset) % sentenceBank.length]);
+  return makeFollowUpTextSet(index, followUpSentenceBank, sentenceBank, FOLLOW_UP_SENTENCES_PER_DAY);
 }
 
 function makeListeningSet(index) {
-  return Array.from({ length: 10 }, (_, offset) => listeningBank[(index * 5 + offset) % listeningBank.length]);
+  return makeFollowUpTextSet(index, followUpListeningBank, listeningBank, FOLLOW_UP_LISTENING_PER_DAY);
+}
+
+function isReviewSentenceDay(index) {
+  return isReviewTextDay(index, followUpSentenceBank, sentenceBank, FOLLOW_UP_SENTENCES_PER_DAY);
+}
+
+function isReviewListeningDay(index) {
+  return isReviewTextDay(index, followUpListeningBank, listeningBank, FOLLOW_UP_LISTENING_PER_DAY);
+}
+
+function isReviewTextDay(index, followUpBank, fallbackBank, perDay) {
+  const bank = followUpBank.length ? followUpBank : fallbackBank;
+  const start = Math.max(0, index - 1) * perDay;
+  return start >= bank.length;
+}
+
+function makeFollowUpTextSet(index, followUpBank, fallbackBank, perDay) {
+  const bank = followUpBank.length ? followUpBank : fallbackBank;
+  const start = Math.max(0, index - 1) * perDay;
+  const isReview = start >= bank.length;
+  const effectiveStart = isReview ? (start - bank.length) % bank.length : start;
+  const limit = isReview ? perDay : Math.min(perDay, bank.length - start);
+  const selected = [];
+  const seen = new Set();
+
+  for (let offset = 0; selected.length < limit && offset < bank.length; offset += 1) {
+    const sentence = bank[(effectiveStart + offset) % bank.length];
+    const key = normalizeSentenceText(sentence);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    selected.push(sentence);
+  }
+
+  return selected;
+}
+
+function normalizeSentenceText(sentence) {
+  return String(sentence || "").trim().replace(/\s+/g, " ").toLowerCase();
 }
 
 function makeReading(index) {
