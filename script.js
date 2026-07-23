@@ -2008,6 +2008,7 @@ function createDetailedPlan(index) {
   const wordSet = makeWordSet(index);
   const sentenceSet = makeSentenceSet(index);
   const listeningSet = makeListeningSet(index);
+  const reading = makeReading(index);
   const wordTitleSuffix = isReviewWordDay(index) ? "（复习）" : "";
   const sentenceTitleSuffix = isReviewSentenceDay(index) ? "（复习）" : "";
   const listeningTitleSuffix = isReviewListeningDay(index) ? "（复习）" : "";
@@ -2048,13 +2049,13 @@ function createDetailedPlan(index) {
       {
         type: "text",
         title: "工作短文",
-        body: makeReading(index).body,
-        translation: makeReading(index).translation
+        body: reading.body,
+        translation: reading.translation
       },
       {
         type: "list",
         title: "工作理解问题",
-        intro: `短文主题：${makeReading(index).title}。请像工作中看英文信息一样找答案：`,
+        intro: `短文主题：${reading.title}。请像工作中看英文信息一样找答案：`,
         items: makeReadingQuestions(index)
       },
       {
@@ -2146,13 +2147,117 @@ function makeReading(index) {
 
 function makeReadingQuestions(index) {
   const topic = makeReading(index);
+  const answers = readingAnswerBank[topic.title] || readingAnswerFallback(topic);
   return [
-    `What is the main idea of "${topic.title}"?`,
-    "What information should QA confirm or report?",
-    "What evidence, risk or next action is mentioned?",
-    "Find one useful work sentence and read it aloud.",
-    "Write one short Jira-style summary in your own words."
+    {
+      question: `What is the main idea of "${topic.title}"?`,
+      translation: `“${topic.title}”这篇短文的主要意思是什么？`,
+      answer: answers.mainIdea
+    },
+    {
+      question: "What information should QA confirm or report?",
+      translation: "测试人员应该确认或汇报哪些信息？",
+      answer: answers.confirmOrReport
+    },
+    {
+      question: "What evidence, risk or next action is mentioned?",
+      translation: "文中提到了什么证据、风险或下一步动作？",
+      answer: answers.evidenceRiskAction
+    },
+    {
+      question: "Find one useful work sentence and read it aloud.",
+      translation: "找出一句有用的工作英语句子，并大声读出来。",
+      answer: answers.usefulSentence
+    },
+    {
+      question: "Write one short Jira-style summary in your own words.",
+      translation: "用你自己的话写一句简短的 Jira 风格总结。",
+      answer: answers.jiraSummary
+    }
   ];
+}
+
+const readingAnswerBank = {
+  "Requirement clarification": {
+    mainIdea: "Answer: QA should understand requirements and confirm unclear points before writing test cases. 中文：测试人员写用例前要理解需求，并确认不清楚的点。",
+    confirmOrReport: "Answer: QA should confirm unclear points and the expected behavior. 中文：测试人员要确认不清楚的点和预期行为。",
+    evidenceRiskAction: "Answer: A short question or written summary can prevent rework. 中文：简短提问或书面总结可以防止返工。",
+    usefulSentence: "Answer: If the expected behavior is not defined, different team members may make different assumptions. 中文：如果预期行为没有定义，不同成员可能会有不同理解。",
+    jiraSummary: "Answer: Requirement is unclear; QA needs to confirm the expected behavior before test case design. 中文：需求不清楚，测试需要先确认预期行为再设计用例。"
+  },
+  "Bug report quality": {
+    mainIdea: "Answer: A good bug report should be clear, complete and specific. 中文：好的 Bug 报告应该清楚、完整、具体。",
+    confirmOrReport: "Answer: QA should report the environment, preconditions, steps, actual result, expected result and evidence. 中文：测试要汇报环境、前置条件、步骤、实际结果、预期结果和证据。",
+    evidenceRiskAction: "Answer: Screenshots, logs and request IDs are useful evidence. 中文：截图、日志和请求 ID 是有用证据。",
+    usefulSentence: "Answer: Developers can fix issues faster when the report is specific. 中文：报告具体时，开发可以更快修复问题。",
+    jiraSummary: "Answer: Bug report should include steps, actual result, expected result and logs. 中文：Bug 报告应包含步骤、实际结果、预期结果和日志。"
+  },
+  "API testing": {
+    mainIdea: "Answer: API testing checks whether a service returns correct responses for different requests. 中文：接口测试检查服务是否对不同请求返回正确响应。",
+    confirmOrReport: "Answer: QA should verify status code, response body, business fields and database result. 中文：测试要验证状态码、响应体、业务字段和数据库结果。",
+    evidenceRiskAction: "Answer: Invalid parameters should be handled safely. 中文：无效参数应该被安全处理。",
+    usefulSentence: "Answer: Negative cases are also important because invalid parameters should be handled safely. 中文：异常用例也很重要，因为无效参数要被安全处理。",
+    jiraSummary: "Answer: API test should cover status code, response body, business fields and negative cases. 中文：接口测试应覆盖状态码、响应体、业务字段和异常用例。"
+  },
+  "Pytest automation": {
+    mainIdea: "Answer: A pytest project is easier to maintain when common logic is separated from test cases. 中文：公共逻辑和用例分离时，pytest 项目更容易维护。",
+    confirmOrReport: "Answer: QA should explain fixtures, test data, data-driven tests and reports. 中文：测试要说明 fixture、测试数据、数据驱动和报告。",
+    evidenceRiskAction: "Answer: Reports help the team understand failures quickly. 中文：报告帮助团队快速理解失败原因。",
+    usefulSentence: "Answer: Data-driven tests can run the same logic with different inputs. 中文：数据驱动测试可以用不同输入运行同一套逻辑。",
+    jiraSummary: "Answer: Automation framework separates common logic and uses fixtures, data-driven tests and reports. 中文：自动化框架分离公共逻辑，并使用 fixture、数据驱动和报告。"
+  },
+  "Regression testing": {
+    mainIdea: "Answer: Regression testing makes sure existing features still work after code changes. 中文：回归测试确认代码变更后已有功能仍正常。",
+    confirmOrReport: "Answer: QA should confirm scope based on risk, changed modules and important user flows. 中文：测试要根据风险、变更模块和重要流程确认范围。",
+    evidenceRiskAction: "Answer: Automation is useful for stable and repeated regression scenarios. 中文：自动化适合稳定且重复的回归场景。",
+    usefulSentence: "Answer: The scope should be based on risk, changed modules and important user flows. 中文：测试范围应基于风险、变更模块和重要用户流程。",
+    jiraSummary: "Answer: Regression scope should focus on risk, changed modules and key user flows. 中文：回归范围应关注风险、变更模块和关键用户流程。"
+  },
+  "Stand-up update": {
+    mainIdea: "Answer: A QA stand-up update should be clear, short and focused on work, tasks and blockers. 中文：测试站会汇报要清晰、简短，聚焦工作、任务和阻塞。",
+    confirmOrReport: "Answer: QA should report completed work, current tasks and blockers. 中文：测试要汇报已完成工作、当前任务和阻塞点。",
+    evidenceRiskAction: "Answer: If a blocker needs discussion, follow up after the meeting. 中文：如果阻塞点需要讨论，最好会后跟进。",
+    usefulSentence: "Answer: The update should be clear and brief. 中文：汇报应该清晰、简短。",
+    jiraSummary: "Answer: QA update includes completed work, current testing tasks and blockers. 中文：测试汇报包含已完成工作、当前测试任务和阻塞点。"
+  },
+  "Release risk": {
+    mainIdea: "Answer: QA should explain release risks in simple language when open defects remain. 中文：发布仍有未关闭缺陷时，测试要用简单语言说明风险。",
+    confirmOrReport: "Answer: QA should report affected users, workaround and whether the defect blocks the main flow. 中文：测试要说明受影响用户、临时方案，以及是否阻塞主流程。",
+    evidenceRiskAction: "Answer: Clear risk communication helps managers make better decisions. 中文：清晰的风险沟通帮助管理者做决定。",
+    usefulSentence: "Answer: The team needs to know which users are affected. 中文：团队需要知道哪些用户会受影响。",
+    jiraSummary: "Answer: Open defect may affect users and block the main flow; release risk needs confirmation. 中文：未关闭缺陷可能影响用户并阻塞主流程，发布风险需要确认。"
+  },
+  "Jira communication": {
+    mainIdea: "Answer: Jira comments should be short, factual and easy to follow. 中文：Jira 评论应简短、基于事实、容易理解。",
+    confirmOrReport: "Answer: QA should report what was tested, where it was tested, evidence and next action. 中文：测试要说明测试内容、测试环境、证据和下一步动作。",
+    evidenceRiskAction: "Answer: Attached evidence and clear next action are mentioned. 中文：文中提到了附件证据和明确的下一步动作。",
+    usefulSentence: "Answer: A useful comment may say what was tested, where it was tested, what evidence was attached and what action is needed next. 中文：有用评论可以说明测试了什么、在哪里测、附了什么证据、下一步要做什么。",
+    jiraSummary: "Answer: Tested the feature on staging; logs are attached and developer action is needed. 中文：已在预发测试该功能，日志已附上，需要开发处理。"
+  },
+  "Working with developers": {
+    mainIdea: "Answer: QA and developers should work together to understand the root cause of an issue. 中文：测试和开发应一起理解问题根因。",
+    confirmOrReport: "Answer: QA should provide steps, logs and test data. 中文：测试应提供步骤、日志和测试数据。",
+    evidenceRiskAction: "Answer: Developers check code and service behavior, while QA provides evidence. 中文：开发检查代码和服务行为，测试提供证据。",
+    usefulSentence: "Answer: Good cooperation makes defect fixing faster. 中文：良好协作能让缺陷修复更快。",
+    jiraSummary: "Answer: QA provided steps, logs and test data; developer should check code and service behavior. 中文：测试已提供步骤、日志和数据，开发需检查代码和服务行为。"
+  },
+  "Interview project explanation": {
+    mainIdea: "Answer: In an interview, explain the project background, responsibility, framework structure and result. 中文：面试讲项目时，要说明背景、职责、框架结构和结果。",
+    confirmOrReport: "Answer: QA should explain why data-driven testing, fixtures, reports and CI are used. 中文：测试要说明为什么使用数据驱动、fixture、报告和 CI。",
+    evidenceRiskAction: "Answer: A strong answer explains technical choices and project result. 中文：好的回答会解释技术选择和项目结果。",
+    usefulSentence: "Answer: A strong answer also explains why you used data-driven testing, fixtures, reports and CI execution. 中文：有说服力的回答还会说明为什么使用数据驱动、fixture、报告和 CI 执行。",
+    jiraSummary: "Answer: Automation project uses pytest, fixtures, data-driven tests, reports and CI to improve testing efficiency. 中文：自动化项目使用 pytest、fixture、数据驱动、报告和 CI 提高测试效率。"
+  }
+};
+
+function readingAnswerFallback(topic) {
+  return {
+    mainIdea: `Answer: This passage is about ${topic.title}. 中文：这篇短文主要讲 ${topic.title}。`,
+    confirmOrReport: "Answer: QA should confirm key information and report clear findings. 中文：测试应确认关键信息，并清楚汇报结果。",
+    evidenceRiskAction: "Answer: Look for evidence, risk and the next action in the passage. 中文：从短文里找证据、风险和下一步动作。",
+    usefulSentence: "Answer: Choose one sentence from the passage and read it aloud. 中文：从短文中选一句并大声读出来。",
+    jiraSummary: "Answer: QA should summarize the key point clearly in Jira. 中文：测试应在 Jira 中清楚总结重点。"
+  };
 }
 
 function makeOutputSet(index) {
@@ -2301,6 +2406,12 @@ function init() {
     const translationToggleButton = event.target.closest("[data-translation-toggle]");
     if (translationToggleButton) {
       togglePracticeTranslation(translationToggleButton);
+      return;
+    }
+
+    const answerToggleButton = event.target.closest("[data-answer-toggle]");
+    if (answerToggleButton) {
+      togglePracticeAnswer(answerToggleButton);
       return;
     }
 
@@ -2483,18 +2594,23 @@ function renderContentBlock(block) {
     const list = document.createElement("ol");
     list.className = "practice-list";
     block.items.forEach((item) => {
-      const translation = getPracticeSentenceTranslation(item);
-      const hasHiddenTranslation = isListeningPractice && translation;
+      const listItem = normalizePracticeItem(item);
+      const isReadingQuestion = Boolean(listItem.answer);
+      const translation = listItem.translation || getPracticeSentenceTranslation(listItem.text);
+      const answer = listItem.answer || "";
+      const hasHiddenTranslation = (isListeningPractice || isReadingQuestion) && translation;
       const li = document.createElement("li");
       li.innerHTML = `
         <div class="practice-row">
-          <span class="practice-text">${renderClickablePracticeSentence(item)}</span>
+          <span class="practice-text">${renderClickablePracticeSentence(listItem.text)}</span>
           <div class="practice-actions">
             ${hasHiddenTranslation ? `<button type="button" class="inline-speech-button translation-toggle-button" data-translation-toggle aria-expanded="false">显示翻译</button>` : ""}
-            <button type="button" class="inline-speech-button" data-speak="${escapeHtml(item)}" data-rate="0.78">播放</button>
+            ${answer ? `<button type="button" class="inline-speech-button answer-toggle-button" data-answer-toggle aria-expanded="false">显示答案</button>` : ""}
+            <button type="button" class="inline-speech-button" data-speak="${escapeHtml(listItem.text)}" data-rate="0.78">播放</button>
           </div>
         </div>
         ${translation ? `<span class="practice-translation${hasHiddenTranslation ? " is-hidden" : ""}" ${hasHiddenTranslation ? "hidden" : ""}>${escapeHtml(translation)}</span>` : ""}
+        ${answer ? `<span class="practice-answer is-hidden" hidden>${escapeHtml(answer)}</span>` : ""}
         <div class="read-feedback" aria-live="polite"></div>
       `;
       list.appendChild(li);
@@ -2534,6 +2650,22 @@ function parseWordDescription(word, desc) {
     meaning,
     sentence,
     sentenceCn: getSentenceTranslation(sentence, word, meaning)
+  };
+}
+
+function normalizePracticeItem(item) {
+  if (item && typeof item === "object") {
+    return {
+      text: String(item.question || item.text || ""),
+      translation: String(item.translation || ""),
+      answer: String(item.answer || "")
+    };
+  }
+
+  return {
+    text: String(item || ""),
+    translation: "",
+    answer: ""
   };
 }
 
@@ -2582,6 +2714,25 @@ function togglePracticeTranslation(button) {
     translation.setAttribute("hidden", "");
     translation.classList.add("is-hidden");
     button.textContent = "显示翻译";
+    button.setAttribute("aria-expanded", "false");
+  }
+}
+
+function togglePracticeAnswer(button) {
+  const item = button.closest(".practice-list li");
+  const answer = item?.querySelector(".practice-answer");
+  if (!answer) return;
+
+  const isHidden = answer.hasAttribute("hidden");
+  if (isHidden) {
+    answer.removeAttribute("hidden");
+    answer.classList.remove("is-hidden");
+    button.textContent = "关闭答案";
+    button.setAttribute("aria-expanded", "true");
+  } else {
+    answer.setAttribute("hidden", "");
+    answer.classList.add("is-hidden");
+    button.textContent = "显示答案";
     button.setAttribute("aria-expanded", "false");
   }
 }

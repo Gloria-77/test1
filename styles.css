@@ -947,8 +947,16 @@ a:focus-visible {
   color: var(--button-text);
 }
 
+.answer-toggle-button {
+  border-color: #c8d9ed;
+  background: #f8fbff;
+  color: #285178;
+}
+
 .translation-toggle-button:hover,
-.translation-toggle-button:focus-visible {
+.translation-toggle-button:focus-visible,
+.answer-toggle-button:hover,
+.answer-toggle-button:focus-visible {
   border-color: #c9d1da;
   background: var(--button-hover);
 }
@@ -1077,6 +1085,22 @@ a:focus-visible {
 }
 
 .practice-translation.is-hidden {
+  display: none;
+}
+
+.practice-answer {
+  display: block;
+  margin-top: 7px;
+  padding: 10px 12px;
+  border: 1px solid #d7e5f3;
+  border-radius: 8px;
+  background: #f8fbff;
+  color: #29465f;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.practice-answer.is-hidden {
   display: none;
 }
 
